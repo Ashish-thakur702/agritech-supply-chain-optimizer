@@ -10,34 +10,6 @@ import numpy as np
 PORT = 8000
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data', 'processed')
 
-# ============================================================
-# MY MANDI-TO-MARKET DATA
-# ============================================================
-
-MY_DATA_DIR = os.path.join(
-    os.path.dirname(__file__),
-    'data',
-    'my_data'
-)
-
-my_master = pd.read_csv(
-    os.path.join(MY_DATA_DIR, 'final_weather_mandi_master.csv')
-)
-
-my_arrival_analysis = pd.read_csv(
-    os.path.join(MY_DATA_DIR, 'crop_arrival_analysis.csv')
-)
-
-my_price_analysis = pd.read_csv(
-    os.path.join(MY_DATA_DIR, 'crop_price_analysis.csv')
-)
-
-my_recommendations = pd.read_csv(
-    os.path.join(MY_DATA_DIR, 'top_market_recommendations.csv')
-)
-
-print("My Mandi-to-Market datasets loaded successfully.", flush=True)
-
 print("Loading cleaned datasets into memory for fast interactive queries...", flush=True)
 
 df_m = pd.read_csv(os.path.join(DATA_DIR, 'clean_mandi_master.csv'))
@@ -71,74 +43,6 @@ class AgriTechHandler(SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps(dashboard_data_cache, ensure_ascii=False).encode('utf-8'))
             return
-        elif parsed.path == '/api/my-master':
-            self.send_response(200)
-            self.send_header(
-            'Content-Type',
-            'application/json; charset=utf-8'
-            )
-            self.end_headers()
-
-            data = my_master.where(
-            pd.notnull(my_master),
-            None
-            ).to_dict(orient='records')
-
-            self.wfile.write(
-            json.dumps(
-            data,
-            ensure_ascii=False
-            ).encode('utf-8')
-            )
-            return
-        
-        elif parsed.path == '/api/my-arrival-analysis':
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json; charset=utf-8')
-            self.end_headers()
-
-            data = my_arrival_analysis.where(
-            pd.notnull(my_arrival_analysis),
-            None
-            ).to_dict(orient='records')
-
-            self.wfile.write(
-            json.dumps(data, ensure_ascii=False).encode('utf-8')
-            )
-            return
-
-
-        elif parsed.path == '/api/my-price-analysis':
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json; charset=utf-8')
-            self.end_headers()
-
-            data = my_price_analysis.where(
-            pd.notnull(my_price_analysis),
-            None
-            ).to_dict(orient='records')
-
-            self.wfile.write(
-            json.dumps(data, ensure_ascii=False).encode('utf-8')
-            )
-            return
-
-
-        elif parsed.path == '/api/my-recommendations':
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json; charset=utf-8')
-            self.end_headers()
-
-            data = my_recommendations.where(
-            pd.notnull(my_recommendations),
-            None
-            ).to_dict(orient='records')
-
-            self.wfile.write(
-            json.dumps(data, ensure_ascii=False).encode('utf-8')
-            )
-            return
-        
         elif parsed.path == '/api/health':
             self.send_response(200)
             self.send_header('Content-Type', 'application/json')
