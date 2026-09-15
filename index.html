@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriTech Optimizer | Mandi-to-Market Supply Chain Intelligence</title>
+  <meta name="description" content="TransOrg Datathon Track 3: Mandi-to-Market Agricultural Supply Chain, Price Discovery & Logistics Optimization Dashboard with AI Agent.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Top Navigation Bar -->
+    <header class="navbar glass">
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>AgriTech <span class="brand-accent">Optimizer</span></h1>
+          <span class="badge badge-track">Track 3 · TransOrg Datathon</span>
+        </div>
+      </div>
+
+      <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="overview">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+          Overview
+        </button>
+        <button class="tab-btn" data-tab="arrivals">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Mandi Arrivals
+        </button>
+        <button class="tab-btn" data-tab="prices">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          MSP & Prices
+        </button>
+        <button class="tab-btn" data-tab="logistics">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+          Logistics
+        </button>
+        <button class="tab-btn" data-tab="weather">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/><line x1="8" x2="8" y1="19" y2="22"/><line x1="12" x2="12" y1="19" y2="22"/><line x1="16" x2="16" y1="19" y2="22"/></svg>
+          Weather
+        </button>
+        <button class="tab-btn agent-btn" data-tab="agent">
+          <span class="pulse-dot"></span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 3.36 2.08 6.23 5 7.42V20a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2.58c2.92-1.19 5-4.06 5-7.42a8 8 0 0 0-8-8z"/><path d="M9 13h6"/></svg>
+          AI Agent
+        </button>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="live-pill">
+          <span class="live-dot"></span> Live Pipeline
+        </div>
+      </div>
+    </header>
+
+    <!-- Global Filter Ribbon -->
+    <section class="filter-ribbon glass">
+      <div class="filter-group">
+        <label for="filterCrop">Crop</label>
+        <select id="filterCrop">
+          <option value="All">All Crops (6)</option>
+          <option value="Wheat">Wheat (गेहूं)</option>
+          <option value="Rice">Rice (धान / चावल)</option>
+          <option value="Cotton">Cotton (कपास)</option>
+          <option value="Mustard">Mustard (सरसों)</option>
+          <option value="Maize">Maize (मक्का)</option>
+          <option value="Sugarcane">Sugarcane (गन्ना)</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="filterState">State</label>
+        <select id="filterState">
+          <option value="All">All States (3)</option>
+          <option value="Punjab">Punjab</option>
+          <option value="Haryana">Haryana</option>
+          <option value="Uttar Pradesh">Uttar Pradesh</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="filterDistrict">District</label>
+        <select id="filterDistrict">
+          <option value="All">All Districts (18)</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="filterMandi">Mandi</label>
+        <select id="filterMandi">
+          <option value="All">All Mandis (57)</option>
+        </select>
+      </div>
+
+      <div class="filter-group date-filter">
+        <label for="filterDateStart">From</label>
+        <input type="date" id="filterDateStart" value="2026-01-01">
+      </div>
+
+      <div class="filter-group date-filter">
+        <label for="filterDateEnd">To</label>
+        <input type="date" id="filterDateEnd" value="2026-09-30">
+      </div>
+
+      <div class="filter-actions">
+        <button id="btnApplyFilters" class="btn btn-primary">Apply Filters</button>
+        <button id="btnResetFilters" class="btn btn-outline">Reset</button>
+      </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINERS -->
+    <main class="content-container">
+
+      <!-- ===================================================================
+           TAB 1: EXECUTIVE OVERVIEW
+           =================================================================== -->
+      <section id="view-overview" class="view-panel active">
+        <!-- KPI Metrics Grid -->
+        <div class="kpi-grid">
+          <div class="kpi-card glass glow-emerald">
+            <div class="kpi-header">
+              <span class="kpi-title">Total Crop Arrivals</span>
+              <span class="kpi-icon emerald">📦</span>
+            </div>
+            <div class="kpi-value" id="kpiTotalArrivals">5,827,744</div>
+            <div class="kpi-sub"><span class="badge-sub">Quintals</span> across 57 Mandis</div>
+          </div>
+
+          <div class="kpi-card glass glow-amber">
+            <div class="kpi-header">
+              <span class="kpi-title">Avg Modal Price vs MSP</span>
+              <span class="kpi-icon amber">₹</span>
+            </div>
+            <div class="kpi-value" id="kpiAvgModalPrice">₹3,791.17</div>
+            <div class="kpi-sub">Benchmark MSP: <span id="kpiAvgMsp">₹3,722.28</span> (<span class="text-emerald">+₹68.89</span>)</div>
+          </div>
+
+          <div class="kpi-card glass glow-rose">
+            <div class="kpi-header">
+              <span class="kpi-title">Price Crash Incidents</span>
+              <span class="kpi-icon rose">⚠️</span>
+            </div>
+            <div class="kpi-value" id="kpiPriceCrashCount">5,023</div>
+            <div class="kpi-sub"><span class="badge-alert" id="kpiPriceCrashRate">41.9%</span> quotes trading below MSP</div>
+          </div>
+
+          <div class="kpi-card glass glow-cyan">
+            <div class="kpi-header">
+              <span class="kpi-title">Fleet Transit Hours</span>
+              <span class="kpi-icon cyan">🚚</span>
+            </div>
+            <div class="kpi-value" id="kpiAvgTransitHours">13.1 hrs</div>
+            <div class="kpi-sub">Delay Rate: <span id="kpiTransitDelayRate" class="text-amber">10.1%</span> of 10.4k trips</div>
+          </div>
+
+          <div class="kpi-card glass glow-blue">
+            <div class="kpi-header">
+              <span class="kpi-title">Weather Disruption Impact</span>
+              <span class="kpi-icon blue">🌧️</span>
+            </div>
+            <div class="kpi-value" id="kpiRainCorr">r = +0.566</div>
+            <div class="kpi-sub">Rain vs Arrival Vol <span class="badge-sub">50 IoT Sensors</span></div>
+          </div>
+        </div>
+
+        <!-- Alert Notification Bar -->
+        <div class="banner-alert glass">
+          <div class="alert-icon">⚡</div>
+          <div class="alert-content">
+            <strong>Supply Chain Advisory:</strong> Elevated price crashes detected in Cotton and Mustard markets across Sirsa & Bathinda mandis. Rain surges in Saharanpur have introduced an average transit buffer of +2.4 hours to WH-North.
+          </div>
+          <button class="btn btn-sm btn-ghost" onclick="switchTab('agent')">Ask Agent</button>
+        </div>
+
+        <!-- Crop Portfolio Cards -->
+        <h2 class="section-title">Standardized Crop Commodity Portfolio</h2>
+        <div class="crop-cards-grid" id="cropCardsContainer">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- Main Overview Charts Split -->
+        <div class="grid-2-col">
+          <div class="card glass">
+            <div class="card-header">
+              <h3>Daily Multi-Crop Arrival Trend (Quintals)</h3>
+              <span class="sub-text">Aggregated Jan - Sep 2026</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chartDailyTrend"></canvas>
+            </div>
+          </div>
+
+          <div class="card glass">
+            <div class="card-header">
+              <h3>Crop Share Distribution</h3>
+              <span class="sub-text">Relative volume by canonical crop</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chartCropShare"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           TAB 2: MANDI ARRIVALS & SUPPLY CHAIN
+           =================================================================== -->
+      <section id="view-arrivals" class="view-panel">
+        <div class="grid-2-col">
+          <div class="card glass">
+            <div class="card-header">
+              <h3>Top 10 Mandis by Total Volume (Quintals)</h3>
+              <span class="sub-text">Leading APMC & Direct grain markets</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chartTopMandis"></canvas>
+            </div>
+          </div>
+
+          <div class="card glass">
+            <div class="card-header">
+              <h3>State-Level Supply Throughput</h3>
+              <span class="sub-text">Punjab vs Haryana vs Uttar Pradesh</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chartStateThroughput"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass mt-4">
+          <div class="card-header">
+            <h3>Mandi Master Directory & Arrival Leaderboard</h3>
+            <span class="sub-text">Standardized Mandi IDs (MANDI001 - MANDI057)</span>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table" id="tableTopMandis">
+              <thead>
+                <tr>
+                  <th>Mandi ID</th>
+                  <th>Mandi Name</th>
+                  <th>District</th>
+                  <th>State</th>
+                  <th>Total Arrivals (Qtl)</th>
+                  <th>Share</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           TAB 3: PRICE DISCOVERY & MSP RADAR
+           =================================================================== -->
+      <section id="view-prices" class="view-panel">
+        <div class="grid-2-col">
+          <div class="card glass">
+            <div class="card-header">
+              <h3>Modal Wholesale Price vs Government MSP</h3>
+              <span class="sub-text">Direct price gap comparison by crop</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chartPriceVsMsp"></canvas>
+            </div>
+          </div>
+
+          <div class="card glass">
+            <div class="card-header">
+              <h3>Price Crash Frequency by Crop</h3>
+              <span class="sub-text">Transactions where Modal Price &lt; MSP</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chartCrashShare"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass mt-4">
+          <div class="card-header">
+            <h3>🚨 High Distress Mandis Radar (Prices Under MSP)</h3>
+            <span class="sub-text">Immediate procurement intervention recommended</span>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table" id="tablePriceCrashes">
+              <thead>
+                <tr>
+                  <th>Mandi ID</th>
+                  <th>Mandi Name</th>
+                  <th>District</th>
+                  <th>Distressed Crop</th>
+                  <th>Avg Modal Price</th>
+                  <th>MSP Benchmark</th>
+                  <th>Deficit (₹/Qtl)</th>
+                  <th>Crash Occurrences</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           TAB 4: LOGISTICS & WAREHOUSING
+           =================================================================== -->
+      <section id="view-logistics" class="view-panel">
+        <div class="grid-2-col">
+          <div class="card glass">
+            <div class="card-header">
+              <h3>Warehouse Performance & Transit Duration</h3>
+              <span class="sub-text">Average transit hours to destination warehouses</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chartWarehouseTransit"></canvas>
+            </div>
+          </div>
+
+          <div class="card glass">
+            <div class="card-header">
+              <h3>Transit Delay Incident Rates (%)</h3>
+              <span class="sub-text">Delayed trips exceeding SLA buffer</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chartWarehouseDelays"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass mt-4">
+          <div class="card-header">
+            <h3>Highest Delay Frequency Transport Routes</h3>
+            <span class="sub-text">Mandi-to-Warehouse bottlenecks requiring route optimization</span>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table" id="tableRouteDelays">
+              <thead>
+                <tr>
+                  <th>Origin Mandi</th>
+                  <th>Destination Warehouse</th>
+                  <th>Total Dispatches</th>
+                  <th>Delay Incident Rate</th>
+                  <th>Avg Delay (Hours)</th>
+                  <th>Avg Transit (Hours)</th>
+                  <th>Priority Level</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           TAB 5: WEATHER SENSORS & IMPACT
+           =================================================================== -->
+      <section id="view-weather" class="view-panel">
+        <div class="grid-2-col">
+          <div class="card glass">
+            <div class="card-header">
+              <h3>Rainfall vs Crop Arrival Volume Correlation</h3>
+              <span class="sub-text">Tracking arrival dips following heavy downpours</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chartWeatherArrivalCorr"></canvas>
+            </div>
+          </div>
+
+          <div class="card glass">
+            <div class="card-header">
+              <h3>District Cumulative Rainfall (mm)</h3>
+              <span class="sub-text">Aggregated across 50 IoT Weather Sensors</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chartDistrictRain"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           TAB 6: DATATHON AI AGENT & QUERY CONSOLE
+           =================================================================== -->
+      <section id="view-agent" class="view-panel">
+        <div class="agent-hero glass">
+          <div class="agent-avatar">🤖</div>
+          <div class="agent-hero-text">
+            <h2>TransOrg Datathon Track 3 AgentIQ Console</h2>
+            <p>Ask natural language supply chain questions, explore graph-level correlations, or click any pre-configured datathon query below.</p>
+          </div>
+        </div>
+
+        <!-- Sample Query Prompt Pills -->
+        <div class="sample-queries-container">
+          <span class="pills-title">Datathon Query Templates:</span>
+          <div class="query-pills">
+            <button class="query-pill" onclick="executeAgentPrompt('Plot the daily arrival trend of Wheat in Amritsar mandi vs MSP for the last 30 days')">
+              📈 Wheat in Amritsar vs MSP
+            </button>
+            <button class="query-pill" onclick="executeAgentPrompt('Show total arrivals by crop type')">
+              🌾 Total arrivals by crop type
+            </button>
+            <button class="query-pill" onclick="executeAgentPrompt('Which mandi has the highest average transit delay?')">
+              ⏱️ Mandi with highest transit delay
+            </button>
+            <button class="query-pill" onclick="executeAgentPrompt('Compare total rainfall by district over the last 3 months')">
+              🌧️ Total rainfall by district
+            </button>
+            <button class="query-pill" onclick="executeAgentPrompt('Show the distribution of wholesale prices for Rice')">
+              🍚 Rice price distribution
+            </button>
+            <button class="query-pill" onclick="executeAgentPrompt('Which warehouse receives the highest volume of crops?')">
+              🏭 Top warehouse by volume
+            </button>
+            <button class="query-pill" onclick="executeAgentPrompt('Which Mandis are experiencing prices below MSP?')">
+              ⚠️ Mandis with prices below MSP
+            </button>
+            <button class="query-pill" onclick="executeAgentPrompt('Correlation between heavy rainfall days and crop arrival drops')">
+              ⛈️ Heavy rain vs arrival drops
+            </button>
+          </div>
+        </div>
+
+        <!-- Agent Input Box -->
+        <div class="agent-input-card glass">
+          <div class="input-wrapper">
+            <input type="text" id="agentInput" placeholder="Ask anything about arrivals, price crashes, transit delays, or weather impacts..." autocomplete="off">
+            <button id="btnRunAgent" class="btn btn-primary">
+              <span>Execute Query</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Agent Response Card -->
+        <div id="agentResponseArea" class="agent-response-card glass d-none">
+          <div class="response-header">
+            <div class="response-status">
+              <span class="status-indicator"></span>
+              <strong>Agent Output:</strong> <span id="agentQueryTitle"></span>
+            </div>
+            <div class="agent-badge" id="agentIntentBadge">Analytics Query</div>
+          </div>
+
+          <div class="response-summary" id="agentSummaryText">
+            <!-- Summary Markdown -->
+          </div>
+
+          <!-- Query KPI Stat Pills -->
+          <div class="agent-stat-pills" id="agentStatPills">
+            <!-- Injected by JS -->
+          </div>
+
+          <!-- Dynamic Agent Chart Container -->
+          <div class="agent-chart-box">
+            <canvas id="chartAgentOutput"></canvas>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div>TransOrg AgentIQ Datathon · Track 3 AgriTech Supply Chain Optimizer</div>
+      <div>Cleaned 5 Datasets · 25.7k Arrivals · 12k Price Quotes · 10.4k Trips · 15k IoT Sensor Logs</div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

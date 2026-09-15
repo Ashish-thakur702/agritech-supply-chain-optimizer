@@ -1,0 +1,5029 @@
+{
+  "kpis": {
+    "total_arrivals_qtl": 5827744.2,
+    "avg_modal_price": 3791.17,
+    "avg_msp": 3722.28,
+    "price_crash_count": 5023,
+    "price_crash_rate": 41.9,
+    "avg_transit_hours": 13.1,
+    "transit_delay_rate": 10.1,
+    "avg_temp_c": 28.1,
+    "total_rainfall_mm": 279567.6,
+    "rain_arrival_corr": 0.566
+  },
+  "crops": [
+    {
+      "crop": "Wheat",
+      "arrival_qtl": 999781.8,
+      "arrival_share": 17.2,
+      "modal_price": 2310.92,
+      "msp": 2275.0,
+      "price_diff": 35.92,
+      "crashes": 857,
+      "crash_rate": 43.2
+    },
+    {
+      "crop": "Rice",
+      "arrival_qtl": 946991.1,
+      "arrival_share": 16.2,
+      "modal_price": 2222.18,
+      "msp": 2183.0,
+      "price_diff": 39.18,
+      "crashes": 822,
+      "crash_rate": 42.5
+    },
+    {
+      "crop": "Cotton",
+      "arrival_qtl": 946306.1,
+      "arrival_share": 16.2,
+      "modal_price": 6734.75,
+      "msp": 6620.0,
+      "price_diff": 114.75,
+      "crashes": 853,
+      "crash_rate": 42.7
+    },
+    {
+      "crop": "Mustard",
+      "arrival_qtl": 991275.7,
+      "arrival_share": 17.0,
+      "modal_price": 5769.93,
+      "msp": 5650.0,
+      "price_diff": 119.93,
+      "crashes": 797,
+      "crash_rate": 39.6
+    },
+    {
+      "crop": "Maize",
+      "arrival_qtl": 967592.6,
+      "arrival_share": 16.6,
+      "modal_price": 2127.95,
+      "msp": 2090.0,
+      "price_diff": 37.95,
+      "crashes": 862,
+      "crash_rate": 41.8
+    },
+    {
+      "crop": "Sugarcane",
+      "arrival_qtl": 975796.9,
+      "arrival_share": 16.7,
+      "modal_price": 3565.15,
+      "msp": 3500.0,
+      "price_diff": 65.15,
+      "crashes": 832,
+      "crash_rate": 41.3
+    }
+  ],
+  "top_mandis": [
+    {
+      "mandi_id": "MANDI026",
+      "mandi_name": "Tadipatri Mandi",
+      "district": "Hisar",
+      "state": "Haryana",
+      "arrival_qtl": 113588.7
+    },
+    {
+      "mandi_id": "MANDI041",
+      "mandi_name": "Gurgaon Grain Market",
+      "district": "Fatehabad",
+      "state": "Haryana",
+      "arrival_qtl": 113532.5
+    },
+    {
+      "mandi_id": "MANDI001",
+      "mandi_name": "Hyderabad Mandi",
+      "district": "Ludhiana",
+      "state": "Punjab",
+      "arrival_qtl": 112636.7
+    },
+    {
+      "mandi_id": "MANDI002",
+      "mandi_name": "Solapur Mandi",
+      "district": "Ludhiana",
+      "state": "Punjab",
+      "arrival_qtl": 112359.4
+    },
+    {
+      "mandi_id": "MANDI048",
+      "mandi_name": "Chittoor Mandi",
+      "district": "Muzaffarnagar",
+      "state": "Uttar Pradesh",
+      "arrival_qtl": 110886.7
+    },
+    {
+      "mandi_id": "MANDI007",
+      "mandi_name": "Nashik Mandi",
+      "district": "Amritsar",
+      "state": "Punjab",
+      "arrival_qtl": 110512.5
+    },
+    {
+      "mandi_id": "MANDI033",
+      "mandi_name": "South Dumdum Grain Market",
+      "district": "Ambala",
+      "state": "Haryana",
+      "arrival_qtl": 108409.9
+    },
+    {
+      "mandi_id": "MANDI039",
+      "mandi_name": "Anand Grain Market",
+      "district": "Kurukshetra",
+      "state": "Haryana",
+      "arrival_qtl": 107519.7
+    },
+    {
+      "mandi_id": "MANDI043",
+      "mandi_name": "Danapur Mandi",
+      "district": "Agra",
+      "state": "Uttar Pradesh",
+      "arrival_qtl": 107013.3
+    },
+    {
+      "mandi_id": "MANDI012",
+      "mandi_name": "Gaya Grain Market",
+      "district": "Patiala",
+      "state": "Punjab",
+      "arrival_qtl": 106422.9
+    }
+  ],
+  "daily_trend": [
+    {
+      "date_str": "2026-01-01",
+      "Cotton": 3336.13,
+      "Maize": 3097.15,
+      "Mustard": 2968.2400000000002,
+      "Rice": 3546.9,
+      "Sugarcane": 2487.44,
+      "Wheat": 4193.92
+    },
+    {
+      "date_str": "2026-01-02",
+      "Cotton": 5888.69,
+      "Maize": 2175.0299999999997,
+      "Mustard": 4488.4800000000005,
+      "Rice": 3680.07,
+      "Sugarcane": 5393.51,
+      "Wheat": 1946.3200000000002
+    },
+    {
+      "date_str": "2026-01-03",
+      "Cotton": 4618.28,
+      "Maize": 4894.22,
+      "Mustard": 3801.7,
+      "Rice": 2257.76,
+      "Sugarcane": 4630.67,
+      "Wheat": 3644.2
+    },
+    {
+      "date_str": "2026-01-04",
+      "Cotton": 1696.51,
+      "Maize": 4509.46,
+      "Mustard": 5969.81,
+      "Rice": 2671.2799999999997,
+      "Sugarcane": 2557.3199999999997,
+      "Wheat": 1460.57
+    },
+    {
+      "date_str": "2026-01-05",
+      "Cotton": 5898.19,
+      "Maize": 2670.29,
+      "Mustard": 6028.91,
+      "Rice": 4196.62,
+      "Sugarcane": 5595.5,
+      "Wheat": 4744.47
+    },
+    {
+      "date_str": "2026-01-06",
+      "Cotton": 4646.71,
+      "Maize": 2547.55,
+      "Mustard": 3643.99,
+      "Rice": 4686.75,
+      "Sugarcane": 4472.67,
+      "Wheat": 4714.71
+    },
+    {
+      "date_str": "2026-01-07",
+      "Cotton": 2006.44,
+      "Maize": 3600.62,
+      "Mustard": 4036.98,
+      "Rice": 5140.17,
+      "Sugarcane": 2835.64,
+      "Wheat": 3625.62
+    },
+    {
+      "date_str": "2026-01-08",
+      "Cotton": 3639.4300000000003,
+      "Maize": 2270.48,
+      "Mustard": 4170.23,
+      "Rice": 2773.9300000000003,
+      "Sugarcane": 2621.46,
+      "Wheat": 4957.39
+    },
+    {
+      "date_str": "2026-01-09",
+      "Cotton": 3758.82,
+      "Maize": 3636.42,
+      "Mustard": 4972.2,
+      "Rice": 3477.86,
+      "Sugarcane": 4609.19,
+      "Wheat": 3286.08
+    },
+    {
+      "date_str": "2026-01-10",
+      "Cotton": 1331.06,
+      "Maize": 1390.94,
+      "Mustard": 328.1,
+      "Rice": 2225.67,
+      "Sugarcane": 1772.12,
+      "Wheat": 3461.35
+    },
+    {
+      "date_str": "2026-01-11",
+      "Cotton": 2047.54,
+      "Maize": 2011.99,
+      "Mustard": 4118.63,
+      "Rice": 3060.36,
+      "Sugarcane": 3112.56,
+      "Wheat": 1977.05
+    },
+    {
+      "date_str": "2026-01-12",
+      "Cotton": 1110.67,
+      "Maize": 1016.8299999999999,
+      "Mustard": 3009.82,
+      "Rice": 2528.11,
+      "Sugarcane": 2446.45,
+      "Wheat": 3112.3900000000003
+    },
+    {
+      "date_str": "2026-01-13",
+      "Cotton": 2333.19,
+      "Maize": 3302.6400000000003,
+      "Mustard": 5169.09,
+      "Rice": 5210.11,
+      "Sugarcane": 2836.92,
+      "Wheat": 3033.88
+    },
+    {
+      "date_str": "2026-01-14",
+      "Cotton": 3856.67,
+      "Maize": 4140.82,
+      "Mustard": 3606.25,
+      "Rice": 3098.61,
+      "Sugarcane": 2313.01,
+      "Wheat": 4253.1
+    },
+    {
+      "date_str": "2026-01-15",
+      "Cotton": 4610.61,
+      "Maize": 5553.82,
+      "Mustard": 3391.81,
+      "Rice": 3653.58,
+      "Sugarcane": 3041.64,
+      "Wheat": 2502.66
+    },
+    {
+      "date_str": "2026-01-16",
+      "Cotton": 5075.44,
+      "Maize": 4538.94,
+      "Mustard": 4223.93,
+      "Rice": 3454.13,
+      "Sugarcane": 2632.5,
+      "Wheat": 4789.29
+    },
+    {
+      "date_str": "2026-01-17",
+      "Cotton": 4562.03,
+      "Maize": 2610.46,
+      "Mustard": 4641.54,
+      "Rice": 2104.95,
+      "Sugarcane": 2439.96,
+      "Wheat": 5468.54
+    },
+    {
+      "date_str": "2026-01-18",
+      "Cotton": 4382.54,
+      "Maize": 4383.61,
+      "Mustard": 4092.83,
+      "Rice": 3127.58,
+      "Sugarcane": 4798.7,
+      "Wheat": 5440.29
+    },
+    {
+      "date_str": "2026-01-19",
+      "Cotton": 4118.08,
+      "Maize": 4749.25,
+      "Mustard": 2990.68,
+      "Rice": 2883.45,
+      "Sugarcane": 4538.7,
+      "Wheat": 4642.4
+    },
+    {
+      "date_str": "2026-01-20",
+      "Cotton": 2555.95,
+      "Maize": 3209.5299999999997,
+      "Mustard": 5062.93,
+      "Rice": 3218.71,
+      "Sugarcane": 2945.45,
+      "Wheat": 4972.2
+    },
+    {
+      "date_str": "2026-01-21",
+      "Cotton": 3191.26,
+      "Maize": 2583.21,
+      "Mustard": 4734.71,
+      "Rice": 5000.58,
+      "Sugarcane": 3616.1,
+      "Wheat": 4489.42
+    },
+    {
+      "date_str": "2026-01-22",
+      "Cotton": 5461.09,
+      "Maize": 3117.74,
+      "Mustard": 3563.86,
+      "Rice": 3786.29,
+      "Sugarcane": 5087.12,
+      "Wheat": 3131.26
+    },
+    {
+      "date_str": "2026-01-23",
+      "Cotton": 2455.15,
+      "Maize": 4338.27,
+      "Mustard": 3069.21,
+      "Rice": 4500.36,
+      "Sugarcane": 4746.08,
+      "Wheat": 5144.3
+    },
+    {
+      "date_str": "2026-01-24",
+      "Cotton": 5588.21,
+      "Maize": 4629.99,
+      "Mustard": 4357.99,
+      "Rice": 3560.19,
+      "Sugarcane": 3117.72,
+      "Wheat": 4618.650000000001
+    },
+    {
+      "date_str": "2026-01-25",
+      "Cotton": 3632.09,
+      "Maize": 2353.41,
+      "Mustard": 3302.07,
+      "Rice": 3756.49,
+      "Sugarcane": 2441.62,
+      "Wheat": 6602.27
+    },
+    {
+      "date_str": "2026-01-26",
+      "Cotton": 2473.1,
+      "Maize": 3373.02,
+      "Mustard": 2140.0099999999998,
+      "Rice": 2731.2400000000002,
+      "Sugarcane": 3607.81,
+      "Wheat": 4075.66
+    },
+    {
+      "date_str": "2026-01-27",
+      "Cotton": 2704.11,
+      "Maize": 4610.78,
+      "Mustard": 3826.2200000000003,
+      "Rice": 4900.83,
+      "Sugarcane": 2208.89,
+      "Wheat": 4490.24
+    },
+    {
+      "date_str": "2026-01-28",
+      "Cotton": 3842.6099999999997,
+      "Maize": 4004.76,
+      "Mustard": 2785.77,
+      "Rice": 3268.31,
+      "Sugarcane": 3213.53,
+      "Wheat": 4309.03
+    },
+    {
+      "date_str": "2026-01-29",
+      "Cotton": 2494.16,
+      "Maize": 3554.21,
+      "Mustard": 2960.0,
+      "Rice": 5725.15,
+      "Sugarcane": 4551.82,
+      "Wheat": 3890.99
+    },
+    {
+      "date_str": "2026-01-30",
+      "Cotton": 3351.02,
+      "Maize": 3480.98,
+      "Mustard": 5353.71,
+      "Rice": 3898.42,
+      "Sugarcane": 3469.1400000000003,
+      "Wheat": 5222.46
+    },
+    {
+      "date_str": "2026-01-31",
+      "Cotton": 3841.63,
+      "Maize": 3980.48,
+      "Mustard": 3342.52,
+      "Rice": 4391.29,
+      "Sugarcane": 4801.57,
+      "Wheat": 4986.02
+    },
+    {
+      "date_str": "2026-02-01",
+      "Cotton": 5693.72,
+      "Maize": 6300.6,
+      "Mustard": 4696.02,
+      "Rice": 4542.54,
+      "Sugarcane": 4053.23,
+      "Wheat": 3186.2799999999997
+    },
+    {
+      "date_str": "2026-02-02",
+      "Cotton": 5237.2699999999995,
+      "Maize": 3492.4700000000003,
+      "Mustard": 4066.59,
+      "Rice": 1750.24,
+      "Sugarcane": 5141.72,
+      "Wheat": 5699.2
+    },
+    {
+      "date_str": "2026-02-03",
+      "Cotton": 3418.76,
+      "Maize": 2711.91,
+      "Mustard": 3536.21,
+      "Rice": 2607.26,
+      "Sugarcane": 3187.11,
+      "Wheat": 3306.8199999999997
+    },
+    {
+      "date_str": "2026-02-04",
+      "Cotton": 2123.9500000000003,
+      "Maize": 4863.69,
+      "Mustard": 5132.38,
+      "Rice": 1324.28,
+      "Sugarcane": 3678.45,
+      "Wheat": 3822.25
+    },
+    {
+      "date_str": "2026-02-05",
+      "Cotton": 2373.71,
+      "Maize": 5808.23,
+      "Mustard": 4498.7,
+      "Rice": 4210.11,
+      "Sugarcane": 5715.18,
+      "Wheat": 2909.08
+    },
+    {
+      "date_str": "2026-02-06",
+      "Cotton": 4852.0,
+      "Maize": 3130.77,
+      "Mustard": 5438.19,
+      "Rice": 4856.3099999999995,
+      "Sugarcane": 6011.639999999999,
+      "Wheat": 4561.97
+    },
+    {
+      "date_str": "2026-02-07",
+      "Cotton": 3433.79,
+      "Maize": 2635.66,
+      "Mustard": 3424.32,
+      "Rice": 1536.19,
+      "Sugarcane": 4278.32,
+      "Wheat": 5878.21
+    },
+    {
+      "date_str": "2026-02-08",
+      "Cotton": 2349.54,
+      "Maize": 5248.37,
+      "Mustard": 2578.21,
+      "Rice": 2015.76,
+      "Sugarcane": 4982.19,
+      "Wheat": 3112.02
+    },
+    {
+      "date_str": "2026-02-09",
+      "Cotton": 3245.7200000000003,
+      "Maize": 5472.48,
+      "Mustard": 3711.42,
+      "Rice": 3047.89,
+      "Sugarcane": 4110.74,
+      "Wheat": 4892.92
+    },
+    {
+      "date_str": "2026-02-10",
+      "Cotton": 2764.52,
+      "Maize": 3180.69,
+      "Mustard": 2639.25,
+      "Rice": 1978.44,
+      "Sugarcane": 3377.2,
+      "Wheat": 1849.15
+    },
+    {
+      "date_str": "2026-02-11",
+      "Cotton": 2473.64,
+      "Maize": 3830.27,
+      "Mustard": 1585.75,
+      "Rice": 3532.18,
+      "Sugarcane": 1694.93,
+      "Wheat": 3298.44
+    },
+    {
+      "date_str": "2026-02-12",
+      "Cotton": 2740.05,
+      "Maize": 3590.58,
+      "Mustard": 3344.29,
+      "Rice": 2202.67,
+      "Sugarcane": 2135.9300000000003,
+      "Wheat": 3102.48
+    },
+    {
+      "date_str": "2026-02-13",
+      "Cotton": 6161.26,
+      "Maize": 3040.2799999999997,
+      "Mustard": 2384.36,
+      "Rice": 3458.37,
+      "Sugarcane": 3137.46,
+      "Wheat": 4839.24
+    },
+    {
+      "date_str": "2026-02-14",
+      "Cotton": 2534.45,
+      "Maize": 5471.77,
+      "Mustard": 3322.41,
+      "Rice": 3121.7799999999997,
+      "Sugarcane": 2260.99,
+      "Wheat": 3033.46
+    },
+    {
+      "date_str": "2026-02-15",
+      "Cotton": 2060.06,
+      "Maize": 4396.45,
+      "Mustard": 4538.03,
+      "Rice": 3497.18,
+      "Sugarcane": 5509.73,
+      "Wheat": 5198.64
+    },
+    {
+      "date_str": "2026-02-16",
+      "Cotton": 4394.65,
+      "Maize": 3303.25,
+      "Mustard": 2808.5,
+      "Rice": 4383.38,
+      "Sugarcane": 4769.74,
+      "Wheat": 3050.47
+    },
+    {
+      "date_str": "2026-02-17",
+      "Cotton": 4260.15,
+      "Maize": 3312.65,
+      "Mustard": 3000.63,
+      "Rice": 2484.36,
+      "Sugarcane": 3769.96,
+      "Wheat": 2163.23
+    },
+    {
+      "date_str": "2026-02-18",
+      "Cotton": 5946.98,
+      "Maize": 3054.46,
+      "Mustard": 3351.31,
+      "Rice": 5036.75,
+      "Sugarcane": 3666.8,
+      "Wheat": 4752.54
+    },
+    {
+      "date_str": "2026-02-19",
+      "Cotton": 3263.31,
+      "Maize": 2677.25,
+      "Mustard": 3676.81,
+      "Rice": 4311.03,
+      "Sugarcane": 3484.23,
+      "Wheat": 3241.84
+    },
+    {
+      "date_str": "2026-02-20",
+      "Cotton": 3959.12,
+      "Maize": 4619.18,
+      "Mustard": 4693.75,
+      "Rice": 3476.4700000000003,
+      "Sugarcane": 4236.91,
+      "Wheat": 6941.39
+    },
+    {
+      "date_str": "2026-02-21",
+      "Cotton": 4636.11,
+      "Maize": 3112.4500000000003,
+      "Mustard": 5834.17,
+      "Rice": 2614.08,
+      "Sugarcane": 5211.12,
+      "Wheat": 4374.42
+    },
+    {
+      "date_str": "2026-02-22",
+      "Cotton": 5115.29,
+      "Maize": 3948.95,
+      "Mustard": 4888.47,
+      "Rice": 2038.9,
+      "Sugarcane": 3708.18,
+      "Wheat": 5081.64
+    },
+    {
+      "date_str": "2026-02-23",
+      "Cotton": 3171.4700000000003,
+      "Maize": 3782.79,
+      "Mustard": 2775.32,
+      "Rice": 2992.94,
+      "Sugarcane": 5846.28,
+      "Wheat": 4098.22
+    },
+    {
+      "date_str": "2026-02-24",
+      "Cotton": 4025.55,
+      "Maize": 1975.67,
+      "Mustard": 5835.7,
+      "Rice": 1937.36,
+      "Sugarcane": 3066.47,
+      "Wheat": 4911.7300000000005
+    },
+    {
+      "date_str": "2026-02-25",
+      "Cotton": 1803.75,
+      "Maize": 4051.22,
+      "Mustard": 2438.8199999999997,
+      "Rice": 4682.49,
+      "Sugarcane": 4095.11,
+      "Wheat": 6219.18
+    },
+    {
+      "date_str": "2026-02-26",
+      "Cotton": 5399.15,
+      "Maize": 3877.9900000000002,
+      "Mustard": 3072.86,
+      "Rice": 3749.96,
+      "Sugarcane": 3907.64,
+      "Wheat": 6380.150000000001
+    },
+    {
+      "date_str": "2026-02-27",
+      "Cotton": 3248.23,
+      "Maize": 3302.87,
+      "Mustard": 4452.9400000000005,
+      "Rice": 4217.06,
+      "Sugarcane": 5075.66,
+      "Wheat": 3291.02
+    },
+    {
+      "date_str": "2026-02-28",
+      "Cotton": 3770.4900000000002,
+      "Maize": 3320.89,
+      "Mustard": 5470.3,
+      "Rice": 4982.33,
+      "Sugarcane": 3015.95,
+      "Wheat": 5494.86
+    },
+    {
+      "date_str": "2026-03-01",
+      "Cotton": 3491.82,
+      "Maize": 1656.49,
+      "Mustard": 2966.53,
+      "Rice": 2633.48,
+      "Sugarcane": 5366.0199999999995,
+      "Wheat": 3267.51
+    },
+    {
+      "date_str": "2026-03-02",
+      "Cotton": 3328.53,
+      "Maize": 3569.66,
+      "Mustard": 2880.3,
+      "Rice": 6768.04,
+      "Sugarcane": 5459.34,
+      "Wheat": 4733.29
+    },
+    {
+      "date_str": "2026-03-03",
+      "Cotton": 2928.24,
+      "Maize": 3893.8199999999997,
+      "Mustard": 4741.15,
+      "Rice": 5129.87,
+      "Sugarcane": 4514.5599999999995,
+      "Wheat": 4179.41
+    },
+    {
+      "date_str": "2026-03-04",
+      "Cotton": 5065.08,
+      "Maize": 1364.11,
+      "Mustard": 3569.98,
+      "Rice": 4033.41,
+      "Sugarcane": 3934.06,
+      "Wheat": 2559.61
+    },
+    {
+      "date_str": "2026-03-05",
+      "Cotton": 4042.67,
+      "Maize": 3053.11,
+      "Mustard": 3133.45,
+      "Rice": 3792.7799999999997,
+      "Sugarcane": 4432.45,
+      "Wheat": 2714.2400000000002
+    },
+    {
+      "date_str": "2026-03-06",
+      "Cotton": 6061.42,
+      "Maize": 4465.79,
+      "Mustard": 4133.71,
+      "Rice": 5599.41,
+      "Sugarcane": 2928.0,
+      "Wheat": 3282.69
+    },
+    {
+      "date_str": "2026-03-07",
+      "Cotton": 3475.8,
+      "Maize": 4940.0,
+      "Mustard": 2857.1,
+      "Rice": 2706.64,
+      "Sugarcane": 3023.81,
+      "Wheat": 5679.37
+    },
+    {
+      "date_str": "2026-03-08",
+      "Cotton": 3440.66,
+      "Maize": 3483.9700000000003,
+      "Mustard": 5164.63,
+      "Rice": 2038.69,
+      "Sugarcane": 3656.3,
+      "Wheat": 3914.86
+    },
+    {
+      "date_str": "2026-03-09",
+      "Cotton": 4149.04,
+      "Maize": 5270.45,
+      "Mustard": 4729.49,
+      "Rice": 3750.81,
+      "Sugarcane": 5176.45,
+      "Wheat": 3022.35
+    },
+    {
+      "date_str": "2026-03-10",
+      "Cotton": 1956.74,
+      "Maize": 1499.8500000000001,
+      "Mustard": 2386.21,
+      "Rice": 2196.45,
+      "Sugarcane": 3351.52,
+      "Wheat": 1795.34
+    },
+    {
+      "date_str": "2026-03-11",
+      "Cotton": 4112.39,
+      "Maize": 1613.31,
+      "Mustard": 3281.6,
+      "Rice": 1626.98,
+      "Sugarcane": 1291.1,
+      "Wheat": 1927.76
+    },
+    {
+      "date_str": "2026-03-12",
+      "Cotton": 3508.6600000000003,
+      "Maize": 2441.75,
+      "Mustard": 1137.8899999999999,
+      "Rice": 2508.62,
+      "Sugarcane": 2813.12,
+      "Wheat": 2757.46
+    },
+    {
+      "date_str": "2026-03-13",
+      "Cotton": 5667.41,
+      "Maize": 2866.98,
+      "Mustard": 3609.25,
+      "Rice": 5713.09,
+      "Sugarcane": 2065.9,
+      "Wheat": 4342.47
+    },
+    {
+      "date_str": "2026-03-14",
+      "Cotton": 2886.85,
+      "Maize": 1895.53,
+      "Mustard": 5791.71,
+      "Rice": 3519.19,
+      "Sugarcane": 3716.27,
+      "Wheat": 3869.26
+    },
+    {
+      "date_str": "2026-03-15",
+      "Cotton": 2666.44,
+      "Maize": 4527.95,
+      "Mustard": 4144.86,
+      "Rice": 1473.74,
+      "Sugarcane": 3712.58,
+      "Wheat": 4052.11
+    },
+    {
+      "date_str": "2026-03-16",
+      "Cotton": 4386.66,
+      "Maize": 3360.9,
+      "Mustard": 4282.55,
+      "Rice": 4226.93,
+      "Sugarcane": 7379.43,
+      "Wheat": 6337.37
+    },
+    {
+      "date_str": "2026-03-17",
+      "Cotton": 3937.0,
+      "Maize": 4292.07,
+      "Mustard": 2513.33,
+      "Rice": 6498.92,
+      "Sugarcane": 3624.67,
+      "Wheat": 5076.32
+    },
+    {
+      "date_str": "2026-03-18",
+      "Cotton": 1913.31,
+      "Maize": 2626.21,
+      "Mustard": 3949.94,
+      "Rice": 4421.37,
+      "Sugarcane": 4221.92,
+      "Wheat": 2393.11
+    },
+    {
+      "date_str": "2026-03-19",
+      "Cotton": 2942.43,
+      "Maize": 2156.81,
+      "Mustard": 2226.05,
+      "Rice": 1899.52,
+      "Sugarcane": 2796.34,
+      "Wheat": 3226.84
+    },
+    {
+      "date_str": "2026-03-20",
+      "Cotton": 4847.84,
+      "Maize": 5683.5599999999995,
+      "Mustard": 5109.42,
+      "Rice": 5924.96,
+      "Sugarcane": 4854.37,
+      "Wheat": 2238.18
+    },
+    {
+      "date_str": "2026-03-21",
+      "Cotton": 3565.79,
+      "Maize": 5606.7699999999995,
+      "Mustard": 4759.15,
+      "Rice": 2978.69,
+      "Sugarcane": 5037.48,
+      "Wheat": 4298.16
+    },
+    {
+      "date_str": "2026-03-22",
+      "Cotton": 5221.62,
+      "Maize": 3639.7200000000003,
+      "Mustard": 3762.46,
+      "Rice": 2380.54,
+      "Sugarcane": 2583.74,
+      "Wheat": 3625.11
+    },
+    {
+      "date_str": "2026-03-23",
+      "Cotton": 5170.01,
+      "Maize": 2923.17,
+      "Mustard": 4129.66,
+      "Rice": 5221.860000000001,
+      "Sugarcane": 3256.1800000000003,
+      "Wheat": 5309.76
+    },
+    {
+      "date_str": "2026-03-24",
+      "Cotton": 4217.0,
+      "Maize": 5766.98,
+      "Mustard": 2416.79,
+      "Rice": 3792.7,
+      "Sugarcane": 3240.15,
+      "Wheat": 1574.0
+    },
+    {
+      "date_str": "2026-03-25",
+      "Cotton": 3201.4300000000003,
+      "Maize": 3514.58,
+      "Mustard": 3292.61,
+      "Rice": 4209.04,
+      "Sugarcane": 4085.44,
+      "Wheat": 5825.78
+    },
+    {
+      "date_str": "2026-03-26",
+      "Cotton": 4751.0,
+      "Maize": 4447.02,
+      "Mustard": 2196.0,
+      "Rice": 2423.22,
+      "Sugarcane": 3721.92,
+      "Wheat": 5797.85
+    },
+    {
+      "date_str": "2026-03-27",
+      "Cotton": 3229.08,
+      "Maize": 4222.09,
+      "Mustard": 2347.75,
+      "Rice": 4000.44,
+      "Sugarcane": 4137.610000000001,
+      "Wheat": 3225.27
+    },
+    {
+      "date_str": "2026-03-28",
+      "Cotton": 3627.01,
+      "Maize": 2909.4700000000003,
+      "Mustard": 5492.51,
+      "Rice": 3525.46,
+      "Sugarcane": 2628.04,
+      "Wheat": 2673.69
+    },
+    {
+      "date_str": "2026-03-29",
+      "Cotton": 2640.34,
+      "Maize": 2827.48,
+      "Mustard": 2469.57,
+      "Rice": 5751.74,
+      "Sugarcane": 4587.6,
+      "Wheat": 2357.71
+    },
+    {
+      "date_str": "2026-03-30",
+      "Cotton": 3016.32,
+      "Maize": 2315.57,
+      "Mustard": 4887.94,
+      "Rice": 3543.26,
+      "Sugarcane": 4687.4400000000005,
+      "Wheat": 2983.65
+    },
+    {
+      "date_str": "2026-03-31",
+      "Cotton": 4445.43,
+      "Maize": 6900.71,
+      "Mustard": 6139.09,
+      "Rice": 2405.08,
+      "Sugarcane": 3569.4500000000003,
+      "Wheat": 2409.11
+    },
+    {
+      "date_str": "2026-04-01",
+      "Cotton": 3062.1,
+      "Maize": 2629.4,
+      "Mustard": 4511.94,
+      "Rice": 4377.1,
+      "Sugarcane": 3879.08,
+      "Wheat": 2885.34
+    },
+    {
+      "date_str": "2026-04-02",
+      "Cotton": 4419.48,
+      "Maize": 3485.6,
+      "Mustard": 5169.06,
+      "Rice": 3157.21,
+      "Sugarcane": 2778.79,
+      "Wheat": 3798.73
+    },
+    {
+      "date_str": "2026-04-03",
+      "Cotton": 1448.49,
+      "Maize": 6253.7,
+      "Mustard": 6527.72,
+      "Rice": 3989.82,
+      "Sugarcane": 3050.76,
+      "Wheat": 3456.17
+    },
+    {
+      "date_str": "2026-04-04",
+      "Cotton": 3867.25,
+      "Maize": 3791.23,
+      "Mustard": 3303.41,
+      "Rice": 4730.25,
+      "Sugarcane": 1758.22,
+      "Wheat": 2551.0699999999997
+    },
+    {
+      "date_str": "2026-04-05",
+      "Cotton": 3972.95,
+      "Maize": 3081.63,
+      "Mustard": 2148.87,
+      "Rice": 4088.35,
+      "Sugarcane": 2837.96,
+      "Wheat": 3577.78
+    },
+    {
+      "date_str": "2026-04-06",
+      "Cotton": 7159.0599999999995,
+      "Maize": 4802.47,
+      "Mustard": 4000.63,
+      "Rice": 4381.91,
+      "Sugarcane": 1868.5900000000001,
+      "Wheat": 5630.97
+    },
+    {
+      "date_str": "2026-04-07",
+      "Cotton": 2370.66,
+      "Maize": 4123.67,
+      "Mustard": 4424.52,
+      "Rice": 2439.95,
+      "Sugarcane": 3152.35,
+      "Wheat": 3353.68
+    },
+    {
+      "date_str": "2026-04-08",
+      "Cotton": 2548.71,
+      "Maize": 3294.88,
+      "Mustard": 2264.25,
+      "Rice": 3879.7799999999997,
+      "Sugarcane": 2698.0499999999997,
+      "Wheat": 3774.46
+    },
+    {
+      "date_str": "2026-04-09",
+      "Cotton": 3633.64,
+      "Maize": 5035.07,
+      "Mustard": 3628.95,
+      "Rice": 3821.51,
+      "Sugarcane": 2877.7,
+      "Wheat": 3015.94
+    },
+    {
+      "date_str": "2026-04-10",
+      "Cotton": 1637.71,
+      "Maize": 1749.58,
+      "Mustard": 1466.6100000000001,
+      "Rice": 1674.7,
+      "Sugarcane": 1281.87,
+      "Wheat": 2612.9
+    },
+    {
+      "date_str": "2026-04-11",
+      "Cotton": 2527.93,
+      "Maize": 3677.92,
+      "Mustard": 2272.45,
+      "Rice": 1213.36,
+      "Sugarcane": 3234.9,
+      "Wheat": 3996.8900000000003
+    },
+    {
+      "date_str": "2026-04-12",
+      "Cotton": 2158.0699999999997,
+      "Maize": 2663.92,
+      "Mustard": 2717.81,
+      "Rice": 1872.29,
+      "Sugarcane": 1395.48,
+      "Wheat": 2678.21
+    },
+    {
+      "date_str": "2026-04-13",
+      "Cotton": 5151.45,
+      "Maize": 3005.65,
+      "Mustard": 5333.98,
+      "Rice": 4159.12,
+      "Sugarcane": 3209.05,
+      "Wheat": 1775.75
+    },
+    {
+      "date_str": "2026-04-14",
+      "Cotton": 4345.63,
+      "Maize": 4788.54,
+      "Mustard": 5563.21,
+      "Rice": 3318.36,
+      "Sugarcane": 3044.89,
+      "Wheat": 3299.38
+    },
+    {
+      "date_str": "2026-04-15",
+      "Cotton": 2725.82,
+      "Maize": 4293.32,
+      "Mustard": 4173.52,
+      "Rice": 6250.7,
+      "Sugarcane": 4420.88,
+      "Wheat": 3153.44
+    },
+    {
+      "date_str": "2026-04-16",
+      "Cotton": 5346.94,
+      "Maize": 5178.24,
+      "Mustard": 2077.36,
+      "Rice": 3051.34,
+      "Sugarcane": 5717.79,
+      "Wheat": 4047.7999999999997
+    },
+    {
+      "date_str": "2026-04-17",
+      "Cotton": 4349.99,
+      "Maize": 4047.75,
+      "Mustard": 4997.8,
+      "Rice": 4254.35,
+      "Sugarcane": 4272.22,
+      "Wheat": 2226.05
+    },
+    {
+      "date_str": "2026-04-18",
+      "Cotton": 3279.2,
+      "Maize": 5440.76,
+      "Mustard": 3765.28,
+      "Rice": 5408.82,
+      "Sugarcane": 5409.93,
+      "Wheat": 2976.08
+    },
+    {
+      "date_str": "2026-04-19",
+      "Cotton": 4268.34,
+      "Maize": 4984.21,
+      "Mustard": 4072.4700000000003,
+      "Rice": 4220.99,
+      "Sugarcane": 5534.77,
+      "Wheat": 3732.88
+    },
+    {
+      "date_str": "2026-04-20",
+      "Cotton": 5271.96,
+      "Maize": 4879.6,
+      "Mustard": 3997.41,
+      "Rice": 4659.77,
+      "Sugarcane": 4365.02,
+      "Wheat": 3565.9900000000002
+    },
+    {
+      "date_str": "2026-04-21",
+      "Cotton": 3133.23,
+      "Maize": 5239.9800000000005,
+      "Mustard": 5160.11,
+      "Rice": 4340.95,
+      "Sugarcane": 2516.39,
+      "Wheat": 4458.36
+    },
+    {
+      "date_str": "2026-04-22",
+      "Cotton": 2205.2400000000002,
+      "Maize": 4247.2,
+      "Mustard": 2545.34,
+      "Rice": 3659.18,
+      "Sugarcane": 2456.4,
+      "Wheat": 5222.5
+    },
+    {
+      "date_str": "2026-04-23",
+      "Cotton": 2428.3199999999997,
+      "Maize": 3995.15,
+      "Mustard": 5825.82,
+      "Rice": 3918.07,
+      "Sugarcane": 3713.31,
+      "Wheat": 3132.71
+    },
+    {
+      "date_str": "2026-04-24",
+      "Cotton": 1962.55,
+      "Maize": 2486.85,
+      "Mustard": 2762.9700000000003,
+      "Rice": 2574.05,
+      "Sugarcane": 4064.11,
+      "Wheat": 6232.22
+    },
+    {
+      "date_str": "2026-04-25",
+      "Cotton": 2019.93,
+      "Maize": 2999.21,
+      "Mustard": 3205.48,
+      "Rice": 3846.64,
+      "Sugarcane": 3768.82,
+      "Wheat": 3808.15
+    },
+    {
+      "date_str": "2026-04-26",
+      "Cotton": 4101.94,
+      "Maize": 3315.27,
+      "Mustard": 4347.38,
+      "Rice": 2793.44,
+      "Sugarcane": 2803.47,
+      "Wheat": 1831.37
+    },
+    {
+      "date_str": "2026-04-27",
+      "Cotton": 2983.36,
+      "Maize": 1951.69,
+      "Mustard": 4960.8,
+      "Rice": 4152.63,
+      "Sugarcane": 4727.77,
+      "Wheat": 3917.75
+    },
+    {
+      "date_str": "2026-04-28",
+      "Cotton": 2629.57,
+      "Maize": 3950.38,
+      "Mustard": 3650.39,
+      "Rice": 3662.36,
+      "Sugarcane": 3305.93,
+      "Wheat": 2936.75
+    },
+    {
+      "date_str": "2026-04-29",
+      "Cotton": 5191.4400000000005,
+      "Maize": 4692.5,
+      "Mustard": 3449.79,
+      "Rice": 3866.8700000000003,
+      "Sugarcane": 2212.89,
+      "Wheat": 3072.0
+    },
+    {
+      "date_str": "2026-04-30",
+      "Cotton": 4527.66,
+      "Maize": 5817.36,
+      "Mustard": 647.95,
+      "Rice": 3581.31,
+      "Sugarcane": 4221.21,
+      "Wheat": 3325.69
+    },
+    {
+      "date_str": "2026-05-01",
+      "Cotton": 3719.02,
+      "Maize": 3601.61,
+      "Mustard": 5981.96,
+      "Rice": 3035.83,
+      "Sugarcane": 2198.68,
+      "Wheat": 4044.99
+    },
+    {
+      "date_str": "2026-05-02",
+      "Cotton": 2568.81,
+      "Maize": 2727.98,
+      "Mustard": 2770.44,
+      "Rice": 2607.92,
+      "Sugarcane": 2394.08,
+      "Wheat": 5286.8
+    },
+    {
+      "date_str": "2026-05-03",
+      "Cotton": 2557.81,
+      "Maize": 5037.49,
+      "Mustard": 2164.61,
+      "Rice": 3939.06,
+      "Sugarcane": 3907.1800000000003,
+      "Wheat": 3580.56
+    },
+    {
+      "date_str": "2026-05-04",
+      "Cotton": 3324.04,
+      "Maize": 3202.41,
+      "Mustard": 5065.61,
+      "Rice": 4422.83,
+      "Sugarcane": 4198.76,
+      "Wheat": 3171.55
+    },
+    {
+      "date_str": "2026-05-05",
+      "Cotton": 2301.82,
+      "Maize": 4592.6,
+      "Mustard": 2598.8,
+      "Rice": 3120.88,
+      "Sugarcane": 4066.62,
+      "Wheat": 3298.55
+    },
+    {
+      "date_str": "2026-05-06",
+      "Cotton": 2729.5299999999997,
+      "Maize": 4375.5,
+      "Mustard": 3020.92,
+      "Rice": 2455.6,
+      "Sugarcane": 4150.53,
+      "Wheat": 2347.28
+    },
+    {
+      "date_str": "2026-05-07",
+      "Cotton": 3384.2400000000002,
+      "Maize": 1778.37,
+      "Mustard": 3652.91,
+      "Rice": 6406.92,
+      "Sugarcane": 6656.53,
+      "Wheat": 3525.23
+    },
+    {
+      "date_str": "2026-05-08",
+      "Cotton": 6584.64,
+      "Maize": 1973.57,
+      "Mustard": 5180.64,
+      "Rice": 4550.360000000001,
+      "Sugarcane": 5921.49,
+      "Wheat": 3404.31
+    },
+    {
+      "date_str": "2026-05-09",
+      "Cotton": 2819.16,
+      "Maize": 2775.08,
+      "Mustard": 4692.04,
+      "Rice": 4176.5599999999995,
+      "Sugarcane": 1875.52,
+      "Wheat": 5767.86
+    },
+    {
+      "date_str": "2026-05-10",
+      "Cotton": 2658.27,
+      "Maize": 3649.58,
+      "Mustard": 2547.33,
+      "Rice": 3136.92,
+      "Sugarcane": 1493.99,
+      "Wheat": 1609.96
+    },
+    {
+      "date_str": "2026-05-11",
+      "Cotton": 1065.97,
+      "Maize": 1054.58,
+      "Mustard": 1304.1799999999998,
+      "Rice": 2451.66,
+      "Sugarcane": 2445.06,
+      "Wheat": 2677.05
+    },
+    {
+      "date_str": "2026-05-12",
+      "Cotton": 894.0699999999999,
+      "Maize": 2086.07,
+      "Mustard": 3714.19,
+      "Rice": 1944.81,
+      "Sugarcane": 1135.58,
+      "Wheat": 4144.22
+    },
+    {
+      "date_str": "2026-05-13",
+      "Cotton": 1364.8,
+      "Maize": 3717.98,
+      "Mustard": 2128.16,
+      "Rice": 2310.58,
+      "Sugarcane": 2064.82,
+      "Wheat": 2422.98
+    },
+    {
+      "date_str": "2026-05-14",
+      "Cotton": 4898.95,
+      "Maize": 3027.8900000000003,
+      "Mustard": 4096.06,
+      "Rice": 5008.42,
+      "Sugarcane": 2858.28,
+      "Wheat": 5068.38
+    },
+    {
+      "date_str": "2026-05-15",
+      "Cotton": 3584.57,
+      "Maize": 3976.22,
+      "Mustard": 3472.69,
+      "Rice": 2165.35,
+      "Sugarcane": 2504.81,
+      "Wheat": 2890.76
+    },
+    {
+      "date_str": "2026-05-16",
+      "Cotton": 4034.24,
+      "Maize": 5913.54,
+      "Mustard": 4417.47,
+      "Rice": 2925.31,
+      "Sugarcane": 5459.26,
+      "Wheat": 4759.48
+    },
+    {
+      "date_str": "2026-05-17",
+      "Cotton": 3079.47,
+      "Maize": 3800.83,
+      "Mustard": 3574.71,
+      "Rice": 5628.18,
+      "Sugarcane": 4658.64,
+      "Wheat": 3410.15
+    },
+    {
+      "date_str": "2026-05-18",
+      "Cotton": 3677.32,
+      "Maize": 4675.7300000000005,
+      "Mustard": 5673.12,
+      "Rice": 3061.55,
+      "Sugarcane": 3697.52,
+      "Wheat": 4204.23
+    },
+    {
+      "date_str": "2026-05-19",
+      "Cotton": 4147.27,
+      "Maize": 5767.17,
+      "Mustard": 5587.11,
+      "Rice": 4414.43,
+      "Sugarcane": 7387.3099999999995,
+      "Wheat": 4814.89
+    },
+    {
+      "date_str": "2026-05-20",
+      "Cotton": 2966.15,
+      "Maize": 3661.89,
+      "Mustard": 5202.53,
+      "Rice": 4497.44,
+      "Sugarcane": 4137.16,
+      "Wheat": 3682.2400000000002
+    },
+    {
+      "date_str": "2026-05-21",
+      "Cotton": 4827.33,
+      "Maize": 3643.4700000000003,
+      "Mustard": 4678.63,
+      "Rice": 2702.66,
+      "Sugarcane": 3438.29,
+      "Wheat": 2918.35
+    },
+    {
+      "date_str": "2026-05-22",
+      "Cotton": 5969.89,
+      "Maize": 3024.3,
+      "Mustard": 4504.98,
+      "Rice": 5136.39,
+      "Sugarcane": 1589.75,
+      "Wheat": 6786.84
+    },
+    {
+      "date_str": "2026-05-23",
+      "Cotton": 3373.47,
+      "Maize": 4335.26,
+      "Mustard": 3512.31,
+      "Rice": 2756.2599999999998,
+      "Sugarcane": 2870.9,
+      "Wheat": 1210.07
+    },
+    {
+      "date_str": "2026-05-24",
+      "Cotton": 3735.58,
+      "Maize": 2684.28,
+      "Mustard": 2860.33,
+      "Rice": 3340.33,
+      "Sugarcane": 2724.5,
+      "Wheat": 5709.23
+    },
+    {
+      "date_str": "2026-05-25",
+      "Cotton": 4813.03,
+      "Maize": 4963.63,
+      "Mustard": 3516.77,
+      "Rice": 1885.0,
+      "Sugarcane": 2798.19,
+      "Wheat": 1697.75
+    },
+    {
+      "date_str": "2026-05-26",
+      "Cotton": 4164.62,
+      "Maize": 3964.54,
+      "Mustard": 3514.11,
+      "Rice": 3249.88,
+      "Sugarcane": 5772.23,
+      "Wheat": 3408.19
+    },
+    {
+      "date_str": "2026-05-27",
+      "Cotton": 5490.46,
+      "Maize": 3661.25,
+      "Mustard": 5795.17,
+      "Rice": 4421.24,
+      "Sugarcane": 2449.65,
+      "Wheat": 3983.4700000000003
+    },
+    {
+      "date_str": "2026-05-28",
+      "Cotton": 3492.7799999999997,
+      "Maize": 1612.27,
+      "Mustard": 3265.41,
+      "Rice": 2073.0,
+      "Sugarcane": 5265.09,
+      "Wheat": 5221.5599999999995
+    },
+    {
+      "date_str": "2026-05-29",
+      "Cotton": 1073.81,
+      "Maize": 3359.31,
+      "Mustard": 2905.44,
+      "Rice": 3326.18,
+      "Sugarcane": 2568.48,
+      "Wheat": 3969.5
+    },
+    {
+      "date_str": "2026-05-30",
+      "Cotton": 4030.31,
+      "Maize": 2480.86,
+      "Mustard": 3206.9,
+      "Rice": 3868.97,
+      "Sugarcane": 4470.08,
+      "Wheat": 2375.95
+    },
+    {
+      "date_str": "2026-05-31",
+      "Cotton": 3263.23,
+      "Maize": 4299.52,
+      "Mustard": 2812.34,
+      "Rice": 1712.84,
+      "Sugarcane": 1573.44,
+      "Wheat": 2788.04
+    },
+    {
+      "date_str": "2026-06-01",
+      "Cotton": 4378.92,
+      "Maize": 3227.36,
+      "Mustard": 3201.61,
+      "Rice": 4281.9800000000005,
+      "Sugarcane": 1341.35,
+      "Wheat": 1715.59
+    },
+    {
+      "date_str": "2026-06-02",
+      "Cotton": 1799.61,
+      "Maize": 3565.05,
+      "Mustard": 4159.98,
+      "Rice": 4946.25,
+      "Sugarcane": 3207.19,
+      "Wheat": 5241.13
+    },
+    {
+      "date_str": "2026-06-03",
+      "Cotton": 2178.07,
+      "Maize": 4829.75,
+      "Mustard": 4793.79,
+      "Rice": 6192.93,
+      "Sugarcane": 4780.92,
+      "Wheat": 1974.59
+    },
+    {
+      "date_str": "2026-06-04",
+      "Cotton": 5163.83,
+      "Maize": 2157.76,
+      "Mustard": 5313.45,
+      "Rice": 4825.68,
+      "Sugarcane": 2221.32,
+      "Wheat": 2918.14
+    },
+    {
+      "date_str": "2026-06-05",
+      "Cotton": 1548.1399999999999,
+      "Maize": 3259.27,
+      "Mustard": 6427.11,
+      "Rice": 3605.91,
+      "Sugarcane": 4759.55,
+      "Wheat": 3128.77
+    },
+    {
+      "date_str": "2026-06-06",
+      "Cotton": 5135.4,
+      "Maize": 3945.98,
+      "Mustard": 4185.18,
+      "Rice": 4305.74,
+      "Sugarcane": 6124.85,
+      "Wheat": 4335.08
+    },
+    {
+      "date_str": "2026-06-07",
+      "Cotton": 2954.31,
+      "Maize": 2904.56,
+      "Mustard": 6146.9,
+      "Rice": 4672.76,
+      "Sugarcane": 4826.68,
+      "Wheat": 1806.45
+    },
+    {
+      "date_str": "2026-06-08",
+      "Cotton": 4527.46,
+      "Maize": 4947.63,
+      "Mustard": 4578.4,
+      "Rice": 3252.32,
+      "Sugarcane": 3639.5,
+      "Wheat": 5597.41
+    },
+    {
+      "date_str": "2026-06-09",
+      "Cotton": 3431.15,
+      "Maize": 4103.2,
+      "Mustard": 3191.9900000000002,
+      "Rice": 2176.14,
+      "Sugarcane": 5959.67,
+      "Wheat": 4101.64
+    },
+    {
+      "date_str": "2026-06-10",
+      "Cotton": 1895.87,
+      "Maize": 4423.16,
+      "Mustard": 2829.99,
+      "Rice": 3902.49,
+      "Sugarcane": 2669.2,
+      "Wheat": 1720.8400000000001
+    },
+    {
+      "date_str": "2026-06-11",
+      "Cotton": 2662.29,
+      "Maize": 1370.27,
+      "Mustard": 2251.9,
+      "Rice": 3342.4700000000003,
+      "Sugarcane": 2824.45,
+      "Wheat": 2884.47
+    },
+    {
+      "date_str": "2026-06-12",
+      "Cotton": 2421.9,
+      "Maize": 1361.9,
+      "Mustard": 1895.6599999999999,
+      "Rice": 2004.48,
+      "Sugarcane": 2880.08,
+      "Wheat": 1572.5
+    },
+    {
+      "date_str": "2026-06-13",
+      "Cotton": 3605.35,
+      "Maize": 3899.13,
+      "Mustard": 2932.96,
+      "Rice": 3788.87,
+      "Sugarcane": 4798.74,
+      "Wheat": 2236.38
+    },
+    {
+      "date_str": "2026-06-14",
+      "Cotton": 4300.9400000000005,
+      "Maize": 3544.15,
+      "Mustard": 5084.8,
+      "Rice": 2077.65,
+      "Sugarcane": 1942.55,
+      "Wheat": 3123.0299999999997
+    },
+    {
+      "date_str": "2026-06-15",
+      "Cotton": 2797.26,
+      "Maize": 3197.02,
+      "Mustard": 4657.87,
+      "Rice": 4312.54,
+      "Sugarcane": 3890.33,
+      "Wheat": 4004.04
+    },
+    {
+      "date_str": "2026-06-16",
+      "Cotton": 2985.29,
+      "Maize": 4780.04,
+      "Mustard": 4533.02,
+      "Rice": 2786.59,
+      "Sugarcane": 2499.9700000000003,
+      "Wheat": 3279.68
+    },
+    {
+      "date_str": "2026-06-17",
+      "Cotton": 4671.39,
+      "Maize": 6126.45,
+      "Mustard": 4659.57,
+      "Rice": 6029.17,
+      "Sugarcane": 2554.49,
+      "Wheat": 3153.08
+    },
+    {
+      "date_str": "2026-06-18",
+      "Cotton": 3542.15,
+      "Maize": 4373.46,
+      "Mustard": 2665.57,
+      "Rice": 3557.84,
+      "Sugarcane": 3947.38,
+      "Wheat": 4306.65
+    },
+    {
+      "date_str": "2026-06-19",
+      "Cotton": 4906.72,
+      "Maize": 4502.1900000000005,
+      "Mustard": 4946.12,
+      "Rice": 3734.16,
+      "Sugarcane": 3884.45,
+      "Wheat": 3020.42
+    },
+    {
+      "date_str": "2026-06-20",
+      "Cotton": 3287.82,
+      "Maize": 2132.22,
+      "Mustard": 2066.34,
+      "Rice": 5792.61,
+      "Sugarcane": 6927.29,
+      "Wheat": 2896.66
+    },
+    {
+      "date_str": "2026-06-21",
+      "Cotton": 4988.32,
+      "Maize": 3034.3199999999997,
+      "Mustard": 1447.5,
+      "Rice": 4010.16,
+      "Sugarcane": 3977.5299999999997,
+      "Wheat": 3796.67
+    },
+    {
+      "date_str": "2026-06-22",
+      "Cotton": 3442.7,
+      "Maize": 4383.98,
+      "Mustard": 5433.05,
+      "Rice": 4548.04,
+      "Sugarcane": 3137.39,
+      "Wheat": 5522.8
+    },
+    {
+      "date_str": "2026-06-23",
+      "Cotton": 3769.18,
+      "Maize": 2770.69,
+      "Mustard": 3578.44,
+      "Rice": 3588.44,
+      "Sugarcane": 1741.33,
+      "Wheat": 7425.8
+    },
+    {
+      "date_str": "2026-06-24",
+      "Cotton": 3633.91,
+      "Maize": 2974.25,
+      "Mustard": 3790.35,
+      "Rice": 3164.5299999999997,
+      "Sugarcane": 2099.51,
+      "Wheat": 1716.5900000000001
+    },
+    {
+      "date_str": "2026-06-25",
+      "Cotton": 1688.0,
+      "Maize": 5314.43,
+      "Mustard": 2441.75,
+      "Rice": 2727.44,
+      "Sugarcane": 3818.08,
+      "Wheat": 5882.34
+    },
+    {
+      "date_str": "2026-06-26",
+      "Cotton": 3767.92,
+      "Maize": 3258.43,
+      "Mustard": 4868.32,
+      "Rice": 5068.1900000000005,
+      "Sugarcane": 5051.32,
+      "Wheat": 3117.35
+    },
+    {
+      "date_str": "2026-06-27",
+      "Cotton": 2517.61,
+      "Maize": 3937.2,
+      "Mustard": 3670.81,
+      "Rice": 3038.04,
+      "Sugarcane": 2335.99,
+      "Wheat": 4410.51
+    },
+    {
+      "date_str": "2026-06-28",
+      "Cotton": 2982.81,
+      "Maize": 3221.77,
+      "Mustard": 5637.15,
+      "Rice": 1544.24,
+      "Sugarcane": 4062.4,
+      "Wheat": 5361.79
+    },
+    {
+      "date_str": "2026-06-29",
+      "Cotton": 3290.6,
+      "Maize": 2845.82,
+      "Mustard": 3261.33,
+      "Rice": 2226.35,
+      "Sugarcane": 2168.29,
+      "Wheat": 5156.4800000000005
+    },
+    {
+      "date_str": "2026-06-30",
+      "Cotton": 5760.34,
+      "Maize": 2006.45,
+      "Mustard": 2890.46,
+      "Rice": 4080.58,
+      "Sugarcane": 7915.03,
+      "Wheat": 3978.41
+    },
+    {
+      "date_str": "2026-07-01",
+      "Cotton": 2538.19,
+      "Maize": 3773.13,
+      "Mustard": 1853.1100000000001,
+      "Rice": 3325.7599999999998,
+      "Sugarcane": 4063.38,
+      "Wheat": 4350.09
+    },
+    {
+      "date_str": "2026-07-02",
+      "Cotton": 3924.02,
+      "Maize": 3367.11,
+      "Mustard": 3721.2200000000003,
+      "Rice": 3795.09,
+      "Sugarcane": 4695.63,
+      "Wheat": 4382.21
+    },
+    {
+      "date_str": "2026-07-03",
+      "Cotton": 2872.66,
+      "Maize": 4567.96,
+      "Mustard": 3052.44,
+      "Rice": 3766.62,
+      "Sugarcane": 2341.71,
+      "Wheat": 3383.67
+    },
+    {
+      "date_str": "2026-07-04",
+      "Cotton": 4430.41,
+      "Maize": 4269.5199999999995,
+      "Mustard": 3474.62,
+      "Rice": 5608.02,
+      "Sugarcane": 4820.08,
+      "Wheat": 3776.57
+    },
+    {
+      "date_str": "2026-07-05",
+      "Cotton": 5297.31,
+      "Maize": 3774.17,
+      "Mustard": 3255.43,
+      "Rice": 1805.07,
+      "Sugarcane": 2917.84,
+      "Wheat": 5654.17
+    },
+    {
+      "date_str": "2026-07-06",
+      "Cotton": 4647.73,
+      "Maize": 3683.73,
+      "Mustard": 3857.53,
+      "Rice": 4149.79,
+      "Sugarcane": 4720.61,
+      "Wheat": 2821.35
+    },
+    {
+      "date_str": "2026-07-07",
+      "Cotton": 3327.2,
+      "Maize": 1782.62,
+      "Mustard": 2993.92,
+      "Rice": 5885.4400000000005,
+      "Sugarcane": 6077.42,
+      "Wheat": 5284.1900000000005
+    },
+    {
+      "date_str": "2026-07-08",
+      "Cotton": 4532.2699999999995,
+      "Maize": 2884.82,
+      "Mustard": 5128.58,
+      "Rice": 4772.85,
+      "Sugarcane": 5274.2699999999995,
+      "Wheat": 3054.88
+    },
+    {
+      "date_str": "2026-07-09",
+      "Cotton": 5001.51,
+      "Maize": 4877.1,
+      "Mustard": 5572.14,
+      "Rice": 2964.32,
+      "Sugarcane": 4488.11,
+      "Wheat": 4999.53
+    },
+    {
+      "date_str": "2026-07-10",
+      "Cotton": 3430.69,
+      "Maize": 1879.77,
+      "Mustard": 4872.18,
+      "Rice": 779.35,
+      "Sugarcane": 1933.74,
+      "Wheat": 960.03
+    },
+    {
+      "date_str": "2026-07-11",
+      "Cotton": 3404.82,
+      "Maize": 2208.43,
+      "Mustard": 1554.35,
+      "Rice": 1491.6599999999999,
+      "Sugarcane": 2032.18,
+      "Wheat": 2547.02
+    },
+    {
+      "date_str": "2026-07-12",
+      "Cotton": 2655.81,
+      "Maize": 1972.1100000000001,
+      "Mustard": 3660.1,
+      "Rice": 2732.84,
+      "Sugarcane": 2406.6,
+      "Wheat": 3065.19
+    },
+    {
+      "date_str": "2026-07-13",
+      "Cotton": 5390.07,
+      "Maize": 2796.43,
+      "Mustard": 3601.84,
+      "Rice": 3459.62,
+      "Sugarcane": 4395.02,
+      "Wheat": 1491.22
+    },
+    {
+      "date_str": "2026-07-14",
+      "Cotton": 3738.61,
+      "Maize": 3476.13,
+      "Mustard": 2931.93,
+      "Rice": 5071.19,
+      "Sugarcane": 3434.5,
+      "Wheat": 4608.48
+    },
+    {
+      "date_str": "2026-07-15",
+      "Cotton": 4439.92,
+      "Maize": 3295.25,
+      "Mustard": 6835.9800000000005,
+      "Rice": 4568.83,
+      "Sugarcane": 4243.81,
+      "Wheat": 3939.54
+    },
+    {
+      "date_str": "2026-07-16",
+      "Cotton": 3053.89,
+      "Maize": 3064.34,
+      "Mustard": 3792.65,
+      "Rice": 5708.82,
+      "Sugarcane": 3321.09,
+      "Wheat": 4010.9500000000003
+    },
+    {
+      "date_str": "2026-07-17",
+      "Cotton": 5377.49,
+      "Maize": 4153.5599999999995,
+      "Mustard": 4901.89,
+      "Rice": 3165.56,
+      "Sugarcane": 4657.95,
+      "Wheat": 2047.8
+    },
+    {
+      "date_str": "2026-07-18",
+      "Cotton": 4199.89,
+      "Maize": 3498.1800000000003,
+      "Mustard": 3213.54,
+      "Rice": 5899.12,
+      "Sugarcane": 2964.46,
+      "Wheat": 4228.0
+    },
+    {
+      "date_str": "2026-07-19",
+      "Cotton": 3052.83,
+      "Maize": 6178.21,
+      "Mustard": 1972.16,
+      "Rice": 2729.91,
+      "Sugarcane": 1384.93,
+      "Wheat": 3104.04
+    },
+    {
+      "date_str": "2026-07-20",
+      "Cotton": 2411.33,
+      "Maize": 4537.16,
+      "Mustard": 4078.2,
+      "Rice": 1467.75,
+      "Sugarcane": 5789.3,
+      "Wheat": 3119.52
+    },
+    {
+      "date_str": "2026-07-21",
+      "Cotton": 4724.3,
+      "Maize": 1857.41,
+      "Mustard": 4345.46,
+      "Rice": 4208.19,
+      "Sugarcane": 3765.14,
+      "Wheat": 5823.75
+    },
+    {
+      "date_str": "2026-07-22",
+      "Cotton": 2230.41,
+      "Maize": 5658.5199999999995,
+      "Mustard": 3990.72,
+      "Rice": 3979.33,
+      "Sugarcane": 5084.14,
+      "Wheat": 4459.07
+    },
+    {
+      "date_str": "2026-07-23",
+      "Cotton": 3218.64,
+      "Maize": 3762.81,
+      "Mustard": 2730.06,
+      "Rice": 4160.56,
+      "Sugarcane": 3291.6,
+      "Wheat": 6311.06
+    },
+    {
+      "date_str": "2026-07-24",
+      "Cotton": 2774.31,
+      "Maize": 5071.14,
+      "Mustard": 6324.19,
+      "Rice": 3250.12,
+      "Sugarcane": 3882.67,
+      "Wheat": 6153.47
+    },
+    {
+      "date_str": "2026-07-25",
+      "Cotton": 4249.03,
+      "Maize": 4417.88,
+      "Mustard": 5496.68,
+      "Rice": 3627.27,
+      "Sugarcane": 3723.9,
+      "Wheat": 5904.37
+    },
+    {
+      "date_str": "2026-07-26",
+      "Cotton": 5519.81,
+      "Maize": 5186.61,
+      "Mustard": 2781.17,
+      "Rice": 3051.2599999999998,
+      "Sugarcane": 3289.66,
+      "Wheat": 1775.81
+    },
+    {
+      "date_str": "2026-07-27",
+      "Cotton": 5799.21,
+      "Maize": 4733.82,
+      "Mustard": 2729.81,
+      "Rice": 2923.88,
+      "Sugarcane": 6420.53,
+      "Wheat": 3670.24
+    },
+    {
+      "date_str": "2026-07-28",
+      "Cotton": 3531.75,
+      "Maize": 4540.6,
+      "Mustard": 3947.83,
+      "Rice": 1755.79,
+      "Sugarcane": 2897.68,
+      "Wheat": 4404.74
+    },
+    {
+      "date_str": "2026-07-29",
+      "Cotton": 2223.55,
+      "Maize": 3078.0,
+      "Mustard": 5702.91,
+      "Rice": 3842.7,
+      "Sugarcane": 3253.26,
+      "Wheat": 3440.8599999999997
+    },
+    {
+      "date_str": "2026-07-30",
+      "Cotton": 4617.93,
+      "Maize": 4089.67,
+      "Mustard": 2870.94,
+      "Rice": 5464.67,
+      "Sugarcane": 5629.29,
+      "Wheat": 5328.9800000000005
+    },
+    {
+      "date_str": "2026-07-31",
+      "Cotton": 2248.01,
+      "Maize": 3968.27,
+      "Mustard": 3354.18,
+      "Rice": 4940.01,
+      "Sugarcane": 3712.37,
+      "Wheat": 3085.05
+    },
+    {
+      "date_str": "2026-08-01",
+      "Cotton": 4551.11,
+      "Maize": 2412.51,
+      "Mustard": 5251.7,
+      "Rice": 5592.6,
+      "Sugarcane": 3106.6600000000003,
+      "Wheat": 3283.11
+    },
+    {
+      "date_str": "2026-08-02",
+      "Cotton": 4817.33,
+      "Maize": 2897.58,
+      "Mustard": 3645.34,
+      "Rice": 3876.79,
+      "Sugarcane": 2895.05,
+      "Wheat": 3399.62
+    },
+    {
+      "date_str": "2026-08-03",
+      "Cotton": 3021.29,
+      "Maize": 5299.72,
+      "Mustard": 2734.28,
+      "Rice": 5166.46,
+      "Sugarcane": 2714.28,
+      "Wheat": 4807.29
+    },
+    {
+      "date_str": "2026-08-04",
+      "Cotton": 2564.25,
+      "Maize": 2096.39,
+      "Mustard": 1647.72,
+      "Rice": 2155.1,
+      "Sugarcane": 3856.48,
+      "Wheat": 5635.31
+    },
+    {
+      "date_str": "2026-08-05",
+      "Cotton": 5433.78,
+      "Maize": 5015.87,
+      "Mustard": 3591.46,
+      "Rice": 3403.48,
+      "Sugarcane": 5364.0,
+      "Wheat": 4466.72
+    },
+    {
+      "date_str": "2026-08-06",
+      "Cotton": 5328.46,
+      "Maize": 4850.33,
+      "Mustard": 3901.11,
+      "Rice": 5281.29,
+      "Sugarcane": 4565.91,
+      "Wheat": 4727.17
+    },
+    {
+      "date_str": "2026-08-07",
+      "Cotton": 3234.92,
+      "Maize": 2968.2,
+      "Mustard": 3255.73,
+      "Rice": 4418.49,
+      "Sugarcane": 2910.16,
+      "Wheat": 3796.47
+    },
+    {
+      "date_str": "2026-08-08",
+      "Cotton": 3645.31,
+      "Maize": 2303.23,
+      "Mustard": 3909.08,
+      "Rice": 2117.9700000000003,
+      "Sugarcane": 5399.5,
+      "Wheat": 4409.24
+    },
+    {
+      "date_str": "2026-08-09",
+      "Cotton": 3847.62,
+      "Maize": 4420.88,
+      "Mustard": 4425.48,
+      "Rice": 4390.81,
+      "Sugarcane": 4377.12,
+      "Wheat": 2402.37
+    },
+    {
+      "date_str": "2026-08-10",
+      "Cotton": 3109.06,
+      "Maize": 3162.69,
+      "Mustard": 1734.61,
+      "Rice": 2639.17,
+      "Sugarcane": 3236.77,
+      "Wheat": 4720.29
+    },
+    {
+      "date_str": "2026-08-11",
+      "Cotton": 1169.5,
+      "Maize": 2176.0299999999997,
+      "Mustard": 2661.19,
+      "Rice": 2203.74,
+      "Sugarcane": 3289.32,
+      "Wheat": 2343.46
+    },
+    {
+      "date_str": "2026-08-12",
+      "Cotton": 3757.91,
+      "Maize": 1655.65,
+      "Mustard": 3010.38,
+      "Rice": 2785.1000000000004,
+      "Sugarcane": 5642.36,
+      "Wheat": 2303.51
+    },
+    {
+      "date_str": "2026-08-13",
+      "Cotton": 2228.4700000000003,
+      "Maize": 5378.59,
+      "Mustard": 6219.17,
+      "Rice": 4177.44,
+      "Sugarcane": 5102.75,
+      "Wheat": 4931.6
+    },
+    {
+      "date_str": "2026-08-14",
+      "Cotton": 1455.96,
+      "Maize": 3570.8199999999997,
+      "Mustard": 4894.12,
+      "Rice": 2324.52,
+      "Sugarcane": 3239.11,
+      "Wheat": 3534.28
+    },
+    {
+      "date_str": "2026-08-15",
+      "Cotton": 4265.55,
+      "Maize": 6771.08,
+      "Mustard": 3130.97,
+      "Rice": 3218.36,
+      "Sugarcane": 4545.59,
+      "Wheat": 5426.56
+    },
+    {
+      "date_str": "2026-08-16",
+      "Cotton": 2576.15,
+      "Maize": 3365.89,
+      "Mustard": 2746.0,
+      "Rice": 2435.6,
+      "Sugarcane": 3810.17,
+      "Wheat": 5047.57
+    },
+    {
+      "date_str": "2026-08-17",
+      "Cotton": 3831.57,
+      "Maize": 3482.9,
+      "Mustard": 4071.03,
+      "Rice": 4269.01,
+      "Sugarcane": 2407.94,
+      "Wheat": 2916.67
+    },
+    {
+      "date_str": "2026-08-18",
+      "Cotton": 2196.5899999999997,
+      "Maize": 4061.8,
+      "Mustard": 2622.24,
+      "Rice": 5079.28,
+      "Sugarcane": 4665.2300000000005,
+      "Wheat": 3827.38
+    },
+    {
+      "date_str": "2026-08-19",
+      "Cotton": 6120.75,
+      "Maize": 5051.92,
+      "Mustard": 1638.09,
+      "Rice": 4098.21,
+      "Sugarcane": 5740.33,
+      "Wheat": 4791.12
+    },
+    {
+      "date_str": "2026-08-20",
+      "Cotton": 4987.93,
+      "Maize": 4924.74,
+      "Mustard": 5232.39,
+      "Rice": 3293.05,
+      "Sugarcane": 4068.39,
+      "Wheat": 3305.28
+    },
+    {
+      "date_str": "2026-08-21",
+      "Cotton": 3182.18,
+      "Maize": 5415.6900000000005,
+      "Mustard": 4688.16,
+      "Rice": 3041.5,
+      "Sugarcane": 3556.78,
+      "Wheat": 3582.12
+    },
+    {
+      "date_str": "2026-08-22",
+      "Cotton": 3064.22,
+      "Maize": 4187.45,
+      "Mustard": 3806.82,
+      "Rice": 3888.52,
+      "Sugarcane": 3099.87,
+      "Wheat": 6104.22
+    },
+    {
+      "date_str": "2026-08-23",
+      "Cotton": 4249.15,
+      "Maize": 4693.0,
+      "Mustard": 5421.99,
+      "Rice": 4848.33,
+      "Sugarcane": 4788.47,
+      "Wheat": 3870.5699999999997
+    },
+    {
+      "date_str": "2026-08-24",
+      "Cotton": 4416.19,
+      "Maize": 3992.2,
+      "Mustard": 2494.41,
+      "Rice": 3807.51,
+      "Sugarcane": 2503.72,
+      "Wheat": 5723.05
+    },
+    {
+      "date_str": "2026-08-25",
+      "Cotton": 3490.64,
+      "Maize": 4672.53,
+      "Mustard": 3324.15,
+      "Rice": 4801.22,
+      "Sugarcane": 3956.13,
+      "Wheat": 6033.57
+    },
+    {
+      "date_str": "2026-08-26",
+      "Cotton": 3672.98,
+      "Maize": 3338.17,
+      "Mustard": 3779.99,
+      "Rice": 2601.45,
+      "Sugarcane": 3076.7400000000002,
+      "Wheat": 4762.69
+    },
+    {
+      "date_str": "2026-08-27",
+      "Cotton": 3962.73,
+      "Maize": 3330.61,
+      "Mustard": 4733.8,
+      "Rice": 3253.44,
+      "Sugarcane": 4793.45,
+      "Wheat": 3956.3599999999997
+    },
+    {
+      "date_str": "2026-08-28",
+      "Cotton": 7198.54,
+      "Maize": 3434.86,
+      "Mustard": 6659.82,
+      "Rice": 4371.26,
+      "Sugarcane": 5577.4,
+      "Wheat": 5774.3
+    },
+    {
+      "date_str": "2026-08-29",
+      "Cotton": 3530.08,
+      "Maize": 4803.03,
+      "Mustard": 3127.7,
+      "Rice": 4564.83,
+      "Sugarcane": 3104.2,
+      "Wheat": 2811.46
+    },
+    {
+      "date_str": "2026-08-30",
+      "Cotton": 3925.65,
+      "Maize": 5418.96,
+      "Mustard": 3453.76,
+      "Rice": 3244.1800000000003,
+      "Sugarcane": 5971.28,
+      "Wheat": 4688.1
+    },
+    {
+      "date_str": "2026-08-31",
+      "Cotton": 3368.0099999999998,
+      "Maize": 4524.2,
+      "Mustard": 4232.18,
+      "Rice": 6139.74,
+      "Sugarcane": 3496.06,
+      "Wheat": 2425.08
+    },
+    {
+      "date_str": "2026-09-01",
+      "Cotton": 4357.67,
+      "Maize": 4268.44,
+      "Mustard": 5298.33,
+      "Rice": 5880.15,
+      "Sugarcane": 5477.69,
+      "Wheat": 3845.22
+    },
+    {
+      "date_str": "2026-09-02",
+      "Cotton": 3495.9,
+      "Maize": 4136.4,
+      "Mustard": 3842.11,
+      "Rice": 3382.43,
+      "Sugarcane": 2526.09,
+      "Wheat": 4341.6
+    },
+    {
+      "date_str": "2026-09-03",
+      "Cotton": 3368.51,
+      "Maize": 4231.59,
+      "Mustard": 2762.54,
+      "Rice": 2625.65,
+      "Sugarcane": 4563.8099999999995,
+      "Wheat": 4234.9800000000005
+    },
+    {
+      "date_str": "2026-09-04",
+      "Cotton": 3585.5299999999997,
+      "Maize": 5444.96,
+      "Mustard": 2774.48,
+      "Rice": 2074.08,
+      "Sugarcane": 5982.38,
+      "Wheat": 3739.78
+    },
+    {
+      "date_str": "2026-09-05",
+      "Cotton": 4144.56,
+      "Maize": 4315.18,
+      "Mustard": 3279.36,
+      "Rice": 5763.53,
+      "Sugarcane": 2488.24,
+      "Wheat": 2730.08
+    },
+    {
+      "date_str": "2026-09-06",
+      "Cotton": 3616.15,
+      "Maize": 1876.38,
+      "Mustard": 3498.88,
+      "Rice": 4033.36,
+      "Sugarcane": 4022.81,
+      "Wheat": 4161.62
+    },
+    {
+      "date_str": "2026-09-07",
+      "Cotton": 4684.0,
+      "Maize": 4353.52,
+      "Mustard": 4149.15,
+      "Rice": 2939.2,
+      "Sugarcane": 2507.94,
+      "Wheat": 3763.88
+    },
+    {
+      "date_str": "2026-09-08",
+      "Cotton": 3454.38,
+      "Maize": 5520.33,
+      "Mustard": 3061.39,
+      "Rice": 5473.98,
+      "Sugarcane": 3323.27,
+      "Wheat": 3681.44
+    },
+    {
+      "date_str": "2026-09-09",
+      "Cotton": 2804.09,
+      "Maize": 3525.11,
+      "Mustard": 3921.42,
+      "Rice": 2837.87,
+      "Sugarcane": 1686.84,
+      "Wheat": 4678.39
+    },
+    {
+      "date_str": "2026-10-01",
+      "Cotton": 837.52,
+      "Maize": 881.4,
+      "Mustard": 1334.59,
+      "Rice": 285.35,
+      "Sugarcane": 1797.14,
+      "Wheat": 1183.06
+    },
+    {
+      "date_str": "2026-10-02",
+      "Cotton": 596.59,
+      "Maize": 2526.6,
+      "Mustard": 664.31,
+      "Rice": 970.12,
+      "Sugarcane": 1205.97,
+      "Wheat": 803.22
+    },
+    {
+      "date_str": "2026-10-03",
+      "Cotton": 1356.24,
+      "Maize": 1458.66,
+      "Mustard": 1873.09,
+      "Rice": 298.61,
+      "Sugarcane": 2644.35,
+      "Wheat": 1119.04
+    },
+    {
+      "date_str": "2026-10-04",
+      "Cotton": 2070.94,
+      "Maize": 2060.38,
+      "Mustard": 2494.77,
+      "Rice": 87.32,
+      "Sugarcane": 1403.77,
+      "Wheat": 514.72
+    },
+    {
+      "date_str": "2026-10-05",
+      "Cotton": 783.27,
+      "Maize": 685.0999999999999,
+      "Mustard": 1810.8400000000001,
+      "Rice": 978.9200000000001,
+      "Sugarcane": 1034.88,
+      "Wheat": 332.85
+    },
+    {
+      "date_str": "2026-10-06",
+      "Cotton": 298.44,
+      "Maize": 1466.83,
+      "Mustard": 2019.08,
+      "Rice": 1886.26,
+      "Sugarcane": 1576.76,
+      "Wheat": 1772.99
+    },
+    {
+      "date_str": "2026-10-07",
+      "Cotton": 1710.93,
+      "Maize": 977.86,
+      "Mustard": 702.96,
+      "Rice": 769.11,
+      "Sugarcane": 794.96,
+      "Wheat": 783.99
+    },
+    {
+      "date_str": "2026-10-08",
+      "Cotton": 928.06,
+      "Maize": 1177.77,
+      "Mustard": 1799.35,
+      "Rice": 833.11,
+      "Sugarcane": 1351.7,
+      "Wheat": 1337.98
+    },
+    {
+      "date_str": "2026-11-01",
+      "Cotton": 2234.44,
+      "Maize": 20.0,
+      "Mustard": 1989.1499999999999,
+      "Rice": 1952.77,
+      "Sugarcane": 1179.35,
+      "Wheat": 926.9599999999999
+    },
+    {
+      "date_str": "2026-11-02",
+      "Cotton": 495.12,
+      "Maize": 872.72,
+      "Mustard": 613.81,
+      "Rice": 727.3399999999999,
+      "Sugarcane": 1138.35,
+      "Wheat": 2703.5
+    },
+    {
+      "date_str": "2026-11-03",
+      "Cotton": 1095.63,
+      "Maize": 759.98,
+      "Mustard": 1173.3600000000001,
+      "Rice": 1044.66,
+      "Sugarcane": 1631.1,
+      "Wheat": 1042.7
+    },
+    {
+      "date_str": "2026-11-04",
+      "Cotton": 1122.42,
+      "Maize": 2163.2200000000003,
+      "Mustard": 302.92,
+      "Rice": 1604.51,
+      "Sugarcane": 918.71,
+      "Wheat": 237.76
+    },
+    {
+      "date_str": "2026-11-05",
+      "Cotton": 1558.0,
+      "Maize": 1009.74,
+      "Mustard": 1630.65,
+      "Rice": 1982.26,
+      "Sugarcane": 2742.1800000000003,
+      "Wheat": 352.59
+    },
+    {
+      "date_str": "2026-11-06",
+      "Cotton": 1843.59,
+      "Maize": 1405.65,
+      "Mustard": 672.37,
+      "Rice": 1214.41,
+      "Sugarcane": 1372.5,
+      "Wheat": 1473.92
+    },
+    {
+      "date_str": "2026-11-07",
+      "Cotton": 1426.39,
+      "Maize": 1787.67,
+      "Mustard": 2046.3899999999999,
+      "Rice": 1638.29,
+      "Sugarcane": 1693.46,
+      "Wheat": 3192.0
+    },
+    {
+      "date_str": "2026-11-08",
+      "Cotton": 1173.26,
+      "Maize": 1083.37,
+      "Mustard": 1326.68,
+      "Rice": 798.66,
+      "Sugarcane": 1015.25,
+      "Wheat": 1409.04
+    },
+    {
+      "date_str": "2026-12-01",
+      "Cotton": 1339.02,
+      "Maize": 437.48,
+      "Mustard": 904.53,
+      "Rice": 1206.87,
+      "Sugarcane": 1115.32,
+      "Wheat": 1266.55
+    },
+    {
+      "date_str": "2026-12-02",
+      "Cotton": 1802.09,
+      "Maize": 1403.31,
+      "Mustard": 1548.6499999999999,
+      "Rice": 1456.61,
+      "Sugarcane": 2099.04,
+      "Wheat": 1235.33
+    },
+    {
+      "date_str": "2026-12-03",
+      "Cotton": 826.8399999999999,
+      "Maize": 2342.79,
+      "Mustard": 2574.4,
+      "Rice": 2598.32,
+      "Sugarcane": 1329.65,
+      "Wheat": 945.07
+    },
+    {
+      "date_str": "2026-12-04",
+      "Cotton": 882.71,
+      "Maize": 1294.75,
+      "Mustard": 1397.49,
+      "Rice": 1417.8,
+      "Sugarcane": 2284.39,
+      "Wheat": 910.53
+    },
+    {
+      "date_str": "2026-12-05",
+      "Cotton": 1250.22,
+      "Maize": 800.62,
+      "Mustard": 1292.29,
+      "Rice": 2046.4099999999999,
+      "Sugarcane": 1210.33,
+      "Wheat": 651.77
+    },
+    {
+      "date_str": "2026-12-06",
+      "Cotton": 990.3000000000001,
+      "Maize": 1164.0,
+      "Mustard": 2774.32,
+      "Rice": 1458.94,
+      "Sugarcane": 909.59,
+      "Wheat": 1395.1299999999999
+    },
+    {
+      "date_str": "2026-12-07",
+      "Cotton": 1168.02,
+      "Maize": 1302.77,
+      "Mustard": 339.33,
+      "Rice": 678.03,
+      "Sugarcane": 774.71,
+      "Wheat": 808.28
+    },
+    {
+      "date_str": "2026-12-08",
+      "Cotton": 1721.1000000000001,
+      "Maize": 1444.04,
+      "Mustard": 976.97,
+      "Rice": 744.1700000000001,
+      "Sugarcane": 997.47,
+      "Wheat": 2273.5099999999998
+    }
+  ],
+  "crash_mandis": [
+    {
+      "mandi_id": "MANDI023",
+      "mandi_name": "Panihati APMC",
+      "district": "Karnal",
+      "crop": "Cotton",
+      "crash_count": 11,
+      "avg_modal": 6052.3,
+      "msp": 6620.0,
+      "avg_deficit": -567.7
+    },
+    {
+      "mandi_id": "MANDI024",
+      "mandi_name": "Jaipur Mandi",
+      "district": "Karnal",
+      "crop": "Cotton",
+      "crash_count": 12,
+      "avg_modal": 6152.2,
+      "msp": 6620.0,
+      "avg_deficit": -467.8
+    },
+    {
+      "mandi_id": "MANDI052",
+      "mandi_name": "Kakinada APMC",
+      "district": "Saharanpur",
+      "crop": "Cotton",
+      "crash_count": 15,
+      "avg_modal": 6156.5,
+      "msp": 6620.0,
+      "avg_deficit": -463.5
+    },
+    {
+      "mandi_id": "MANDI014",
+      "mandi_name": "Bathinda Grain Market",
+      "district": "Patiala",
+      "crop": "Cotton",
+      "crash_count": 14,
+      "avg_modal": 6174.9,
+      "msp": 6620.0,
+      "avg_deficit": -445.1
+    },
+    {
+      "mandi_id": "MANDI037",
+      "mandi_name": "Jorhat Grain Market",
+      "district": "Kurukshetra",
+      "crop": "Cotton",
+      "crash_count": 11,
+      "avg_modal": 6184.4,
+      "msp": 6620.0,
+      "avg_deficit": -435.6
+    },
+    {
+      "mandi_id": "MANDI038",
+      "mandi_name": "Jalandhar Mandi",
+      "district": "Kurukshetra",
+      "crop": "Mustard",
+      "crash_count": 11,
+      "avg_modal": 5237.3,
+      "msp": 5650.0,
+      "avg_deficit": -412.7
+    },
+    {
+      "mandi_id": "MANDI008",
+      "mandi_name": "Bijapur Market",
+      "district": "Amritsar",
+      "crop": "Cotton",
+      "crash_count": 8,
+      "avg_modal": 6213.5,
+      "msp": 6620.0,
+      "avg_deficit": -406.5
+    },
+    {
+      "mandi_id": "MANDI047",
+      "mandi_name": "Orai Market",
+      "district": "Muzaffarnagar",
+      "crop": "Cotton",
+      "crash_count": 17,
+      "avg_modal": 6213.9,
+      "msp": 6620.0,
+      "avg_deficit": -406.1
+    },
+    {
+      "mandi_id": "MANDI053",
+      "mandi_name": "Panihati Market",
+      "district": "Saharanpur",
+      "crop": "Cotton",
+      "crash_count": 10,
+      "avg_modal": 6220.2,
+      "msp": 6620.0,
+      "avg_deficit": -399.8
+    },
+    {
+      "mandi_id": "MANDI050",
+      "mandi_name": "Durg Market",
+      "district": "Muzaffarnagar",
+      "crop": "Mustard",
+      "crash_count": 16,
+      "avg_modal": 5263.5,
+      "msp": 5650.0,
+      "avg_deficit": -386.5
+    },
+    {
+      "mandi_id": "MANDI011",
+      "mandi_name": "Arrah Mandi",
+      "district": "Patiala",
+      "crop": "Cotton",
+      "crash_count": 9,
+      "avg_modal": 6233.7,
+      "msp": 6620.0,
+      "avg_deficit": -386.3
+    },
+    {
+      "mandi_id": "MANDI032",
+      "mandi_name": "Chapra Grain Market",
+      "district": "Ambala",
+      "crop": "Mustard",
+      "crash_count": 11,
+      "avg_modal": 5271.0,
+      "msp": 5650.0,
+      "avg_deficit": -379.0
+    },
+    {
+      "mandi_id": "MANDI042",
+      "mandi_name": "Erode Mandi",
+      "district": "Fatehabad",
+      "crop": "Mustard",
+      "crash_count": 8,
+      "avg_modal": 5273.3,
+      "msp": 5650.0,
+      "avg_deficit": -376.7
+    },
+    {
+      "mandi_id": "MANDI035",
+      "mandi_name": "Guntakal Mandi",
+      "district": "Ambala",
+      "crop": "Cotton",
+      "crash_count": 10,
+      "avg_modal": 6244.6,
+      "msp": 6620.0,
+      "avg_deficit": -375.4
+    },
+    {
+      "mandi_id": "MANDI049",
+      "mandi_name": "Machilipatnam Mandi",
+      "district": "Muzaffarnagar",
+      "crop": "Cotton",
+      "crash_count": 12,
+      "avg_modal": 6245.9,
+      "msp": 6620.0,
+      "avg_deficit": -374.1
+    }
+  ],
+  "warehouses": [
+    {
+      "warehouse": "WH-Central",
+      "total_trips": 1725,
+      "avg_transit_hours": 13.2,
+      "delay_rate": 10.1,
+      "avg_distance_km": 616.7
+    },
+    {
+      "warehouse": "WH-East",
+      "total_trips": 1668,
+      "avg_transit_hours": 13.2,
+      "delay_rate": 8.8,
+      "avg_distance_km": 626.2
+    },
+    {
+      "warehouse": "WH-West",
+      "total_trips": 1746,
+      "avg_transit_hours": 13.2,
+      "delay_rate": 10.5,
+      "avg_distance_km": 613.7
+    },
+    {
+      "warehouse": "WH-North",
+      "total_trips": 1782,
+      "avg_transit_hours": 13.0,
+      "delay_rate": 10.5,
+      "avg_distance_km": 603.2
+    },
+    {
+      "warehouse": "Export-Terminal",
+      "total_trips": 1702,
+      "avg_transit_hours": 13.0,
+      "delay_rate": 9.8,
+      "avg_distance_km": 604.8
+    },
+    {
+      "warehouse": "WH-South",
+      "total_trips": 1777,
+      "avg_transit_hours": 13.0,
+      "delay_rate": 10.7,
+      "avg_distance_km": 606.9
+    }
+  ],
+  "route_delays": [
+    {
+      "mandi": "Asansol Grain Market (MANDI029)",
+      "warehouse": "WH-South",
+      "total_trips": 29,
+      "delay_rate": 27.6,
+      "avg_delay_hours": 1.1,
+      "avg_transit_hours": 16.7
+    },
+    {
+      "mandi": "Chapra Grain Market (MANDI032)",
+      "warehouse": "WH-South",
+      "total_trips": 26,
+      "delay_rate": 26.9,
+      "avg_delay_hours": 2.3,
+      "avg_transit_hours": 15.0
+    },
+    {
+      "mandi": "Nangloi Jat Mandi (MANDI031)",
+      "warehouse": "WH-North",
+      "total_trips": 30,
+      "delay_rate": 26.7,
+      "avg_delay_hours": 2.3,
+      "avg_transit_hours": 12.0
+    },
+    {
+      "mandi": "Kadapa Mandi (MANDI020)",
+      "warehouse": "WH-South",
+      "total_trips": 34,
+      "delay_rate": 26.5,
+      "avg_delay_hours": 1.2,
+      "avg_transit_hours": 15.9
+    },
+    {
+      "mandi": "Erode Mandi (MANDI042)",
+      "warehouse": "WH-Central",
+      "total_trips": 21,
+      "delay_rate": 23.8,
+      "avg_delay_hours": 2.3,
+      "avg_transit_hours": 14.2
+    },
+    {
+      "mandi": "Hyderabad Mandi (MANDI001)",
+      "warehouse": "WH-Central",
+      "total_trips": 30,
+      "delay_rate": 23.3,
+      "avg_delay_hours": 1.3,
+      "avg_transit_hours": 11.9
+    },
+    {
+      "mandi": "Dehri Mandi (MANDI044)",
+      "warehouse": "WH-Central",
+      "total_trips": 30,
+      "delay_rate": 23.3,
+      "avg_delay_hours": 0.9,
+      "avg_transit_hours": 12.6
+    },
+    {
+      "mandi": "Baranagar Market (MANDI046)",
+      "warehouse": "WH-West",
+      "total_trips": 30,
+      "delay_rate": 23.3,
+      "avg_delay_hours": 2.6,
+      "avg_transit_hours": 15.8
+    },
+    {
+      "mandi": "Jalandhar Mandi (MANDI038)",
+      "warehouse": "WH-South",
+      "total_trips": 39,
+      "delay_rate": 23.1,
+      "avg_delay_hours": 2.0,
+      "avg_transit_hours": 12.6
+    },
+    {
+      "mandi": "Khandwa Grain Market (MANDI004)",
+      "warehouse": "Export-Terminal",
+      "total_trips": 26,
+      "delay_rate": 23.1,
+      "avg_delay_hours": 1.9,
+      "avg_transit_hours": 11.8
+    }
+  ],
+  "weather_arrivals": [
+    {
+      "date": "2026-01-01",
+      "rainfall_mm": 834.8,
+      "arrival_qtl": 19629.8,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-01-02",
+      "rainfall_mm": 1175.8,
+      "arrival_qtl": 23572.1,
+      "avg_temp": 28.8
+    },
+    {
+      "date": "2026-01-03",
+      "rainfall_mm": 1191.9,
+      "arrival_qtl": 23846.8,
+      "avg_temp": 25.8
+    },
+    {
+      "date": "2026-01-04",
+      "rainfall_mm": 864.2,
+      "arrival_qtl": 18865.0,
+      "avg_temp": 29.8
+    },
+    {
+      "date": "2026-01-05",
+      "rainfall_mm": 1108.1,
+      "arrival_qtl": 29134.0,
+      "avg_temp": 29.2
+    },
+    {
+      "date": "2026-01-06",
+      "rainfall_mm": 1065.8,
+      "arrival_qtl": 24712.4,
+      "avg_temp": 27.6
+    },
+    {
+      "date": "2026-01-07",
+      "rainfall_mm": 1065.2,
+      "arrival_qtl": 21245.5,
+      "avg_temp": 28.2
+    },
+    {
+      "date": "2026-01-08",
+      "rainfall_mm": 764.1,
+      "arrival_qtl": 20432.9,
+      "avg_temp": 28.3
+    },
+    {
+      "date": "2026-01-09",
+      "rainfall_mm": 860.9,
+      "arrival_qtl": 23740.6,
+      "avg_temp": 28.8
+    },
+    {
+      "date": "2026-01-10",
+      "rainfall_mm": 905.5,
+      "arrival_qtl": 10509.2,
+      "avg_temp": 29.6
+    },
+    {
+      "date": "2026-01-11",
+      "rainfall_mm": 1097.0,
+      "arrival_qtl": 16328.1,
+      "avg_temp": 26.4
+    },
+    {
+      "date": "2026-01-12",
+      "rainfall_mm": 894.7,
+      "arrival_qtl": 13224.3,
+      "avg_temp": 26.9
+    },
+    {
+      "date": "2026-01-13",
+      "rainfall_mm": 1117.2,
+      "arrival_qtl": 21885.8,
+      "avg_temp": 28.4
+    },
+    {
+      "date": "2026-01-14",
+      "rainfall_mm": 829.6,
+      "arrival_qtl": 21268.5,
+      "avg_temp": 26.8
+    },
+    {
+      "date": "2026-01-15",
+      "rainfall_mm": 682.9,
+      "arrival_qtl": 22754.1,
+      "avg_temp": 27.7
+    },
+    {
+      "date": "2026-01-16",
+      "rainfall_mm": 1017.0,
+      "arrival_qtl": 24714.2,
+      "avg_temp": 29.3
+    },
+    {
+      "date": "2026-01-17",
+      "rainfall_mm": 1164.1,
+      "arrival_qtl": 21827.5,
+      "avg_temp": 30.3
+    },
+    {
+      "date": "2026-01-18",
+      "rainfall_mm": 795.1,
+      "arrival_qtl": 26225.5,
+      "avg_temp": 29.4
+    },
+    {
+      "date": "2026-01-19",
+      "rainfall_mm": 1385.6,
+      "arrival_qtl": 23922.6,
+      "avg_temp": 27.5
+    },
+    {
+      "date": "2026-01-20",
+      "rainfall_mm": 819.9,
+      "arrival_qtl": 21964.8,
+      "avg_temp": 29.6
+    },
+    {
+      "date": "2026-01-21",
+      "rainfall_mm": 1117.7,
+      "arrival_qtl": 23615.3,
+      "avg_temp": 26.6
+    },
+    {
+      "date": "2026-01-22",
+      "rainfall_mm": 817.0,
+      "arrival_qtl": 24147.4,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-01-23",
+      "rainfall_mm": 828.2,
+      "arrival_qtl": 24253.4,
+      "avg_temp": 27.2
+    },
+    {
+      "date": "2026-01-24",
+      "rainfall_mm": 1415.4,
+      "arrival_qtl": 25872.8,
+      "avg_temp": 26.2
+    },
+    {
+      "date": "2026-01-25",
+      "rainfall_mm": 1019.3,
+      "arrival_qtl": 22088.0,
+      "avg_temp": 29.2
+    },
+    {
+      "date": "2026-01-26",
+      "rainfall_mm": 1268.7,
+      "arrival_qtl": 18400.8,
+      "avg_temp": 28.1
+    },
+    {
+      "date": "2026-01-27",
+      "rainfall_mm": 718.8,
+      "arrival_qtl": 22741.1,
+      "avg_temp": 27.7
+    },
+    {
+      "date": "2026-01-28",
+      "rainfall_mm": 1020.1,
+      "arrival_qtl": 21424.0,
+      "avg_temp": 29.1
+    },
+    {
+      "date": "2026-01-29",
+      "rainfall_mm": 1162.9,
+      "arrival_qtl": 23176.3,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-01-30",
+      "rainfall_mm": 1314.0,
+      "arrival_qtl": 24775.7,
+      "avg_temp": 29.4
+    },
+    {
+      "date": "2026-01-31",
+      "rainfall_mm": 1138.3,
+      "arrival_qtl": 25343.5,
+      "avg_temp": 27.0
+    },
+    {
+      "date": "2026-02-01",
+      "rainfall_mm": 1331.1,
+      "arrival_qtl": 28472.4,
+      "avg_temp": 28.1
+    },
+    {
+      "date": "2026-02-02",
+      "rainfall_mm": 1089.0,
+      "arrival_qtl": 25387.5,
+      "avg_temp": 27.6
+    },
+    {
+      "date": "2026-02-03",
+      "rainfall_mm": 829.4,
+      "arrival_qtl": 18768.1,
+      "avg_temp": 28.8
+    },
+    {
+      "date": "2026-02-04",
+      "rainfall_mm": 940.9,
+      "arrival_qtl": 20945.0,
+      "avg_temp": 29.1
+    },
+    {
+      "date": "2026-02-05",
+      "rainfall_mm": 1146.4,
+      "arrival_qtl": 25515.0,
+      "avg_temp": 29.3
+    },
+    {
+      "date": "2026-02-06",
+      "rainfall_mm": 886.0,
+      "arrival_qtl": 28850.9,
+      "avg_temp": 27.5
+    },
+    {
+      "date": "2026-02-07",
+      "rainfall_mm": 936.6,
+      "arrival_qtl": 21186.5,
+      "avg_temp": 28.4
+    },
+    {
+      "date": "2026-02-08",
+      "rainfall_mm": 1142.6,
+      "arrival_qtl": 20286.1,
+      "avg_temp": 29.1
+    },
+    {
+      "date": "2026-02-09",
+      "rainfall_mm": 917.4,
+      "arrival_qtl": 24481.2,
+      "avg_temp": 27.7
+    },
+    {
+      "date": "2026-02-10",
+      "rainfall_mm": 919.0,
+      "arrival_qtl": 15789.2,
+      "avg_temp": 27.7
+    },
+    {
+      "date": "2026-02-11",
+      "rainfall_mm": 843.3,
+      "arrival_qtl": 16415.2,
+      "avg_temp": 29.5
+    },
+    {
+      "date": "2026-02-12",
+      "rainfall_mm": 1113.5,
+      "arrival_qtl": 17116.0,
+      "avg_temp": 28.0
+    },
+    {
+      "date": "2026-02-13",
+      "rainfall_mm": 798.1,
+      "arrival_qtl": 23021.0,
+      "avg_temp": 27.9
+    },
+    {
+      "date": "2026-02-14",
+      "rainfall_mm": 1085.8,
+      "arrival_qtl": 19744.9,
+      "avg_temp": 27.7
+    },
+    {
+      "date": "2026-02-15",
+      "rainfall_mm": 1173.1,
+      "arrival_qtl": 25200.1,
+      "avg_temp": 27.2
+    },
+    {
+      "date": "2026-02-16",
+      "rainfall_mm": 665.6,
+      "arrival_qtl": 22710.0,
+      "avg_temp": 28.5
+    },
+    {
+      "date": "2026-02-17",
+      "rainfall_mm": 794.0,
+      "arrival_qtl": 18991.0,
+      "avg_temp": 28.4
+    },
+    {
+      "date": "2026-02-18",
+      "rainfall_mm": 985.9,
+      "arrival_qtl": 25808.8,
+      "avg_temp": 27.2
+    },
+    {
+      "date": "2026-02-19",
+      "rainfall_mm": 1087.8,
+      "arrival_qtl": 20654.5,
+      "avg_temp": 27.2
+    },
+    {
+      "date": "2026-02-20",
+      "rainfall_mm": 890.7,
+      "arrival_qtl": 27926.8,
+      "avg_temp": 25.7
+    },
+    {
+      "date": "2026-02-21",
+      "rainfall_mm": 1106.8,
+      "arrival_qtl": 25782.3,
+      "avg_temp": 29.0
+    },
+    {
+      "date": "2026-02-22",
+      "rainfall_mm": 1069.8,
+      "arrival_qtl": 24781.4,
+      "avg_temp": 26.9
+    },
+    {
+      "date": "2026-02-23",
+      "rainfall_mm": 902.7,
+      "arrival_qtl": 22667.0,
+      "avg_temp": 27.9
+    },
+    {
+      "date": "2026-02-24",
+      "rainfall_mm": 1113.8,
+      "arrival_qtl": 21752.5,
+      "avg_temp": 28.5
+    },
+    {
+      "date": "2026-02-25",
+      "rainfall_mm": 701.9,
+      "arrival_qtl": 23290.6,
+      "avg_temp": 29.9
+    },
+    {
+      "date": "2026-02-26",
+      "rainfall_mm": 1192.2,
+      "arrival_qtl": 26387.8,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-02-27",
+      "rainfall_mm": 1367.8,
+      "arrival_qtl": 23587.8,
+      "avg_temp": 27.1
+    },
+    {
+      "date": "2026-02-28",
+      "rainfall_mm": 1258.4,
+      "arrival_qtl": 26054.8,
+      "avg_temp": 27.2
+    },
+    {
+      "date": "2026-03-01",
+      "rainfall_mm": 1120.9,
+      "arrival_qtl": 19381.8,
+      "avg_temp": 28.7
+    },
+    {
+      "date": "2026-03-02",
+      "rainfall_mm": 1344.9,
+      "arrival_qtl": 26739.2,
+      "avg_temp": 28.2
+    },
+    {
+      "date": "2026-03-03",
+      "rainfall_mm": 972.4,
+      "arrival_qtl": 25387.0,
+      "avg_temp": 28.7
+    },
+    {
+      "date": "2026-03-04",
+      "rainfall_mm": 882.3,
+      "arrival_qtl": 20526.2,
+      "avg_temp": 26.1
+    },
+    {
+      "date": "2026-03-05",
+      "rainfall_mm": 1382.9,
+      "arrival_qtl": 21168.7,
+      "avg_temp": 28.0
+    },
+    {
+      "date": "2026-03-06",
+      "rainfall_mm": 602.8,
+      "arrival_qtl": 26471.0,
+      "avg_temp": 28.0
+    },
+    {
+      "date": "2026-03-07",
+      "rainfall_mm": 1126.9,
+      "arrival_qtl": 22682.7,
+      "avg_temp": 27.6
+    },
+    {
+      "date": "2026-03-08",
+      "rainfall_mm": 1012.2,
+      "arrival_qtl": 21699.1,
+      "avg_temp": 27.5
+    },
+    {
+      "date": "2026-03-09",
+      "rainfall_mm": 907.3,
+      "arrival_qtl": 26098.6,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-03-10",
+      "rainfall_mm": 870.5,
+      "arrival_qtl": 13186.1,
+      "avg_temp": 28.1
+    },
+    {
+      "date": "2026-03-11",
+      "rainfall_mm": 1215.8,
+      "arrival_qtl": 13853.1,
+      "avg_temp": 29.0
+    },
+    {
+      "date": "2026-03-12",
+      "rainfall_mm": 1043.8,
+      "arrival_qtl": 15167.5,
+      "avg_temp": 27.2
+    },
+    {
+      "date": "2026-03-13",
+      "rainfall_mm": 711.6,
+      "arrival_qtl": 24265.1,
+      "avg_temp": 29.5
+    },
+    {
+      "date": "2026-03-14",
+      "rainfall_mm": 968.4,
+      "arrival_qtl": 21678.8,
+      "avg_temp": 28.9
+    },
+    {
+      "date": "2026-03-15",
+      "rainfall_mm": 852.6,
+      "arrival_qtl": 20577.7,
+      "avg_temp": 25.1
+    },
+    {
+      "date": "2026-03-16",
+      "rainfall_mm": 730.0,
+      "arrival_qtl": 29973.8,
+      "avg_temp": 27.5
+    },
+    {
+      "date": "2026-03-17",
+      "rainfall_mm": 1050.5,
+      "arrival_qtl": 25942.3,
+      "avg_temp": 27.8
+    },
+    {
+      "date": "2026-03-18",
+      "rainfall_mm": 972.9,
+      "arrival_qtl": 19525.9,
+      "avg_temp": 27.4
+    },
+    {
+      "date": "2026-03-19",
+      "rainfall_mm": 1045.3,
+      "arrival_qtl": 15248.0,
+      "avg_temp": 28.3
+    },
+    {
+      "date": "2026-03-20",
+      "rainfall_mm": 1031.2,
+      "arrival_qtl": 28658.3,
+      "avg_temp": 29.2
+    },
+    {
+      "date": "2026-03-21",
+      "rainfall_mm": 562.1,
+      "arrival_qtl": 26246.0,
+      "avg_temp": 31.0
+    },
+    {
+      "date": "2026-03-22",
+      "rainfall_mm": 1036.5,
+      "arrival_qtl": 21213.2,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-03-23",
+      "rainfall_mm": 771.0,
+      "arrival_qtl": 26010.6,
+      "avg_temp": 28.0
+    },
+    {
+      "date": "2026-03-24",
+      "rainfall_mm": 1117.3,
+      "arrival_qtl": 21007.6,
+      "avg_temp": 27.7
+    },
+    {
+      "date": "2026-03-25",
+      "rainfall_mm": 1239.7,
+      "arrival_qtl": 24128.9,
+      "avg_temp": 27.9
+    },
+    {
+      "date": "2026-03-26",
+      "rainfall_mm": 928.3,
+      "arrival_qtl": 23337.0,
+      "avg_temp": 28.8
+    },
+    {
+      "date": "2026-03-27",
+      "rainfall_mm": 1265.4,
+      "arrival_qtl": 21162.2,
+      "avg_temp": 27.5
+    },
+    {
+      "date": "2026-03-28",
+      "rainfall_mm": 1222.8,
+      "arrival_qtl": 20856.2,
+      "avg_temp": 28.5
+    },
+    {
+      "date": "2026-03-29",
+      "rainfall_mm": 1046.8,
+      "arrival_qtl": 20634.4,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-03-30",
+      "rainfall_mm": 940.6,
+      "arrival_qtl": 21434.2,
+      "avg_temp": 28.0
+    },
+    {
+      "date": "2026-03-31",
+      "rainfall_mm": 1043.5,
+      "arrival_qtl": 25868.9,
+      "avg_temp": 30.4
+    },
+    {
+      "date": "2026-04-01",
+      "rainfall_mm": 767.6,
+      "arrival_qtl": 21345.0,
+      "avg_temp": 27.1
+    },
+    {
+      "date": "2026-04-02",
+      "rainfall_mm": 955.5,
+      "arrival_qtl": 22808.9,
+      "avg_temp": 27.7
+    },
+    {
+      "date": "2026-04-03",
+      "rainfall_mm": 1107.3,
+      "arrival_qtl": 24726.7,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-04-04",
+      "rainfall_mm": 872.9,
+      "arrival_qtl": 20001.4,
+      "avg_temp": 28.9
+    },
+    {
+      "date": "2026-04-05",
+      "rainfall_mm": 1139.1,
+      "arrival_qtl": 19707.5,
+      "avg_temp": 29.5
+    },
+    {
+      "date": "2026-04-06",
+      "rainfall_mm": 771.8,
+      "arrival_qtl": 27843.6,
+      "avg_temp": 27.6
+    },
+    {
+      "date": "2026-04-07",
+      "rainfall_mm": 1142.3,
+      "arrival_qtl": 19864.8,
+      "avg_temp": 26.5
+    },
+    {
+      "date": "2026-04-08",
+      "rainfall_mm": 1185.0,
+      "arrival_qtl": 18460.1,
+      "avg_temp": 28.5
+    },
+    {
+      "date": "2026-04-09",
+      "rainfall_mm": 1039.9,
+      "arrival_qtl": 22012.8,
+      "avg_temp": 27.0
+    },
+    {
+      "date": "2026-04-10",
+      "rainfall_mm": 1126.2,
+      "arrival_qtl": 10423.4,
+      "avg_temp": 27.4
+    },
+    {
+      "date": "2026-04-11",
+      "rainfall_mm": 1067.7,
+      "arrival_qtl": 16923.5,
+      "avg_temp": 26.7
+    },
+    {
+      "date": "2026-04-12",
+      "rainfall_mm": 863.2,
+      "arrival_qtl": 13485.8,
+      "avg_temp": 29.4
+    },
+    {
+      "date": "2026-04-13",
+      "rainfall_mm": 1609.5,
+      "arrival_qtl": 22635.0,
+      "avg_temp": 28.0
+    },
+    {
+      "date": "2026-04-14",
+      "rainfall_mm": 973.2,
+      "arrival_qtl": 24360.0,
+      "avg_temp": 27.3
+    },
+    {
+      "date": "2026-04-15",
+      "rainfall_mm": 971.2,
+      "arrival_qtl": 25017.7,
+      "avg_temp": 28.9
+    },
+    {
+      "date": "2026-04-16",
+      "rainfall_mm": 913.1,
+      "arrival_qtl": 25419.5,
+      "avg_temp": 27.0
+    },
+    {
+      "date": "2026-04-17",
+      "rainfall_mm": 1239.0,
+      "arrival_qtl": 24148.2,
+      "avg_temp": 27.8
+    },
+    {
+      "date": "2026-04-18",
+      "rainfall_mm": 912.6,
+      "arrival_qtl": 26280.1,
+      "avg_temp": 29.3
+    },
+    {
+      "date": "2026-04-19",
+      "rainfall_mm": 899.0,
+      "arrival_qtl": 26813.7,
+      "avg_temp": 28.2
+    },
+    {
+      "date": "2026-04-20",
+      "rainfall_mm": 954.8,
+      "arrival_qtl": 26739.8,
+      "avg_temp": 27.5
+    },
+    {
+      "date": "2026-04-21",
+      "rainfall_mm": 849.4,
+      "arrival_qtl": 24849.0,
+      "avg_temp": 27.8
+    },
+    {
+      "date": "2026-04-22",
+      "rainfall_mm": 810.1,
+      "arrival_qtl": 20335.9,
+      "avg_temp": 28.5
+    },
+    {
+      "date": "2026-04-23",
+      "rainfall_mm": 1256.4,
+      "arrival_qtl": 23013.4,
+      "avg_temp": 27.5
+    },
+    {
+      "date": "2026-04-24",
+      "rainfall_mm": 928.3,
+      "arrival_qtl": 20082.8,
+      "avg_temp": 27.3
+    },
+    {
+      "date": "2026-04-25",
+      "rainfall_mm": 1039.6,
+      "arrival_qtl": 19648.2,
+      "avg_temp": 29.1
+    },
+    {
+      "date": "2026-04-26",
+      "rainfall_mm": 1771.9,
+      "arrival_qtl": 19192.9,
+      "avg_temp": 28.4
+    },
+    {
+      "date": "2026-04-27",
+      "rainfall_mm": 705.1,
+      "arrival_qtl": 22694.0,
+      "avg_temp": 26.8
+    },
+    {
+      "date": "2026-04-28",
+      "rainfall_mm": 913.6,
+      "arrival_qtl": 20135.4,
+      "avg_temp": 28.5
+    },
+    {
+      "date": "2026-04-29",
+      "rainfall_mm": 952.9,
+      "arrival_qtl": 22485.5,
+      "avg_temp": 29.4
+    },
+    {
+      "date": "2026-04-30",
+      "rainfall_mm": 984.4,
+      "arrival_qtl": 22121.2,
+      "avg_temp": 27.7
+    },
+    {
+      "date": "2026-05-01",
+      "rainfall_mm": 995.3,
+      "arrival_qtl": 22582.1,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-05-02",
+      "rainfall_mm": 890.8,
+      "arrival_qtl": 18356.0,
+      "avg_temp": 30.4
+    },
+    {
+      "date": "2026-05-03",
+      "rainfall_mm": 837.4,
+      "arrival_qtl": 21186.7,
+      "avg_temp": 28.0
+    },
+    {
+      "date": "2026-05-04",
+      "rainfall_mm": 1257.7,
+      "arrival_qtl": 23385.2,
+      "avg_temp": 28.2
+    },
+    {
+      "date": "2026-05-05",
+      "rainfall_mm": 884.0,
+      "arrival_qtl": 19979.3,
+      "avg_temp": 27.7
+    },
+    {
+      "date": "2026-05-06",
+      "rainfall_mm": 1037.0,
+      "arrival_qtl": 19079.4,
+      "avg_temp": 27.9
+    },
+    {
+      "date": "2026-05-07",
+      "rainfall_mm": 1222.1,
+      "arrival_qtl": 25404.2,
+      "avg_temp": 27.8
+    },
+    {
+      "date": "2026-05-08",
+      "rainfall_mm": 939.9,
+      "arrival_qtl": 27615.0,
+      "avg_temp": 29.1
+    },
+    {
+      "date": "2026-05-09",
+      "rainfall_mm": 934.5,
+      "arrival_qtl": 22106.2,
+      "avg_temp": 28.9
+    },
+    {
+      "date": "2026-05-10",
+      "rainfall_mm": 907.2,
+      "arrival_qtl": 15096.0,
+      "avg_temp": 29.2
+    },
+    {
+      "date": "2026-05-11",
+      "rainfall_mm": 804.3,
+      "arrival_qtl": 10998.5,
+      "avg_temp": 28.8
+    },
+    {
+      "date": "2026-05-12",
+      "rainfall_mm": 921.8,
+      "arrival_qtl": 13918.9,
+      "avg_temp": 27.8
+    },
+    {
+      "date": "2026-05-13",
+      "rainfall_mm": 628.2,
+      "arrival_qtl": 14009.3,
+      "avg_temp": 29.1
+    },
+    {
+      "date": "2026-05-14",
+      "rainfall_mm": 1000.7,
+      "arrival_qtl": 24958.0,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-05-15",
+      "rainfall_mm": 1036.4,
+      "arrival_qtl": 18594.4,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-05-16",
+      "rainfall_mm": 975.0,
+      "arrival_qtl": 27509.3,
+      "avg_temp": 28.7
+    },
+    {
+      "date": "2026-05-17",
+      "rainfall_mm": 1184.8,
+      "arrival_qtl": 24152.0,
+      "avg_temp": 27.8
+    },
+    {
+      "date": "2026-05-18",
+      "rainfall_mm": 1138.1,
+      "arrival_qtl": 24989.5,
+      "avg_temp": 27.6
+    },
+    {
+      "date": "2026-05-19",
+      "rainfall_mm": 764.8,
+      "arrival_qtl": 32118.2,
+      "avg_temp": 28.8
+    },
+    {
+      "date": "2026-05-20",
+      "rainfall_mm": 664.3,
+      "arrival_qtl": 24147.4,
+      "avg_temp": 28.1
+    },
+    {
+      "date": "2026-05-21",
+      "rainfall_mm": 1091.5,
+      "arrival_qtl": 22208.7,
+      "avg_temp": 27.6
+    },
+    {
+      "date": "2026-05-22",
+      "rainfall_mm": 992.3,
+      "arrival_qtl": 27012.2,
+      "avg_temp": 28.4
+    },
+    {
+      "date": "2026-05-23",
+      "rainfall_mm": 1101.4,
+      "arrival_qtl": 18058.3,
+      "avg_temp": 29.1
+    },
+    {
+      "date": "2026-05-24",
+      "rainfall_mm": 862.6,
+      "arrival_qtl": 21054.2,
+      "avg_temp": 26.1
+    },
+    {
+      "date": "2026-05-25",
+      "rainfall_mm": 652.9,
+      "arrival_qtl": 19674.4,
+      "avg_temp": 28.8
+    },
+    {
+      "date": "2026-05-26",
+      "rainfall_mm": 897.1,
+      "arrival_qtl": 24073.6,
+      "avg_temp": 27.3
+    },
+    {
+      "date": "2026-05-27",
+      "rainfall_mm": 1191.8,
+      "arrival_qtl": 25801.2,
+      "avg_temp": 28.4
+    },
+    {
+      "date": "2026-05-28",
+      "rainfall_mm": 1015.7,
+      "arrival_qtl": 20930.1,
+      "avg_temp": 27.4
+    },
+    {
+      "date": "2026-05-29",
+      "rainfall_mm": 1015.8,
+      "arrival_qtl": 17202.7,
+      "avg_temp": 26.2
+    },
+    {
+      "date": "2026-05-30",
+      "rainfall_mm": 971.9,
+      "arrival_qtl": 20433.1,
+      "avg_temp": 28.5
+    },
+    {
+      "date": "2026-05-31",
+      "rainfall_mm": 653.9,
+      "arrival_qtl": 16449.4,
+      "avg_temp": 27.6
+    },
+    {
+      "date": "2026-06-01",
+      "rainfall_mm": 576.5,
+      "arrival_qtl": 18146.8,
+      "avg_temp": 27.3
+    },
+    {
+      "date": "2026-06-02",
+      "rainfall_mm": 1038.0,
+      "arrival_qtl": 22919.2,
+      "avg_temp": 29.1
+    },
+    {
+      "date": "2026-06-03",
+      "rainfall_mm": 1091.3,
+      "arrival_qtl": 24750.0,
+      "avg_temp": 27.1
+    },
+    {
+      "date": "2026-06-04",
+      "rainfall_mm": 1042.4,
+      "arrival_qtl": 22600.2,
+      "avg_temp": 27.3
+    },
+    {
+      "date": "2026-06-05",
+      "rainfall_mm": 1362.0,
+      "arrival_qtl": 22728.8,
+      "avg_temp": 27.9
+    },
+    {
+      "date": "2026-06-06",
+      "rainfall_mm": 1090.3,
+      "arrival_qtl": 28032.2,
+      "avg_temp": 29.1
+    },
+    {
+      "date": "2026-06-07",
+      "rainfall_mm": 975.8,
+      "arrival_qtl": 23311.7,
+      "avg_temp": 28.0
+    },
+    {
+      "date": "2026-06-08",
+      "rainfall_mm": 821.4,
+      "arrival_qtl": 26542.7,
+      "avg_temp": 27.4
+    },
+    {
+      "date": "2026-06-09",
+      "rainfall_mm": 1103.8,
+      "arrival_qtl": 22963.8,
+      "avg_temp": 27.6
+    },
+    {
+      "date": "2026-06-10",
+      "rainfall_mm": 628.6,
+      "arrival_qtl": 17441.5,
+      "avg_temp": 27.5
+    },
+    {
+      "date": "2026-06-11",
+      "rainfall_mm": 961.3,
+      "arrival_qtl": 15335.9,
+      "avg_temp": 28.1
+    },
+    {
+      "date": "2026-06-12",
+      "rainfall_mm": 1305.5,
+      "arrival_qtl": 12136.5,
+      "avg_temp": 28.4
+    },
+    {
+      "date": "2026-06-13",
+      "rainfall_mm": 1095.2,
+      "arrival_qtl": 21261.4,
+      "avg_temp": 27.3
+    },
+    {
+      "date": "2026-06-14",
+      "rainfall_mm": 1107.3,
+      "arrival_qtl": 20073.1,
+      "avg_temp": 28.8
+    },
+    {
+      "date": "2026-06-15",
+      "rainfall_mm": 941.0,
+      "arrival_qtl": 22859.1,
+      "avg_temp": 27.1
+    },
+    {
+      "date": "2026-06-16",
+      "rainfall_mm": 833.4,
+      "arrival_qtl": 20864.6,
+      "avg_temp": 29.8
+    },
+    {
+      "date": "2026-06-17",
+      "rainfall_mm": 801.9,
+      "arrival_qtl": 27194.2,
+      "avg_temp": 28.8
+    },
+    {
+      "date": "2026-06-18",
+      "rainfall_mm": 1128.1,
+      "arrival_qtl": 22393.0,
+      "avg_temp": 27.1
+    },
+    {
+      "date": "2026-06-19",
+      "rainfall_mm": 1175.1,
+      "arrival_qtl": 24994.1,
+      "avg_temp": 27.6
+    },
+    {
+      "date": "2026-06-20",
+      "rainfall_mm": 668.5,
+      "arrival_qtl": 23102.9,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-06-21",
+      "rainfall_mm": 1043.2,
+      "arrival_qtl": 21254.5,
+      "avg_temp": 28.1
+    },
+    {
+      "date": "2026-06-22",
+      "rainfall_mm": 1021.2,
+      "arrival_qtl": 26468.0,
+      "avg_temp": 25.9
+    },
+    {
+      "date": "2026-06-23",
+      "rainfall_mm": 899.1,
+      "arrival_qtl": 22873.9,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-06-24",
+      "rainfall_mm": 892.1,
+      "arrival_qtl": 17379.1,
+      "avg_temp": 29.2
+    },
+    {
+      "date": "2026-06-25",
+      "rainfall_mm": 1232.4,
+      "arrival_qtl": 21872.0,
+      "avg_temp": 28.1
+    },
+    {
+      "date": "2026-06-26",
+      "rainfall_mm": 715.1,
+      "arrival_qtl": 25131.5,
+      "avg_temp": 26.4
+    },
+    {
+      "date": "2026-06-27",
+      "rainfall_mm": 858.8,
+      "arrival_qtl": 19910.2,
+      "avg_temp": 28.9
+    },
+    {
+      "date": "2026-06-28",
+      "rainfall_mm": 909.5,
+      "arrival_qtl": 22810.2,
+      "avg_temp": 28.0
+    },
+    {
+      "date": "2026-06-29",
+      "rainfall_mm": 1090.9,
+      "arrival_qtl": 18948.9,
+      "avg_temp": 28.9
+    },
+    {
+      "date": "2026-06-30",
+      "rainfall_mm": 797.5,
+      "arrival_qtl": 26631.3,
+      "avg_temp": 29.6
+    },
+    {
+      "date": "2026-07-01",
+      "rainfall_mm": 747.4,
+      "arrival_qtl": 19903.7,
+      "avg_temp": 26.8
+    },
+    {
+      "date": "2026-07-02",
+      "rainfall_mm": 877.0,
+      "arrival_qtl": 23885.3,
+      "avg_temp": 29.9
+    },
+    {
+      "date": "2026-07-03",
+      "rainfall_mm": 1115.4,
+      "arrival_qtl": 19985.1,
+      "avg_temp": 26.2
+    },
+    {
+      "date": "2026-07-04",
+      "rainfall_mm": 923.8,
+      "arrival_qtl": 26379.2,
+      "avg_temp": 28.2
+    },
+    {
+      "date": "2026-07-05",
+      "rainfall_mm": 1118.7,
+      "arrival_qtl": 22704.0,
+      "avg_temp": 28.2
+    },
+    {
+      "date": "2026-07-06",
+      "rainfall_mm": 588.9,
+      "arrival_qtl": 23880.7,
+      "avg_temp": 29.6
+    },
+    {
+      "date": "2026-07-07",
+      "rainfall_mm": 827.4,
+      "arrival_qtl": 25350.8,
+      "avg_temp": 28.4
+    },
+    {
+      "date": "2026-07-08",
+      "rainfall_mm": 1604.9,
+      "arrival_qtl": 25647.7,
+      "avg_temp": 28.7
+    },
+    {
+      "date": "2026-07-09",
+      "rainfall_mm": 628.6,
+      "arrival_qtl": 27902.7,
+      "avg_temp": 27.6
+    },
+    {
+      "date": "2026-07-10",
+      "rainfall_mm": 1037.6,
+      "arrival_qtl": 13855.8,
+      "avg_temp": 28.8
+    },
+    {
+      "date": "2026-07-11",
+      "rainfall_mm": 611.3,
+      "arrival_qtl": 13238.5,
+      "avg_temp": 27.9
+    },
+    {
+      "date": "2026-07-12",
+      "rainfall_mm": 763.0,
+      "arrival_qtl": 16492.7,
+      "avg_temp": 28.5
+    },
+    {
+      "date": "2026-07-13",
+      "rainfall_mm": 790.8,
+      "arrival_qtl": 21134.2,
+      "avg_temp": 29.5
+    },
+    {
+      "date": "2026-07-14",
+      "rainfall_mm": 762.3,
+      "arrival_qtl": 23260.8,
+      "avg_temp": 28.2
+    },
+    {
+      "date": "2026-07-15",
+      "rainfall_mm": 726.7,
+      "arrival_qtl": 27323.3,
+      "avg_temp": 28.0
+    },
+    {
+      "date": "2026-07-16",
+      "rainfall_mm": 901.3,
+      "arrival_qtl": 22951.7,
+      "avg_temp": 27.7
+    },
+    {
+      "date": "2026-07-17",
+      "rainfall_mm": 1223.5,
+      "arrival_qtl": 24304.2,
+      "avg_temp": 25.4
+    },
+    {
+      "date": "2026-07-18",
+      "rainfall_mm": 770.3,
+      "arrival_qtl": 24003.2,
+      "avg_temp": 29.4
+    },
+    {
+      "date": "2026-07-19",
+      "rainfall_mm": 630.4,
+      "arrival_qtl": 18422.1,
+      "avg_temp": 26.8
+    },
+    {
+      "date": "2026-07-20",
+      "rainfall_mm": 1119.9,
+      "arrival_qtl": 21403.3,
+      "avg_temp": 28.0
+    },
+    {
+      "date": "2026-07-21",
+      "rainfall_mm": 887.9,
+      "arrival_qtl": 24724.2,
+      "avg_temp": 28.8
+    },
+    {
+      "date": "2026-07-22",
+      "rainfall_mm": 849.7,
+      "arrival_qtl": 25402.2,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-07-23",
+      "rainfall_mm": 1558.8,
+      "arrival_qtl": 23474.7,
+      "avg_temp": 26.3
+    },
+    {
+      "date": "2026-07-24",
+      "rainfall_mm": 1231.9,
+      "arrival_qtl": 27455.9,
+      "avg_temp": 27.8
+    },
+    {
+      "date": "2026-07-25",
+      "rainfall_mm": 848.3,
+      "arrival_qtl": 27419.1,
+      "avg_temp": 27.7
+    },
+    {
+      "date": "2026-07-26",
+      "rainfall_mm": 1041.3,
+      "arrival_qtl": 21604.3,
+      "avg_temp": 26.5
+    },
+    {
+      "date": "2026-07-27",
+      "rainfall_mm": 603.7,
+      "arrival_qtl": 26277.5,
+      "avg_temp": 27.6
+    },
+    {
+      "date": "2026-07-28",
+      "rainfall_mm": 659.8,
+      "arrival_qtl": 21078.4,
+      "avg_temp": 27.8
+    },
+    {
+      "date": "2026-07-29",
+      "rainfall_mm": 712.4,
+      "arrival_qtl": 21541.3,
+      "avg_temp": 29.3
+    },
+    {
+      "date": "2026-07-30",
+      "rainfall_mm": 957.0,
+      "arrival_qtl": 28001.5,
+      "avg_temp": 27.9
+    },
+    {
+      "date": "2026-07-31",
+      "rainfall_mm": 1208.7,
+      "arrival_qtl": 21307.9,
+      "avg_temp": 29.2
+    },
+    {
+      "date": "2026-08-01",
+      "rainfall_mm": 974.2,
+      "arrival_qtl": 24197.7,
+      "avg_temp": 28.2
+    },
+    {
+      "date": "2026-08-02",
+      "rainfall_mm": 1086.4,
+      "arrival_qtl": 21531.7,
+      "avg_temp": 27.5
+    },
+    {
+      "date": "2026-08-03",
+      "rainfall_mm": 994.5,
+      "arrival_qtl": 23743.3,
+      "avg_temp": 27.6
+    },
+    {
+      "date": "2026-08-04",
+      "rainfall_mm": 1384.1,
+      "arrival_qtl": 17955.2,
+      "avg_temp": 28.3
+    },
+    {
+      "date": "2026-08-05",
+      "rainfall_mm": 952.6,
+      "arrival_qtl": 27275.3,
+      "avg_temp": 29.0
+    },
+    {
+      "date": "2026-08-06",
+      "rainfall_mm": 839.5,
+      "arrival_qtl": 28654.3,
+      "avg_temp": 24.9
+    },
+    {
+      "date": "2026-08-07",
+      "rainfall_mm": 1250.4,
+      "arrival_qtl": 20584.0,
+      "avg_temp": 28.5
+    },
+    {
+      "date": "2026-08-08",
+      "rainfall_mm": 819.9,
+      "arrival_qtl": 21784.3,
+      "avg_temp": 29.7
+    },
+    {
+      "date": "2026-08-09",
+      "rainfall_mm": 810.9,
+      "arrival_qtl": 23864.3,
+      "avg_temp": 27.5
+    },
+    {
+      "date": "2026-08-10",
+      "rainfall_mm": 1285.5,
+      "arrival_qtl": 18602.6,
+      "avg_temp": 26.9
+    },
+    {
+      "date": "2026-08-11",
+      "rainfall_mm": 1440.6,
+      "arrival_qtl": 13843.2,
+      "avg_temp": 28.0
+    },
+    {
+      "date": "2026-08-12",
+      "rainfall_mm": 1124.0,
+      "arrival_qtl": 19154.9,
+      "avg_temp": 29.5
+    },
+    {
+      "date": "2026-08-13",
+      "rainfall_mm": 1192.3,
+      "arrival_qtl": 28038.0,
+      "avg_temp": 28.7
+    },
+    {
+      "date": "2026-08-14",
+      "rainfall_mm": 1179.4,
+      "arrival_qtl": 19018.8,
+      "avg_temp": 26.6
+    },
+    {
+      "date": "2026-08-15",
+      "rainfall_mm": 1233.4,
+      "arrival_qtl": 27358.1,
+      "avg_temp": 27.0
+    },
+    {
+      "date": "2026-08-16",
+      "rainfall_mm": 863.5,
+      "arrival_qtl": 19981.4,
+      "avg_temp": 28.7
+    },
+    {
+      "date": "2026-08-17",
+      "rainfall_mm": 844.5,
+      "arrival_qtl": 20979.1,
+      "avg_temp": 29.0
+    },
+    {
+      "date": "2026-08-18",
+      "rainfall_mm": 1073.2,
+      "arrival_qtl": 22452.5,
+      "avg_temp": 27.7
+    },
+    {
+      "date": "2026-08-19",
+      "rainfall_mm": 1358.1,
+      "arrival_qtl": 27440.4,
+      "avg_temp": 27.3
+    },
+    {
+      "date": "2026-08-20",
+      "rainfall_mm": 1039.2,
+      "arrival_qtl": 25811.8,
+      "avg_temp": 28.7
+    },
+    {
+      "date": "2026-08-21",
+      "rainfall_mm": 972.5,
+      "arrival_qtl": 23466.4,
+      "avg_temp": 30.1
+    },
+    {
+      "date": "2026-08-22",
+      "rainfall_mm": 1221.3,
+      "arrival_qtl": 24151.1,
+      "avg_temp": 27.7
+    },
+    {
+      "date": "2026-08-23",
+      "rainfall_mm": 1006.0,
+      "arrival_qtl": 27871.5,
+      "avg_temp": 28.0
+    },
+    {
+      "date": "2026-08-24",
+      "rainfall_mm": 717.6,
+      "arrival_qtl": 22937.1,
+      "avg_temp": 27.1
+    },
+    {
+      "date": "2026-08-25",
+      "rainfall_mm": 1081.3,
+      "arrival_qtl": 26278.2,
+      "avg_temp": 27.1
+    },
+    {
+      "date": "2026-08-26",
+      "rainfall_mm": 845.0,
+      "arrival_qtl": 21232.0,
+      "avg_temp": 30.0
+    },
+    {
+      "date": "2026-08-27",
+      "rainfall_mm": 1080.3,
+      "arrival_qtl": 24030.4,
+      "avg_temp": 28.9
+    },
+    {
+      "date": "2026-08-28",
+      "rainfall_mm": 1402.3,
+      "arrival_qtl": 33016.2,
+      "avg_temp": 27.8
+    },
+    {
+      "date": "2026-08-29",
+      "rainfall_mm": 1224.2,
+      "arrival_qtl": 21941.3,
+      "avg_temp": 28.0
+    },
+    {
+      "date": "2026-08-30",
+      "rainfall_mm": 717.1,
+      "arrival_qtl": 26701.9,
+      "avg_temp": 29.0
+    },
+    {
+      "date": "2026-08-31",
+      "rainfall_mm": 886.7,
+      "arrival_qtl": 24185.3,
+      "avg_temp": 28.3
+    },
+    {
+      "date": "2026-09-01",
+      "rainfall_mm": 1146.3,
+      "arrival_qtl": 29127.5,
+      "avg_temp": 28.7
+    },
+    {
+      "date": "2026-09-02",
+      "rainfall_mm": 1164.9,
+      "arrival_qtl": 21724.5,
+      "avg_temp": 28.3
+    },
+    {
+      "date": "2026-09-03",
+      "rainfall_mm": 972.1,
+      "arrival_qtl": 21787.1,
+      "avg_temp": 28.7
+    },
+    {
+      "date": "2026-09-04",
+      "rainfall_mm": 1053.0,
+      "arrival_qtl": 23601.2,
+      "avg_temp": 28.5
+    },
+    {
+      "date": "2026-09-05",
+      "rainfall_mm": 593.6,
+      "arrival_qtl": 22721.0,
+      "avg_temp": 28.2
+    },
+    {
+      "date": "2026-09-06",
+      "rainfall_mm": 1216.0,
+      "arrival_qtl": 21209.2,
+      "avg_temp": 27.2
+    },
+    {
+      "date": "2026-09-07",
+      "rainfall_mm": 1052.1,
+      "arrival_qtl": 22397.7,
+      "avg_temp": 28.6
+    },
+    {
+      "date": "2026-09-08",
+      "rainfall_mm": 1025.2,
+      "arrival_qtl": 24514.8,
+      "avg_temp": 28.3
+    },
+    {
+      "date": "2026-09-09",
+      "rainfall_mm": 1143.2,
+      "arrival_qtl": 19453.7,
+      "avg_temp": 27.8
+    },
+    {
+      "date": "2026-10-01",
+      "rainfall_mm": 7.2,
+      "arrival_qtl": 6319.1,
+      "avg_temp": 25.8
+    },
+    {
+      "date": "2026-10-02",
+      "rainfall_mm": 106.8,
+      "arrival_qtl": 6766.8,
+      "avg_temp": 26.5
+    },
+    {
+      "date": "2026-10-03",
+      "rainfall_mm": 2.1,
+      "arrival_qtl": 8750.0,
+      "avg_temp": 21.3
+    },
+    {
+      "date": "2026-10-04",
+      "rainfall_mm": 41.7,
+      "arrival_qtl": 8631.9,
+      "avg_temp": 21.5
+    },
+    {
+      "date": "2026-10-05",
+      "rainfall_mm": 93.6,
+      "arrival_qtl": 5625.9,
+      "avg_temp": 25.1
+    },
+    {
+      "date": "2026-10-06",
+      "rainfall_mm": 70.3,
+      "arrival_qtl": 9020.4,
+      "avg_temp": 34.2
+    },
+    {
+      "date": "2026-10-07",
+      "rainfall_mm": -8.1,
+      "arrival_qtl": 5739.8,
+      "avg_temp": 25.6
+    },
+    {
+      "date": "2026-10-08",
+      "rainfall_mm": -48.4,
+      "arrival_qtl": 7428.0,
+      "avg_temp": 25.1
+    },
+    {
+      "date": "2026-11-02",
+      "rainfall_mm": 57.8,
+      "arrival_qtl": 6550.8,
+      "avg_temp": 25.1
+    },
+    {
+      "date": "2026-11-03",
+      "rainfall_mm": 85.3,
+      "arrival_qtl": 6747.4,
+      "avg_temp": 28.4
+    },
+    {
+      "date": "2026-11-04",
+      "rainfall_mm": -18.7,
+      "arrival_qtl": 6349.5,
+      "avg_temp": 38.6
+    },
+    {
+      "date": "2026-11-05",
+      "rainfall_mm": 31.8,
+      "arrival_qtl": 9275.4,
+      "avg_temp": 28.2
+    },
+    {
+      "date": "2026-11-06",
+      "rainfall_mm": 82.0,
+      "arrival_qtl": 7982.4,
+      "avg_temp": 35.5
+    },
+    {
+      "date": "2026-11-07",
+      "rainfall_mm": 43.8,
+      "arrival_qtl": 11784.2,
+      "avg_temp": 29.6
+    },
+    {
+      "date": "2026-11-08",
+      "rainfall_mm": 23.4,
+      "arrival_qtl": 6806.3,
+      "avg_temp": 23.7
+    },
+    {
+      "date": "2026-12-02",
+      "rainfall_mm": 163.5,
+      "arrival_qtl": 9545.0,
+      "avg_temp": 29.2
+    },
+    {
+      "date": "2026-12-03",
+      "rainfall_mm": 166.2,
+      "arrival_qtl": 10617.1,
+      "avg_temp": 30.9
+    },
+    {
+      "date": "2026-12-04",
+      "rainfall_mm": 45.5,
+      "arrival_qtl": 8187.7,
+      "avg_temp": 38.1
+    },
+    {
+      "date": "2026-12-06",
+      "rainfall_mm": 65.2,
+      "arrival_qtl": 8692.3,
+      "avg_temp": 23.6
+    },
+    {
+      "date": "2026-12-08",
+      "rainfall_mm": 67.5,
+      "arrival_qtl": 8157.3,
+      "avg_temp": 31.7
+    }
+  ],
+  "mandis": [
+    {
+      "mandi_id": "MANDI001",
+      "mandi_name": "Hyderabad Mandi",
+      "district": "Ludhiana",
+      "state": "Punjab",
+      "lat": 30.901,
+      "lng": 75.8573
+    },
+    {
+      "mandi_id": "MANDI006",
+      "mandi_name": "Kochi Mandi",
+      "district": "Amritsar",
+      "state": "Punjab",
+      "lat": 31.634,
+      "lng": 74.8723
+    },
+    {
+      "mandi_id": "MANDI037",
+      "mandi_name": "Jorhat Grain Market",
+      "district": "Kurukshetra",
+      "state": "Haryana",
+      "lat": 29.9695,
+      "lng": 76.8783
+    },
+    {
+      "mandi_id": "MANDI046",
+      "mandi_name": "Baranagar Market",
+      "district": "Muzaffarnagar",
+      "state": "Uttar Pradesh",
+      "lat": 29.4727,
+      "lng": 77.7085
+    },
+    {
+      "mandi_id": "MANDI014",
+      "mandi_name": "Bathinda Grain Market",
+      "district": "Patiala",
+      "state": "Punjab",
+      "lat": 30.3398,
+      "lng": 76.3869
+    },
+    {
+      "mandi_id": "MANDI055",
+      "mandi_name": "Chandigarh APMC",
+      "district": "Bareilly",
+      "state": "Uttar Pradesh",
+      "lat": 28.367,
+      "lng": 79.4304
+    },
+    {
+      "mandi_id": "MANDI034",
+      "mandi_name": "Ludhiana Grain Market",
+      "district": "Ambala",
+      "state": "Haryana",
+      "lat": 30.3782,
+      "lng": 76.7767
+    },
+    {
+      "mandi_id": "MANDI049",
+      "mandi_name": "Machilipatnam Mandi",
+      "district": "Muzaffarnagar",
+      "state": "Uttar Pradesh",
+      "lat": 29.4727,
+      "lng": 77.7085
+    },
+    {
+      "mandi_id": "MANDI013",
+      "mandi_name": "Aurangabad Market",
+      "district": "Patiala",
+      "state": "Punjab",
+      "lat": 30.3398,
+      "lng": 76.3869
+    },
+    {
+      "mandi_id": "MANDI047",
+      "mandi_name": "Orai Market",
+      "district": "Muzaffarnagar",
+      "state": "Uttar Pradesh",
+      "lat": 29.4727,
+      "lng": 77.7085
+    },
+    {
+      "mandi_id": "MANDI051",
+      "mandi_name": "Gulbarga Market",
+      "district": "Saharanpur",
+      "state": "Uttar Pradesh",
+      "lat": 29.964,
+      "lng": 77.546
+    },
+    {
+      "mandi_id": "MANDI032",
+      "mandi_name": "Chapra Grain Market",
+      "district": "Ambala",
+      "state": "Haryana",
+      "lat": 30.3782,
+      "lng": 76.7767
+    },
+    {
+      "mandi_id": "MANDI004",
+      "mandi_name": "Khandwa Grain Market",
+      "district": "Ludhiana",
+      "state": "Punjab",
+      "lat": 30.901,
+      "lng": 75.8573
+    },
+    {
+      "mandi_id": "MANDI053",
+      "mandi_name": "Panihati Market",
+      "district": "Saharanpur",
+      "state": "Uttar Pradesh",
+      "lat": 29.964,
+      "lng": 77.546
+    },
+    {
+      "mandi_id": "MANDI018",
+      "mandi_name": "Jaunpur Mandi",
+      "district": "Moga",
+      "state": "Punjab",
+      "lat": 30.8165,
+      "lng": 75.1717
+    },
+    {
+      "mandi_id": "MANDI009",
+      "mandi_name": "Jamshedpur APMC",
+      "district": "Jalandhar",
+      "state": "Punjab",
+      "lat": 31.326,
+      "lng": 75.5762
+    },
+    {
+      "mandi_id": "MANDI007",
+      "mandi_name": "Nashik Mandi",
+      "district": "Amritsar",
+      "state": "Punjab",
+      "lat": 31.634,
+      "lng": 74.8723
+    },
+    {
+      "mandi_id": "MANDI041",
+      "mandi_name": "Gurgaon Grain Market",
+      "district": "Fatehabad",
+      "state": "Haryana",
+      "lat": 29.514,
+      "lng": 75.454
+    },
+    {
+      "mandi_id": "MANDI005",
+      "mandi_name": "Bhilwara Grain Market",
+      "district": "Amritsar",
+      "state": "Punjab",
+      "lat": 31.634,
+      "lng": 74.8723
+    },
+    {
+      "mandi_id": "MANDI044",
+      "mandi_name": "Dehri Mandi",
+      "district": "Agra",
+      "state": "Uttar Pradesh",
+      "lat": 27.1767,
+      "lng": 78.0081
+    },
+    {
+      "mandi_id": "MANDI020",
+      "mandi_name": "Kadapa Mandi",
+      "district": "Ferozepur",
+      "state": "Punjab",
+      "lat": 30.9237,
+      "lng": 74.6122
+    },
+    {
+      "mandi_id": "MANDI035",
+      "mandi_name": "Guntakal Mandi",
+      "district": "Ambala",
+      "state": "Haryana",
+      "lat": 30.3782,
+      "lng": 76.7767
+    },
+    {
+      "mandi_id": "MANDI026",
+      "mandi_name": "Tadipatri Mandi",
+      "district": "Hisar",
+      "state": "Haryana",
+      "lat": 29.1492,
+      "lng": 75.7217
+    },
+    {
+      "mandi_id": "MANDI057",
+      "mandi_name": "Gorakhpur APMC",
+      "district": "Bareilly",
+      "state": "Uttar Pradesh",
+      "lat": 28.367,
+      "lng": 79.4304
+    },
+    {
+      "mandi_id": "MANDI016",
+      "mandi_name": "Kulti APMC",
+      "district": "Bathinda",
+      "state": "Punjab",
+      "lat": 30.211,
+      "lng": 74.9455
+    },
+    {
+      "mandi_id": "MANDI028",
+      "mandi_name": "Machilipatnam APMC",
+      "district": "Hisar",
+      "state": "Haryana",
+      "lat": 29.1492,
+      "lng": 75.7217
+    },
+    {
+      "mandi_id": "MANDI010",
+      "mandi_name": "Dhule APMC",
+      "district": "Jalandhar",
+      "state": "Punjab",
+      "lat": 31.326,
+      "lng": 75.5762
+    },
+    {
+      "mandi_id": "MANDI031",
+      "mandi_name": "Nangloi Jat Mandi",
+      "district": "Sirsa",
+      "state": "Haryana",
+      "lat": 29.5349,
+      "lng": 75.0298
+    },
+    {
+      "mandi_id": "MANDI027",
+      "mandi_name": "Kochi APMC",
+      "district": "Hisar",
+      "state": "Haryana",
+      "lat": 29.1492,
+      "lng": 75.7217
+    },
+    {
+      "mandi_id": "MANDI017",
+      "mandi_name": "Parbhani Market",
+      "district": "Patiala",
+      "state": "Punjab",
+      "lat": 30.3398,
+      "lng": 76.3869
+    },
+    {
+      "mandi_id": "MANDI025",
+      "mandi_name": "Dindigul APMC",
+      "district": "Karnal",
+      "state": "Haryana",
+      "lat": 29.6857,
+      "lng": 76.9905
+    },
+    {
+      "mandi_id": "MANDI056",
+      "mandi_name": "Bilaspur Mandi",
+      "district": "Bareilly",
+      "state": "Uttar Pradesh",
+      "lat": 28.367,
+      "lng": 79.4304
+    },
+    {
+      "mandi_id": "MANDI012",
+      "mandi_name": "Gaya Grain Market",
+      "district": "Patiala",
+      "state": "Punjab",
+      "lat": 30.3398,
+      "lng": 76.3869
+    },
+    {
+      "mandi_id": "MANDI033",
+      "mandi_name": "South Dumdum Grain Market",
+      "district": "Ambala",
+      "state": "Haryana",
+      "lat": 30.3782,
+      "lng": 76.7767
+    },
+    {
+      "mandi_id": "MANDI054",
+      "mandi_name": "Nangloi Jat Grain Market",
+      "district": "Saharanpur",
+      "state": "Uttar Pradesh",
+      "lat": 29.964,
+      "lng": 77.546
+    },
+    {
+      "mandi_id": "MANDI042",
+      "mandi_name": "Erode Mandi",
+      "district": "Fatehabad",
+      "state": "Haryana",
+      "lat": 29.514,
+      "lng": 75.454
+    },
+    {
+      "mandi_id": "MANDI038",
+      "mandi_name": "Jalandhar Mandi",
+      "district": "Kurukshetra",
+      "state": "Haryana",
+      "lat": 29.9695,
+      "lng": 76.8783
+    },
+    {
+      "mandi_id": "MANDI030",
+      "mandi_name": "Patiala APMC",
+      "district": "Sirsa",
+      "state": "Haryana",
+      "lat": 29.5349,
+      "lng": 75.0298
+    },
+    {
+      "mandi_id": "MANDI045",
+      "mandi_name": "Farrukhabad Mandi",
+      "district": "Meerut",
+      "state": "Uttar Pradesh",
+      "lat": 28.9845,
+      "lng": 77.7064
+    },
+    {
+      "mandi_id": "MANDI002",
+      "mandi_name": "Solapur Mandi",
+      "district": "Ludhiana",
+      "state": "Punjab",
+      "lat": 30.901,
+      "lng": 75.8573
+    },
+    {
+      "mandi_id": "MANDI022",
+      "mandi_name": "Eluru APMC",
+      "district": "Karnal",
+      "state": "Haryana",
+      "lat": 29.6857,
+      "lng": 76.9905
+    },
+    {
+      "mandi_id": "MANDI003",
+      "mandi_name": "Vijayawada Mandi",
+      "district": "Ludhiana",
+      "state": "Punjab",
+      "lat": 30.901,
+      "lng": 75.8573
+    },
+    {
+      "mandi_id": "MANDI048",
+      "mandi_name": "Chittoor Mandi",
+      "district": "Muzaffarnagar",
+      "state": "Uttar Pradesh",
+      "lat": 29.4727,
+      "lng": 77.7085
+    },
+    {
+      "mandi_id": "MANDI040",
+      "mandi_name": "Jodhpur Market",
+      "district": "Fatehabad",
+      "state": "Haryana",
+      "lat": 29.514,
+      "lng": 75.454
+    },
+    {
+      "mandi_id": "MANDI036",
+      "mandi_name": "Mysore Grain Market",
+      "district": "Kurukshetra",
+      "state": "Haryana",
+      "lat": 29.9695,
+      "lng": 76.8783
+    },
+    {
+      "mandi_id": "MANDI024",
+      "mandi_name": "Jaipur Mandi",
+      "district": "Karnal",
+      "state": "Haryana",
+      "lat": 29.6857,
+      "lng": 76.9905
+    },
+    {
+      "mandi_id": "MANDI050",
+      "mandi_name": "Durg Market",
+      "district": "Muzaffarnagar",
+      "state": "Uttar Pradesh",
+      "lat": 29.4727,
+      "lng": 77.7085
+    },
+    {
+      "mandi_id": "MANDI011",
+      "mandi_name": "Arrah Mandi",
+      "district": "Patiala",
+      "state": "Punjab",
+      "lat": 30.3398,
+      "lng": 76.3869
+    },
+    {
+      "mandi_id": "MANDI023",
+      "mandi_name": "Panihati APMC",
+      "district": "Karnal",
+      "state": "Haryana",
+      "lat": 29.6857,
+      "lng": 76.9905
+    },
+    {
+      "mandi_id": "MANDI019",
+      "mandi_name": "Karimnagar Grain Market",
+      "district": "Moga",
+      "state": "Punjab",
+      "lat": 30.8165,
+      "lng": 75.1717
+    },
+    {
+      "mandi_id": "MANDI021",
+      "mandi_name": "Guna Mandi",
+      "district": "Ferozepur",
+      "state": "Punjab",
+      "lat": 30.9237,
+      "lng": 74.6122
+    },
+    {
+      "mandi_id": "MANDI008",
+      "mandi_name": "Bijapur Market",
+      "district": "Amritsar",
+      "state": "Punjab",
+      "lat": 31.634,
+      "lng": 74.8723
+    },
+    {
+      "mandi_id": "MANDI043",
+      "mandi_name": "Danapur Mandi",
+      "district": "Agra",
+      "state": "Uttar Pradesh",
+      "lat": 27.1767,
+      "lng": 78.0081
+    },
+    {
+      "mandi_id": "MANDI015",
+      "mandi_name": "Amravati Grain Market",
+      "district": "Bathinda",
+      "state": "Punjab",
+      "lat": 30.211,
+      "lng": 74.9455
+    },
+    {
+      "mandi_id": "MANDI029",
+      "mandi_name": "Asansol Grain Market",
+      "district": "Sirsa",
+      "state": "Haryana",
+      "lat": 29.5349,
+      "lng": 75.0298
+    },
+    {
+      "mandi_id": "MANDI052",
+      "mandi_name": "Kakinada APMC",
+      "district": "Saharanpur",
+      "state": "Uttar Pradesh",
+      "lat": 29.964,
+      "lng": 77.546
+    },
+    {
+      "mandi_id": "MANDI039",
+      "mandi_name": "Anand Grain Market",
+      "district": "Kurukshetra",
+      "state": "Haryana",
+      "lat": 29.9695,
+      "lng": 76.8783
+    }
+  ],
+  "districts": [
+    "Agra",
+    "Ambala",
+    "Amritsar",
+    "Bareilly",
+    "Bathinda",
+    "Fatehabad",
+    "Ferozepur",
+    "Hisar",
+    "Jalandhar",
+    "Karnal",
+    "Kurukshetra",
+    "Ludhiana",
+    "Meerut",
+    "Moga",
+    "Muzaffarnagar",
+    "Patiala",
+    "Saharanpur",
+    "Sirsa"
+  ],
+  "states": [
+    "Haryana",
+    "Punjab",
+    "Uttar Pradesh"
+  ]
+}
