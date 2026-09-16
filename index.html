@@ -49,6 +49,10 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/><line x1="8" x2="8" y1="19" y2="22"/><line x1="12" x2="12" y1="19" y2="22"/><line x1="16" x2="16" y1="19" y2="22"/></svg>
           Weather
         </button>
+        <button class="tab-btn" data-tab="recommendations">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          ML Recommendations
+        </button>
         <button class="tab-btn agent-btn" data-tab="agent">
           <span class="pulse-dot"></span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 3.36 2.08 6.23 5 7.42V20a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2.58c2.92-1.19 5-4.06 5-7.42a8 8 0 0 0-8-8z"/><path d="M9 13h6"/></svg>
@@ -115,6 +119,11 @@
       <div class="filter-actions">
         <button id="btnApplyFilters" class="btn btn-primary">Apply Filters</button>
         <button id="btnResetFilters" class="btn btn-outline">Reset</button>
+      </div>
+
+      <div class="filter-status-indicator" id="filterStatusIndicator">
+        <span class="pulse-dot"></span>
+        <span id="filterStatusText">Showing all 25,750 arrivals</span>
       </div>
     </section>
 
@@ -239,9 +248,14 @@
         </div>
 
         <div class="card glass mt-4">
-          <div class="card-header">
-            <h3>Mandi Master Directory & Arrival Leaderboard</h3>
-            <span class="sub-text">Standardized Mandi IDs (MANDI001 - MANDI057)</span>
+          <div class="card-header flex-between">
+            <div>
+              <h3>Mandi Master Directory & Arrival Leaderboard</h3>
+              <span class="sub-text">Standardized Mandi IDs (MANDI001 - MANDI057)</span>
+            </div>
+            <div class="table-search-box">
+              <input type="text" id="searchMandisInput" placeholder="🔍 Search mandi, district..." class="table-search-input">
+            </div>
           </div>
           <div class="table-responsive">
             <table class="data-table" id="tableTopMandis">
@@ -291,9 +305,14 @@
         </div>
 
         <div class="card glass mt-4">
-          <div class="card-header">
-            <h3>🚨 High Distress Mandis Radar (Prices Under MSP)</h3>
-            <span class="sub-text">Immediate procurement intervention recommended</span>
+          <div class="card-header flex-between">
+            <div>
+              <h3>🚨 High Distress Mandis Radar (Prices Under MSP)</h3>
+              <span class="sub-text">Immediate procurement intervention recommended</span>
+            </div>
+            <div class="table-search-box">
+              <input type="text" id="searchCrashesInput" placeholder="🔍 Search mandi, crop..." class="table-search-input">
+            </div>
           </div>
           <div class="table-responsive">
             <table class="data-table" id="tablePriceCrashes">
@@ -345,9 +364,14 @@
         </div>
 
         <div class="card glass mt-4">
-          <div class="card-header">
-            <h3>Highest Delay Frequency Transport Routes</h3>
-            <span class="sub-text">Mandi-to-Warehouse bottlenecks requiring route optimization</span>
+          <div class="card-header flex-between">
+            <div>
+              <h3>Highest Delay Frequency Transport Routes</h3>
+              <span class="sub-text">Mandi-to-Warehouse bottlenecks requiring route optimization</span>
+            </div>
+            <div class="table-search-box">
+              <input type="text" id="searchRoutesInput" placeholder="🔍 Search route, warehouse..." class="table-search-input">
+            </div>
           </div>
           <div class="table-responsive">
             <table class="data-table" id="tableRouteDelays">
@@ -393,6 +417,116 @@
             <div class="chart-box">
               <canvas id="chartDistrictRain"></canvas>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           TAB 6: ML MARKET RECOMMENDATIONS & ARBITRAGE
+           =================================================================== -->
+      <section id="view-recommendations" class="view-panel">
+        <div class="agent-hero glass" style="margin-bottom: 24px;">
+          <div class="agent-avatar">🎯</div>
+          <div class="agent-hero-text">
+            <h2>ML Mandi Price Prediction & Market Recommendations</h2>
+            <p>Trained XGBoost / Regression model analyzing historical mandi clearing prices, arrival volumes, and weather conditions across 57 Mandis to identify highest price-realization markets.</p>
+          </div>
+        </div>
+
+        <!-- Top Opportunity Highlight Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card glass glow-emerald">
+            <div class="kpi-header">
+              <span class="kpi-title">Top Recommended Market</span>
+              <span class="kpi-icon emerald">🏆</span>
+            </div>
+            <div class="kpi-value" id="recTopMandiName">Asansol Market</div>
+            <div class="kpi-sub">Predicted: <strong id="recTopMandiPrice" class="text-emerald">₹2,234.58/Qtl</strong> · Rank #1</div>
+          </div>
+
+          <div class="kpi-card glass glow-amber">
+            <div class="kpi-header">
+              <span class="kpi-title">Model Coverage</span>
+              <span class="kpi-icon amber">🌾</span>
+            </div>
+            <div class="kpi-value">57 Mandis</div>
+            <div class="kpi-sub">Ranked across Punjab, Haryana & UP</div>
+          </div>
+
+          <div class="kpi-card glass glow-cyan">
+            <div class="kpi-header">
+              <span class="kpi-title">Analyzed Records</span>
+              <span class="kpi-icon cyan">📊</span>
+            </div>
+            <div class="kpi-value" id="recTotalRecords">3,704 Logs</div>
+            <div class="kpi-sub">Multi-season weather & price dataset</div>
+          </div>
+
+          <div class="kpi-card glass glow-purple">
+            <div class="kpi-header">
+              <span class="kpi-title">Model Status</span>
+              <span class="kpi-icon purple">⚡</span>
+            </div>
+            <div class="kpi-value">Online</div>
+            <div class="kpi-sub">Real-time inference & ranking</div>
+          </div>
+        </div>
+
+        <!-- Model Deep-Dive Analytics Split -->
+        <div class="grid-2-col mt-4">
+          <div class="card glass">
+            <div class="card-header">
+              <h3>Model Commodity Price Spread (Min · Avg · Max)</h3>
+              <span class="sub-text">Calculated from price analysis model dataset</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chartModelPrices"></canvas>
+            </div>
+          </div>
+
+          <div class="card glass">
+            <div class="card-header">
+              <h3>Farmer Participation by Crop</h3>
+              <span class="sub-text">Total registered farmers in analyzed arrivals</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chartModelFarmers"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recommendations Table -->
+        <div class="card glass mt-4">
+          <div class="card-header flex-between">
+            <div>
+              <h3>Top Market Recommendations & Dispatch Priority</h3>
+              <span class="sub-text">Ranked by ML predicted price realization (₹/Quintal)</span>
+            </div>
+            <div class="table-search-box">
+              <input type="text" id="searchRecsInput" placeholder="🔍 Search recommended mandi, district..." class="table-search-input">
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table" id="tableRecommendations">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Mandi ID</th>
+                  <th>Mandi Name</th>
+                  <th>District</th>
+                  <th>State</th>
+                  <th>Type</th>
+                  <th>Predicted Price (₹/Qtl)</th>
+                  <th>Benchmark Price (₹/Qtl)</th>
+                  <th>Price Spread</th>
+                  <th>Recommended Strategy</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
           </div>
         </div>
       </section>

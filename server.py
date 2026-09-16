@@ -46,6 +46,37 @@ df_p = pd.read_csv(os.path.join(DATA_DIR, 'clean_price_and_msp.csv'))
 df_t = pd.read_csv(os.path.join(DATA_DIR, 'clean_transport_logistics.csv'))
 df_w = pd.read_csv(os.path.join(DATA_DIR, 'clean_weather_sensors.csv'))
 
+df_t['date_str'] = pd.to_datetime(df_t['dep_dt'], errors='coerce').dt.strftime('%Y-%m-%d')
+
+CANONICAL_MSP = {
+    'Wheat': 2275.0,
+    'Rice': 2183.0,
+    'Cotton': 6620.0,
+    'Mustard': 5650.0,
+    'Maize': 2090.0,
+    'Sugarcane': 3500.0
+}
+
+# Pre-calculate enriched recommendations
+wheat_avg_mandi = df_p[df_p['crop_name'] == 'Wheat'].groupby('mandi_id')['modal_price'].mean().to_dict()
+my_recommendations_enriched = my_recommendations.merge(
+    df_m[['mandi_id', 'mandi_name', 'district', 'state', 'mandi_type', 'total_area_acres']],
+    on='mandi_id',
+    how='left'
+)
+my_recommendations_enriched['current_wheat_price'] = my_recommendations_enriched['mandi_id'].map(wheat_avg_mandi).fillna(2310.0).round(2)
+my_recommendations_enriched['price_spread'] = (my_recommendations_enriched['current_wheat_price'] - my_recommendations_enriched['predicted_price']).round(2)
+
+def calc_strategy(row):
+    if row['rank'] <= 5:
+        return 'Top Procurement Hub · High Liquidity'
+    elif row['current_wheat_price'] > row['predicted_price']:
+        return 'Premium Realization · Dispatch Priority'
+    else:
+        return 'Fair Market Value · Maintain Buffer'
+
+my_recommendations_enriched['strategy'] = my_recommendations_enriched.apply(calc_strategy, axis=1)
+
 with open(os.path.join(DATA_DIR, 'dashboard_data.json'), 'r', encoding='utf-8') as f:
     dashboard_data_cache = json.load(f)
 
@@ -73,80 +104,50 @@ class AgriTechHandler(SimpleHTTPRequestHandler):
             return
         elif parsed.path == '/api/my-master':
             self.send_response(200)
-            self.send_header(
-            'Content-Type',
-            'application/json; charset=utf-8'
-            )
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
             self.end_headers()
-
-            data = my_master.where(
-            pd.notnull(my_master),
-            None
-            ).to_dict(orient='records')
-
-            self.wfile.write(
-            json.dumps(
-            data,
-            ensure_ascii=False
-            ).encode('utf-8')
-            )
+            data = my_master.where(pd.notnull(my_master), None).to_dict(orient='records')
+            self.wfile.write(json.dumps(data, ensure_ascii=False).encode('utf-8'))
             return
-        
         elif parsed.path == '/api/my-arrival-analysis':
             self.send_response(200)
             self.send_header('Content-Type', 'application/json; charset=utf-8')
             self.end_headers()
-
-            data = my_arrival_analysis.where(
-            pd.notnull(my_arrival_analysis),
-            None
-            ).to_dict(orient='records')
-
-            self.wfile.write(
-            json.dumps(data, ensure_ascii=False).encode('utf-8')
-            )
+            data = my_arrival_analysis.where(pd.notnull(my_arrival_analysis), None).to_dict(orient='records')
+            self.wfile.write(json.dumps(data, ensure_ascii=False).encode('utf-8'))
             return
-
-
         elif parsed.path == '/api/my-price-analysis':
             self.send_response(200)
             self.send_header('Content-Type', 'application/json; charset=utf-8')
             self.end_headers()
-
-            data = my_price_analysis.where(
-            pd.notnull(my_price_analysis),
-            None
-            ).to_dict(orient='records')
-
-            self.wfile.write(
-            json.dumps(data, ensure_ascii=False).encode('utf-8')
-            )
+            data = my_price_analysis.where(pd.notnull(my_price_analysis), None).to_dict(orient='records')
+            self.wfile.write(json.dumps(data, ensure_ascii=False).encode('utf-8'))
             return
-
-
-        elif parsed.path == '/api/my-recommendations':
+        elif parsed.path == '/api/my-recommendations' or parsed.path.startswith('/api/recommendations'):
+            params = urllib.parse.parse_qs(parsed.query)
+            state_q = params.get('state', [None])[0]
+            dist_q = params.get('district', [None])[0]
+            recs_df = my_recommendations_enriched
+            if state_q and state_q != 'All':
+                recs_df = recs_df[recs_df['state'] == state_q]
+            if dist_q and dist_q != 'All':
+                recs_df = recs_df[recs_df['district'] == dist_q]
+            res_data = {
+                'recommendations': recs_df.where(pd.notnull(recs_df), None).to_dict(orient='records'),
+                'crop_arrivals': my_arrival_analysis.where(pd.notnull(my_arrival_analysis), None).to_dict(orient='records'),
+                'crop_prices': my_price_analysis.where(pd.notnull(my_price_analysis), None).to_dict(orient='records')
+            }
             self.send_response(200)
             self.send_header('Content-Type', 'application/json; charset=utf-8')
             self.end_headers()
-
-            data = my_recommendations.where(
-            pd.notnull(my_recommendations),
-            None
-            ).to_dict(orient='records')
-
-            self.wfile.write(
-            json.dumps(data, ensure_ascii=False).encode('utf-8')
-            )
+            self.wfile.write(json.dumps(res_data, ensure_ascii=False).encode('utf-8'))
             return
-        
         elif parsed.path == '/api/health':
             self.send_response(200)
             self.send_header('Content-Type', 'application/json')
             self.end_headers()
             self.wfile.write(b'{"status":"ok","app":"AgriTech TransOrg Datathon Optimizer"}')
             return
-        
-        # Default file serving
         return super().do_GET()
 
     def do_POST(self):
@@ -164,6 +165,25 @@ class AgriTechHandler(SimpleHTTPRequestHandler):
             self.send_header('Content-Type', 'application/json; charset=utf-8')
             self.end_headers()
             self.wfile.write(json.dumps(resp, ensure_ascii=False).encode('utf-8'))
+            return
+
+        elif parsed.path == '/api/recommendations':
+            state_q = req_data.get('state')
+            dist_q = req_data.get('district')
+            recs_df = my_recommendations_enriched
+            if state_q and state_q != 'All':
+                recs_df = recs_df[recs_df['state'] == state_q]
+            if dist_q and dist_q != 'All':
+                recs_df = recs_df[recs_df['district'] == dist_q]
+            res_data = {
+                'recommendations': recs_df.where(pd.notnull(recs_df), None).to_dict(orient='records'),
+                'crop_arrivals': my_arrival_analysis.where(pd.notnull(my_arrival_analysis), None).to_dict(orient='records'),
+                'crop_prices': my_price_analysis.where(pd.notnull(my_price_analysis), None).to_dict(orient='records')
+            }
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps(res_data, ensure_ascii=False).encode('utf-8'))
             return
 
         elif parsed.path == '/api/agent/query':
@@ -187,34 +207,231 @@ class AgriTechHandler(SimpleHTTPRequestHandler):
 
         a_sub = df_a
         p_sub = df_p
+        t_sub = df_t
+        w_sub = df_w
+        m_sub = df_m
+
+        if state and state != 'All':
+            a_sub = a_sub[a_sub['state'] == state]
+            p_sub = p_sub[p_sub['state'] == state]
+            t_sub = t_sub[t_sub['state'] == state]
+            w_sub = w_sub[w_sub['state'] == state]
+            m_sub = m_sub[m_sub['state'] == state]
+
+        if district and district != 'All':
+            a_sub = a_sub[a_sub['district'] == district]
+            p_sub = p_sub[p_sub['district'] == district]
+            t_sub = t_sub[t_sub['district'] == district]
+            w_sub = w_sub[w_sub['district'] == district]
+            m_sub = m_sub[m_sub['district'] == district]
+
+        if mandi_id and mandi_id != 'All':
+            a_sub = a_sub[a_sub['mandi_id'] == mandi_id]
+            p_sub = p_sub[p_sub['mandi_id'] == mandi_id]
+            t_sub = t_sub[t_sub['mandi_id'] == mandi_id]
+            w_sub = w_sub[w_sub['mandi_id'] == mandi_id]
+            m_sub = m_sub[m_sub['mandi_id'] == mandi_id]
 
         if crop and crop != 'All':
             a_sub = a_sub[a_sub['crop_name'] == crop]
             p_sub = p_sub[p_sub['crop_name'] == crop]
-        if state and state != 'All':
-            a_sub = a_sub[a_sub['state'] == state]
-            p_sub = p_sub[p_sub['state'] == state]
-        if district and district != 'All':
-            a_sub = a_sub[a_sub['district'] == district]
-            p_sub = p_sub[p_sub['district'] == district]
-        if mandi_id and mandi_id != 'All':
-            a_sub = a_sub[a_sub['mandi_id'] == mandi_id]
-            p_sub = p_sub[p_sub['mandi_id'] == mandi_id]
+            m_ids = a_sub['mandi_id'].unique()
+            if len(m_ids) > 0:
+                t_sub = t_sub[t_sub['mandi_id'].isin(m_ids)]
+                w_sub = w_sub[w_sub['mandi_id'].isin(m_ids)]
+
         if start_date:
             a_sub = a_sub[a_sub['date_str'] >= start_date]
             p_sub = p_sub[p_sub['date_str'] >= start_date]
+            t_sub = t_sub[t_sub['date_str'] >= start_date]
+            w_sub = w_sub[w_sub['date_str'] >= start_date]
+
         if end_date:
             a_sub = a_sub[a_sub['date_str'] <= end_date]
             p_sub = p_sub[p_sub['date_str'] <= end_date]
+            t_sub = t_sub[t_sub['date_str'] <= end_date]
+            w_sub = w_sub[w_sub['date_str'] <= end_date]
 
         tot_arr = float(a_sub['arrival_qtl'].sum()) if len(a_sub) > 0 else 0.0
         avg_modal = float(p_sub['modal_price'].mean()) if len(p_sub) > 0 else 0.0
         avg_msp = float(p_sub['msp'].mean()) if len(p_sub) > 0 else 0.0
         crashes = int(p_sub['is_price_crash'].sum()) if len(p_sub) > 0 else 0
-        crash_rate = float(p_sub['is_price_crash'].mean() * 100) if len(p_sub) > 0 else 0.0
+        crash_rate = round(float(p_sub['is_price_crash'].mean() * 100), 1) if len(p_sub) > 0 else 0.0
+        avg_transit = round(float(t_sub['transit_hours'].mean()), 1) if len(t_sub) > 0 else 0.0
+        delay_rate = round(float(t_sub['is_delayed'].mean() * 100), 1) if len(t_sub) > 0 else 0.0
+        avg_temp = round(float(w_sub['temperature_c'].mean()), 1) if len(w_sub) > 0 else 0.0
+        total_rain = round(float(w_sub['rainfall_mm'].sum()), 1) if len(w_sub) > 0 else 0.0
 
-        daily = a_sub.groupby(['date_str', 'crop_name'])['arrival_qtl'].sum().unstack(fill_value=0).reset_index()
-        daily_records = daily.sort_values('date_str').to_dict(orient='records')
+        corr_val = 0.0
+        if len(w_sub) > 0 and len(a_sub) > 0:
+            w_d = w_sub.dropna(subset=['date_str']).groupby('date_str')['rainfall_mm'].sum().reset_index()
+            a_d = a_sub.dropna(subset=['date_str']).groupby('date_str')['arrival_qtl'].sum().reset_index()
+            m_wa = pd.merge(w_d, a_d, on='date_str', how='inner')
+            if len(m_wa) > 2 and m_wa['rainfall_mm'].std() > 0 and m_wa['arrival_qtl'].std() > 0:
+                corr_val = round(float(m_wa['rainfall_mm'].corr(m_wa['arrival_qtl'])), 3)
+
+        # 1. Crops breakdown
+        all_canonical = ['Wheat', 'Rice', 'Cotton', 'Mustard', 'Maize', 'Sugarcane']
+        crops_summary = []
+        for c in all_canonical:
+            c_a = a_sub[a_sub['crop_name'] == c]
+            c_p = p_sub[p_sub['crop_name'] == c]
+            arr_qtl = float(c_a['arrival_qtl'].sum()) if len(c_a) > 0 else 0.0
+            modal = float(c_p['modal_price'].mean()) if len(c_p) > 0 else float(CANONICAL_MSP.get(c, 2200.0))
+            msp_val = float(c_p['msp'].mean()) if len(c_p) > 0 else float(CANONICAL_MSP.get(c, 2200.0))
+            crashes_c = int(c_p['is_price_crash'].sum()) if len(c_p) > 0 else 0
+            cr_rate = round(float(c_p['is_price_crash'].mean() * 100), 1) if len(c_p) > 0 else 0.0
+            share = round((arr_qtl / tot_arr * 100), 1) if tot_arr > 0 else 0.0
+            crops_summary.append({
+                'crop': c,
+                'arrival_qtl': round(arr_qtl, 1),
+                'arrival_share': share,
+                'modal_price': round(modal, 2),
+                'msp': round(msp_val, 2),
+                'price_diff': round(modal - msp_val, 2),
+                'crashes': crashes_c,
+                'crash_rate': cr_rate
+            })
+
+        # 2. Daily Trend
+        if len(a_sub) > 0:
+            daily = a_sub.groupby(['date_str', 'crop_name'])['arrival_qtl'].sum().unstack(fill_value=0).reset_index()
+            daily_records = daily.sort_values('date_str').to_dict(orient='records')
+        else:
+            daily_records = []
+
+        # 3. Top Mandis
+        if len(a_sub) > 0:
+            tm = a_sub.groupby(['mandi_id', 'mandi_name', 'district', 'state'])['arrival_qtl'].sum().reset_index()
+            tm = tm.sort_values('arrival_qtl', ascending=False).head(15)
+            top_mandis_list = [
+                {
+                    'mandi_id': r['mandi_id'],
+                    'mandi_name': r['mandi_name'],
+                    'district': r['district'],
+                    'state': r['state'],
+                    'arrival_qtl': round(float(r['arrival_qtl']), 1)
+                }
+                for _, r in tm.iterrows()
+            ]
+        else:
+            top_mandis_list = []
+
+        # 4. State Throughput
+        state_totals = {'Punjab': 0.0, 'Haryana': 0.0, 'Uttar Pradesh': 0.0}
+        if len(a_sub) > 0:
+            st_group = a_sub.groupby('state')['arrival_qtl'].sum().to_dict()
+            for s in state_totals:
+                state_totals[s] = round(float(st_group.get(s, 0.0)), 1)
+
+        # 5. Distressed Mandis (Price Crashes)
+        if len(p_sub) > 0:
+            p_crashes = p_sub[p_sub['is_price_crash'] == True]
+            if len(p_crashes) > 0:
+                cm = p_crashes.groupby(['mandi_id', 'mandi_name', 'district', 'crop_name']).agg(
+                    avg_modal=('modal_price', 'mean'),
+                    msp=('msp', 'mean'),
+                    crash_count=('is_price_crash', 'count'),
+                    avg_deficit=('price_gap_vs_msp', 'mean')
+                ).reset_index().sort_values('crash_count', ascending=False).head(15)
+                crash_mandis_list = [
+                    {
+                        'mandi_id': r['mandi_id'],
+                        'mandi_name': r['mandi_name'],
+                        'district': r['district'],
+                        'crop': r['crop_name'],
+                        'avg_modal': round(float(r['avg_modal']), 1),
+                        'msp': round(float(r['msp']), 1),
+                        'avg_deficit': round(float(r['avg_deficit']), 1),
+                        'crash_count': int(r['crash_count'])
+                    }
+                    for _, r in cm.iterrows()
+                ]
+            else:
+                crash_mandis_list = []
+        else:
+            crash_mandis_list = []
+
+        # 6. Warehouses
+        if len(t_sub) > 0:
+            wh_grp = t_sub.groupby('destination_warehouse').agg(
+                avg_transit=('transit_hours', 'mean'),
+                delay_rate=('is_delayed', lambda x: (x.mean() * 100)),
+                total_trips=('trip_id', 'count')
+            ).reset_index()
+            warehouses_list = [
+                {
+                    'warehouse': r['destination_warehouse'],
+                    'avg_transit_hours': round(float(r['avg_transit']), 1),
+                    'delay_rate': round(float(r['delay_rate']), 1),
+                    'total_trips': int(r['total_trips'])
+                }
+                for _, r in wh_grp.iterrows()
+            ]
+        else:
+            warehouses_list = []
+
+        # 7. Route Delays
+        if len(t_sub) > 0:
+            rd_grp = t_sub.groupby(['mandi_name', 'destination_warehouse']).agg(
+                total_trips=('trip_id', 'count'),
+                delay_rate=('is_delayed', lambda x: round(x.mean() * 100, 1)),
+                avg_delay=('delay_hours', 'mean'),
+                avg_transit=('transit_hours', 'mean')
+            ).reset_index().sort_values('delay_rate', ascending=False).head(15)
+            route_delays_list = [
+                {
+                    'mandi': r['mandi_name'],
+                    'warehouse': r['destination_warehouse'],
+                    'total_trips': int(r['total_trips']),
+                    'delay_rate': float(r['delay_rate']),
+                    'avg_delay_hours': round(float(r['avg_delay']), 1),
+                    'avg_transit_hours': round(float(r['avg_transit']), 1)
+                }
+                for _, r in rd_grp.iterrows()
+            ]
+        else:
+            route_delays_list = []
+
+        # 8. Weather Arrivals Correlation series
+        if len(w_sub) > 0 and len(a_sub) > 0:
+            w_d = w_sub.dropna(subset=['date_str']).groupby('date_str').agg(
+                avg_temp=('temperature_c', 'mean'),
+                total_rain=('rainfall_mm', 'sum')
+            ).reset_index()
+            a_d = a_sub.dropna(subset=['date_str']).groupby('date_str')['arrival_qtl'].sum().reset_index()
+            merged_wa = pd.merge(w_d, a_d, on='date_str', how='inner').sort_values('date_str').head(40)
+            weather_arrivals_list = [
+                {
+                    'date': r['date_str'],
+                    'rainfall_mm': round(float(r['total_rain']), 1),
+                    'arrival_qtl': round(float(r['arrival_qtl']), 1),
+                    'avg_temp': round(float(r['avg_temp']), 1)
+                }
+                for _, r in merged_wa.iterrows()
+            ]
+        else:
+            weather_arrivals_list = []
+
+        # 9. District Sensor Rainfall
+        if len(w_sub) > 0:
+            dr_grp = w_sub.groupby('district')['rainfall_mm'].sum().reset_index().sort_values('rainfall_mm', ascending=False)
+            district_rain_list = [
+                {
+                    'district': r['district'],
+                    'rainfall_mm': round(float(r['rainfall_mm']), 1)
+                }
+                for _, r in dr_grp.iterrows()
+            ]
+        else:
+            district_rain_list = []
+
+        # 10. Cascading dropdown options
+        avail_districts = sorted(list(m_sub['district'].dropna().unique()))
+        avail_mandis = [
+            {'mandi_id': r['mandi_id'], 'mandi_name': r['mandi_name'], 'district': r['district'], 'state': r['state']}
+            for _, r in m_sub.sort_values('mandi_name').iterrows()
+        ]
 
         return {
             'filtered_kpis': {
@@ -222,9 +439,24 @@ class AgriTechHandler(SimpleHTTPRequestHandler):
                 'avg_modal_price': round(avg_modal, 2),
                 'avg_msp': round(avg_msp, 2),
                 'price_crash_count': crashes,
-                'price_crash_rate': round(crash_rate, 1)
+                'price_crash_rate': round(crash_rate, 1),
+                'avg_transit_hours': round(avg_transit, 1),
+                'transit_delay_rate': round(delay_rate, 1),
+                'avg_temp_c': round(avg_temp, 1),
+                'total_rainfall_mm': round(total_rain, 1),
+                'rain_arrival_corr': round(corr_val, 3)
             },
+            'crops': crops_summary,
+            'top_mandis': top_mandis_list,
+            'state_throughput': state_totals,
             'daily_trend': daily_records,
+            'crash_mandis': crash_mandis_list,
+            'warehouses': warehouses_list,
+            'route_delays': route_delays_list,
+            'weather_arrivals': weather_arrivals_list,
+            'district_rain': district_rain_list,
+            'available_districts': avail_districts,
+            'available_mandis': avail_mandis,
             'match_count': len(a_sub)
         }
 

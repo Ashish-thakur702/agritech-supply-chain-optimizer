@@ -245,3 +245,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Presentations (Exclude PPT files)
+*.pptx
+*.ppt

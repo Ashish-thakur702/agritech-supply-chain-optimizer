@@ -1,9 +1,11 @@
 /* ==============================================================================
    AGRITECH SUPPLY CHAIN OPTIMIZER - FRONTEND APPLICATION CONTROLLER
-   TransOrg AgentIQ Datathon Track 3 Engine
+   TransOrg AgentIQ Datathon Track 3 Engine · Fully Reactive Multi-Page Filter
    ============================================================================== */
 
 let globalData = null;
+let currentData = null;
+let recommendationsData = null;
 let charts = {};
 let agentChartInstance = null;
 
@@ -23,8 +25,10 @@ Chart.defaults.plugins.legend.labels.boxHeight = 8;
 document.addEventListener('DOMContentLoaded', () => {
   setupTabNavigation();
   setupFilterHandlers();
+  setupTableSearchHandlers();
   setupAgentHandlers();
   loadInitialData();
+  loadRecommendationsData();
 });
 
 // ==============================================================================
@@ -35,14 +39,27 @@ async function loadInitialData() {
     const res = await fetch('/api/data');
     if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
     globalData = await res.json();
+    currentData = globalData;
 
     populateFilterDropdowns();
     renderKpiCards(globalData.kpis);
     renderCropCommodityCards(globalData.crops);
     renderAllCharts();
     renderTables();
+    updateFilterStatusBadge(globalData.kpis.total_arrivals_qtl, 25750);
   } catch (err) {
     console.error('Error fetching dashboard data:', err);
+  }
+}
+
+async function loadRecommendationsData() {
+  try {
+    const res = await fetch('/api/recommendations');
+    if (!res.ok) return;
+    recommendationsData = await res.json();
+    renderRecommendationsView(recommendationsData);
+  } catch (err) {
+    console.error('Error loading recommendations:', err);
   }
 }
 
@@ -69,7 +86,13 @@ function switchTab(targetTab) {
   });
 
   // Trigger resize on charts in active view so they render crisply
-  window.dispatchEvent(new Event('resize'));
+  setTimeout(() => {
+    window.dispatchEvent(new Event('resize'));
+    Object.values(charts).forEach(ch => {
+      if (ch && typeof ch.resize === 'function') ch.resize();
+    });
+    if (agentChartInstance) agentChartInstance.resize();
+  }, 50);
 }
 
 // ==============================================================================
@@ -77,14 +100,26 @@ function switchTab(targetTab) {
 // ==============================================================================
 function renderKpiCards(kpis) {
   if (!kpis) return;
-  document.getElementById('kpiTotalArrivals').textContent = Math.round(kpis.total_arrivals_qtl).toLocaleString();
-  document.getElementById('kpiAvgModalPrice').textContent = `₹${kpis.avg_modal_price.toFixed(2)}`;
-  document.getElementById('kpiAvgMsp').textContent = `₹${kpis.avg_msp.toFixed(2)}`;
-  document.getElementById('kpiPriceCrashCount').textContent = kpis.price_crash_count.toLocaleString();
-  document.getElementById('kpiPriceCrashRate').textContent = `${kpis.price_crash_rate}%`;
-  document.getElementById('kpiAvgTransitHours').textContent = `${kpis.avg_transit_hours} hrs`;
-  document.getElementById('kpiTransitDelayRate').textContent = `${kpis.transit_delay_rate}%`;
-  document.getElementById('kpiRainCorr').textContent = `r = +${kpis.rain_arrival_corr}`;
+  const totArrElem = document.getElementById('kpiTotalArrivals');
+  const avgModalElem = document.getElementById('kpiAvgModalPrice');
+  const avgMspElem = document.getElementById('kpiAvgMsp');
+  const crashCountElem = document.getElementById('kpiPriceCrashCount');
+  const crashRateElem = document.getElementById('kpiPriceCrashRate');
+  const transitHoursElem = document.getElementById('kpiAvgTransitHours');
+  const delayRateElem = document.getElementById('kpiTransitDelayRate');
+  const rainCorrElem = document.getElementById('kpiRainCorr');
+
+  if (totArrElem) totArrElem.textContent = Math.round(kpis.total_arrivals_qtl || 0).toLocaleString();
+  if (avgModalElem) avgModalElem.textContent = `₹${(kpis.avg_modal_price || 0).toFixed(2)}`;
+  if (avgMspElem) avgMspElem.textContent = `₹${(kpis.avg_msp || 0).toFixed(2)}`;
+  if (crashCountElem) crashCountElem.textContent = (kpis.price_crash_count || 0).toLocaleString();
+  if (crashRateElem) crashRateElem.textContent = `${(kpis.price_crash_rate || 0).toFixed(1)}%`;
+  if (transitHoursElem) transitHoursElem.textContent = `${(kpis.avg_transit_hours || 0).toFixed(1)} hrs`;
+  if (delayRateElem) delayRateElem.textContent = `${(kpis.transit_delay_rate || 0).toFixed(1)}%`;
+  if (rainCorrElem) {
+    const sign = (kpis.rain_arrival_corr || 0) >= 0 ? '+' : '';
+    rainCorrElem.textContent = `r = ${sign}${(kpis.rain_arrival_corr || 0).toFixed(3)}`;
+  }
 }
 
 function renderCropCommodityCards(crops) {
@@ -110,7 +145,7 @@ function renderCropCommodityCards(crops) {
         <span class="crop-share-badge">${c.arrival_share}% Share</span>
       </div>
       <div class="crop-bar-bg">
-        <div class="crop-bar-fill" style="width: ${c.arrival_share * 5}%;"></div>
+        <div class="crop-bar-fill" style="width: ${Math.min(c.arrival_share * 5, 100)}%;"></div>
       </div>
       <div class="crop-stats-row">
         <div class="crop-stats-item">
@@ -120,7 +155,7 @@ function renderCropCommodityCards(crops) {
         <div class="crop-stats-item">
           <span class="crop-stats-label">Modal vs MSP</span>
           <span class="crop-stats-val ${c.price_diff >= 0 ? 'text-emerald' : 'text-rose'}">
-            ₹${c.modal_price.toFixed(0)} <span style="font-size:10px; color:#94a3b8;">/ ₹${c.msp}</span>
+            ₹${(c.modal_price || 0).toFixed(0)} <span style="font-size:10px; color:#94a3b8;">/ ₹${c.msp || 0}</span>
           </span>
         </div>
         <div class="crop-stats-item">
@@ -133,13 +168,14 @@ function renderCropCommodityCards(crops) {
 }
 
 // ==============================================================================
-// 4. FILTER CONTROLS & DYNAMIC FILTERING
+// 4. FILTER CONTROLS & DYNAMIC CASCADING
 // ==============================================================================
 function populateFilterDropdowns() {
   const distSelect = document.getElementById('filterDistrict');
   const mandiSelect = document.getElementById('filterMandi');
 
   if (distSelect && globalData.districts) {
+    distSelect.innerHTML = '<option value="All">All Districts (18)</option>';
     globalData.districts.forEach(d => {
       const opt = document.createElement('option');
       opt.value = d;
@@ -149,6 +185,7 @@ function populateFilterDropdowns() {
   }
 
   if (mandiSelect && globalData.mandis) {
+    mandiSelect.innerHTML = '<option value="All">All Mandis (57)</option>';
     globalData.mandis.forEach(m => {
       const opt = document.createElement('option');
       opt.value = m.mandi_id;
@@ -158,9 +195,134 @@ function populateFilterDropdowns() {
   }
 }
 
+function updateCascadedDropdowns(availableDistricts, availableMandis) {
+  const distSelect = document.getElementById('filterDistrict');
+  const mandiSelect = document.getElementById('filterMandi');
+  const currentDist = distSelect.value;
+  const currentMandi = mandiSelect.value;
+
+  if (availableDistricts) {
+    distSelect.innerHTML = `<option value="All">All Districts (${availableDistricts.length})</option>`;
+    availableDistricts.forEach(d => {
+      const opt = document.createElement('option');
+      opt.value = d;
+      opt.textContent = d;
+      distSelect.appendChild(opt);
+    });
+    if (availableDistricts.includes(currentDist)) {
+      distSelect.value = currentDist;
+    }
+  }
+
+  if (availableMandis) {
+    mandiSelect.innerHTML = `<option value="All">All Mandis (${availableMandis.length})</option>`;
+    availableMandis.forEach(m => {
+      const opt = document.createElement('option');
+      opt.value = m.mandi_id;
+      opt.textContent = `${m.mandi_name} (${m.mandi_id})`;
+      mandiSelect.appendChild(opt);
+    });
+    if (availableMandis.some(m => m.mandi_id === currentMandi)) {
+      mandiSelect.value = currentMandi;
+    }
+  }
+}
+
 function setupFilterHandlers() {
+  const cropSelect = document.getElementById('filterCrop');
+  const stateSelect = document.getElementById('filterState');
+  const distSelect = document.getElementById('filterDistrict');
+  const mandiSelect = document.getElementById('filterMandi');
+  const startDateInput = document.getElementById('filterDateStart');
+  const endDateInput = document.getElementById('filterDateEnd');
+
+  // Reactive state change -> update district & mandi options immediately
+  stateSelect.addEventListener('change', () => {
+    onStateFilterChange();
+    applyFilters();
+  });
+
+  // Reactive district change -> update mandi options immediately
+  distSelect.addEventListener('change', () => {
+    onDistrictFilterChange();
+    applyFilters();
+  });
+
+  cropSelect.addEventListener('change', applyFilters);
+  mandiSelect.addEventListener('change', applyFilters);
+  startDateInput.addEventListener('change', applyFilters);
+  endDateInput.addEventListener('change', applyFilters);
+
   document.getElementById('btnApplyFilters').addEventListener('click', applyFilters);
   document.getElementById('btnResetFilters').addEventListener('click', resetFilters);
+}
+
+function onStateFilterChange() {
+  const selectedState = document.getElementById('filterState').value;
+  if (!globalData || !globalData.mandis) return;
+
+  let filteredMandis = globalData.mandis;
+  if (selectedState !== 'All') {
+    filteredMandis = filteredMandis.filter(m => m.state === selectedState);
+  }
+
+  const uniqueDistricts = [...new Set(filteredMandis.map(m => m.district))].sort();
+  const distSelect = document.getElementById('filterDistrict');
+  distSelect.innerHTML = `<option value="All">All Districts (${uniqueDistricts.length})</option>`;
+  uniqueDistricts.forEach(d => {
+    const opt = document.createElement('option');
+    opt.value = d;
+    opt.textContent = d;
+    distSelect.appendChild(opt);
+  });
+
+  const mandiSelect = document.getElementById('filterMandi');
+  mandiSelect.innerHTML = `<option value="All">All Mandis (${filteredMandis.length})</option>`;
+  filteredMandis.forEach(m => {
+    const opt = document.createElement('option');
+    opt.value = m.mandi_id;
+    opt.textContent = `${m.mandi_name} (${m.mandi_id})`;
+    mandiSelect.appendChild(opt);
+  });
+}
+
+function onDistrictFilterChange() {
+  const selectedState = document.getElementById('filterState').value;
+  const selectedDistrict = document.getElementById('filterDistrict').value;
+  if (!globalData || !globalData.mandis) return;
+
+  let filteredMandis = globalData.mandis;
+  if (selectedState !== 'All') {
+    filteredMandis = filteredMandis.filter(m => m.state === selectedState);
+  }
+  if (selectedDistrict !== 'All') {
+    filteredMandis = filteredMandis.filter(m => m.district === selectedDistrict);
+  }
+
+  const mandiSelect = document.getElementById('filterMandi');
+  mandiSelect.innerHTML = `<option value="All">All Mandis (${filteredMandis.length})</option>`;
+  filteredMandis.forEach(m => {
+    const opt = document.createElement('option');
+    opt.value = m.mandi_id;
+    opt.textContent = `${m.mandi_name} (${m.mandi_id})`;
+    mandiSelect.appendChild(opt);
+  });
+}
+
+function updateFilterStatusBadge(totalQtl, matchCount) {
+  const badgeText = document.getElementById('filterStatusText');
+  if (!badgeText) return;
+  const crop = document.getElementById('filterCrop').value;
+  const state = document.getElementById('filterState').value;
+  const dist = document.getElementById('filterDistrict').value;
+
+  let activeFilters = [];
+  if (crop !== 'All') activeFilters.push(crop);
+  if (state !== 'All') activeFilters.push(state);
+  if (dist !== 'All') activeFilters.push(dist);
+
+  const filterSummary = activeFilters.length > 0 ? ` · ${activeFilters.join(' · ')}` : '';
+  badgeText.textContent = `${matchCount.toLocaleString()} matches (${Math.round(totalQtl || 0).toLocaleString()} Qtl)${filterSummary}`;
 }
 
 async function applyFilters() {
@@ -173,6 +335,9 @@ async function applyFilters() {
     endDate: document.getElementById('filterDateEnd').value
   };
 
+  const statusElem = document.getElementById('filterStatusText');
+  if (statusElem) statusElem.textContent = 'Filtering supply chain data...';
+
   try {
     const res = await fetch('/api/filter', {
       method: 'POST',
@@ -180,38 +345,115 @@ async function applyFilters() {
       body: JSON.stringify(payload)
     });
     const data = await res.json();
+    currentData = data;
 
+    // 1. Update KPI Cards
     if (data.filtered_kpis) {
-      document.getElementById('kpiTotalArrivals').textContent = Math.round(data.filtered_kpis.total_arrivals_qtl).toLocaleString();
-      document.getElementById('kpiAvgModalPrice').textContent = `₹${data.filtered_kpis.avg_modal_price.toFixed(2)}`;
-      document.getElementById('kpiAvgMsp').textContent = `₹${data.filtered_kpis.avg_msp.toFixed(2)}`;
-      document.getElementById('kpiPriceCrashCount').textContent = data.filtered_kpis.price_crash_count.toLocaleString();
-      document.getElementById('kpiPriceCrashRate').textContent = `${data.filtered_kpis.price_crash_rate}%`;
+      renderKpiCards(data.filtered_kpis);
+      updateFilterStatusBadge(data.filtered_kpis.total_arrivals_qtl, data.match_count || 0);
     }
 
+    // 2. Update Crop Commodity Cards
+    if (data.crops) {
+      renderCropCommodityCards(data.crops);
+    }
+
+    // 3. Update Tab 1 Charts
     if (data.daily_trend && charts.dailyTrend) {
       updateDailyTrendChart(data.daily_trend);
     }
+    if (data.crops && charts.cropShare) {
+      updateCropShareChart(data.crops);
+    }
+
+    // 4. Update Tab 2 Charts & Table (Mandi Arrivals)
+    if (data.top_mandis && charts.topMandis) {
+      updateTopMandisChart(data.top_mandis);
+    }
+    if (data.state_throughput && charts.stateThroughput) {
+      updateStateThroughputChart(data.state_throughput);
+    }
+    renderTopMandisTable(data.top_mandis, (data.filtered_kpis && data.filtered_kpis.total_arrivals_qtl) || 1);
+
+    // 5. Update Tab 3 Charts & Table (MSP & Prices)
+    if (data.crops && charts.priceVsMsp) {
+      updatePriceVsMspChart(data.crops);
+    }
+    if (data.crops && charts.crashShare) {
+      updateCrashShareChart(data.crops);
+    }
+    renderPriceCrashesTable(data.crash_mandis);
+
+    // 6. Update Tab 4 Charts & Table (Logistics)
+    if (data.warehouses && charts.whTransit) {
+      updateWarehouseTransitChart(data.warehouses);
+    }
+    if (data.warehouses && charts.whDelays) {
+      updateWarehouseDelaysChart(data.warehouses);
+    }
+    renderRouteDelaysTable(data.route_delays);
+
+    // 7. Update Tab 5 Charts (Weather)
+    if (data.weather_arrivals && charts.weatherCorr) {
+      updateWeatherArrivalCorrChart(data.weather_arrivals);
+    }
+    if (data.district_rain && charts.distRain) {
+      updateDistrictRainChart(data.district_rain);
+    }
+
+    // 8. Filter recommendations table if on ML Recommendations tab
+    filterRecommendationsTable();
+
   } catch (err) {
     console.error('Failed to filter data:', err);
+    if (statusElem) statusElem.textContent = 'Filter calculation error';
   }
 }
 
 function resetFilters() {
   document.getElementById('filterCrop').value = 'All';
   document.getElementById('filterState').value = 'All';
-  document.getElementById('filterDistrict').value = 'All';
-  document.getElementById('filterMandi').value = 'All';
   document.getElementById('filterDateStart').value = '2026-01-01';
   document.getElementById('filterDateEnd').value = '2026-09-30';
+
+  populateFilterDropdowns();
+  currentData = globalData;
+
   renderKpiCards(globalData.kpis);
-  if (charts.dailyTrend) {
-    updateDailyTrendChart(globalData.daily_trend);
+  renderCropCommodityCards(globalData.crops);
+
+  if (charts.dailyTrend) updateDailyTrendChart(globalData.daily_trend);
+  if (charts.cropShare) updateCropShareChart(globalData.crops);
+  if (charts.topMandis) updateTopMandisChart(globalData.top_mandis);
+  if (charts.stateThroughput) {
+    const st = { 'Punjab': 0, 'Haryana': 0, 'Uttar Pradesh': 0 };
+    globalData.top_mandis.forEach(m => { if (st[m.state] !== undefined) st[m.state] += m.arrival_qtl; });
+    updateStateThroughputChart(st);
+  }
+  if (charts.priceVsMsp) updatePriceVsMspChart(globalData.crops);
+  if (charts.crashShare) updateCrashShareChart(globalData.crops);
+  if (charts.whTransit) updateWarehouseTransitChart(globalData.warehouses);
+  if (charts.whDelays) updateWarehouseDelaysChart(globalData.warehouses);
+  if (charts.weatherCorr) updateWeatherArrivalCorrChart(globalData.weather_arrivals);
+  if (charts.distRain) renderDistrictRainChart();
+
+  renderTables();
+  updateFilterStatusBadge(globalData.kpis.total_arrivals_qtl, 25750);
+
+  // Clear table search inputs
+  const searchInputs = ['searchMandisInput', 'searchCrashesInput', 'searchRoutesInput', 'searchRecsInput'];
+  searchInputs.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+
+  if (recommendationsData) {
+    renderRecommendationsTable(recommendationsData.recommendations);
   }
 }
 
 // ==============================================================================
-// 5. CHART VISUALIZATION ENGINE
+// 5. CHART VISUALIZATION & REACTIVE UPDATE ENGINE
 // ==============================================================================
 function renderAllCharts() {
   renderDailyTrendChart();
@@ -227,10 +469,11 @@ function renderAllCharts() {
 }
 
 function renderDailyTrendChart() {
-  const ctx = document.getElementById('chartDailyTrend').getContext('2d');
-  const trend = globalData.daily_trend;
-  // Sample weekly points for smooth rendering
-  const sampled = trend.filter((_, i) => i % 5 === 0);
+  const canvas = document.getElementById('chartDailyTrend');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const trend = globalData.daily_trend || [];
+  const sampled = trend.filter((_, i) => i % 4 === 0);
   const labels = sampled.map(r => r.date_str);
 
   charts.dailyTrend = new Chart(ctx, {
@@ -259,7 +502,8 @@ function renderDailyTrendChart() {
 }
 
 function updateDailyTrendChart(newTrend) {
-  const sampled = newTrend.filter((_, i) => i % 5 === 0);
+  if (!charts.dailyTrend) return;
+  const sampled = (newTrend || []).filter((_, i) => i % 4 === 0);
   charts.dailyTrend.data.labels = sampled.map(r => r.date_str);
   ['Wheat', 'Rice', 'Cotton', 'Mustard', 'Maize', 'Sugarcane'].forEach((c, idx) => {
     if (charts.dailyTrend.data.datasets[idx]) {
@@ -270,8 +514,10 @@ function updateDailyTrendChart(newTrend) {
 }
 
 function renderCropShareChart() {
-  const ctx = document.getElementById('chartCropShare').getContext('2d');
-  const crops = globalData.crops;
+  const canvas = document.getElementById('chartCropShare');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const crops = globalData.crops || [];
 
   charts.cropShare = new Chart(ctx, {
     type: 'doughnut',
@@ -287,17 +533,24 @@ function renderCropShareChart() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'right' }
-      },
+      plugins: { legend: { position: 'right' } },
       cutout: '65%'
     }
   });
 }
 
+function updateCropShareChart(crops) {
+  if (!charts.cropShare) return;
+  charts.cropShare.data.labels = crops.map(c => c.crop);
+  charts.cropShare.data.datasets[0].data = crops.map(c => c.arrival_qtl);
+  charts.cropShare.update();
+}
+
 function renderTopMandisChart() {
-  const ctx = document.getElementById('chartTopMandis').getContext('2d');
-  const mandis = globalData.top_mandis.slice(0, 8);
+  const canvas = document.getElementById('chartTopMandis');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const mandis = (globalData.top_mandis || []).slice(0, 8);
 
   charts.topMandis = new Chart(ctx, {
     type: 'bar',
@@ -322,11 +575,20 @@ function renderTopMandisChart() {
   });
 }
 
+function updateTopMandisChart(mandis) {
+  if (!charts.topMandis) return;
+  const topSlice = (mandis || []).slice(0, 8);
+  charts.topMandis.data.labels = topSlice.map(m => m.mandi_name);
+  charts.topMandis.data.datasets[0].data = topSlice.map(m => m.arrival_qtl);
+  charts.topMandis.update();
+}
+
 function renderStateThroughputChart() {
-  const ctx = document.getElementById('chartStateThroughput').getContext('2d');
-  // State totals aggregated from mandis
+  const canvas = document.getElementById('chartStateThroughput');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
   const stateTotals = { 'Punjab': 0, 'Haryana': 0, 'Uttar Pradesh': 0 };
-  globalData.top_mandis.forEach(m => {
+  (globalData.top_mandis || []).forEach(m => {
     if (stateTotals[m.state] !== undefined) stateTotals[m.state] += m.arrival_qtl;
   });
 
@@ -352,9 +614,22 @@ function renderStateThroughputChart() {
   });
 }
 
+function updateStateThroughputChart(stateThroughput) {
+  if (!charts.stateThroughput) return;
+  const totals = [
+    stateThroughput['Punjab'] || 0,
+    stateThroughput['Haryana'] || 0,
+    stateThroughput['Uttar Pradesh'] || 0
+  ];
+  charts.stateThroughput.data.datasets[0].data = totals;
+  charts.stateThroughput.update();
+}
+
 function renderPriceVsMspChart() {
-  const ctx = document.getElementById('chartPriceVsMsp').getContext('2d');
-  const crops = globalData.crops;
+  const canvas = document.getElementById('chartPriceVsMsp');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const crops = globalData.crops || [];
 
   charts.priceVsMsp = new Chart(ctx, {
     type: 'bar',
@@ -376,9 +651,19 @@ function renderPriceVsMspChart() {
   });
 }
 
+function updatePriceVsMspChart(crops) {
+  if (!charts.priceVsMsp) return;
+  charts.priceVsMsp.data.labels = crops.map(c => c.crop);
+  charts.priceVsMsp.data.datasets[0].data = crops.map(c => c.modal_price);
+  charts.priceVsMsp.data.datasets[1].data = crops.map(c => c.msp);
+  charts.priceVsMsp.update();
+}
+
 function renderCrashShareChart() {
-  const ctx = document.getElementById('chartCrashShare').getContext('2d');
-  const crops = globalData.crops;
+  const canvas = document.getElementById('chartCrashShare');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const crops = globalData.crops || [];
 
   charts.crashShare = new Chart(ctx, {
     type: 'bar',
@@ -402,9 +687,18 @@ function renderCrashShareChart() {
   });
 }
 
+function updateCrashShareChart(crops) {
+  if (!charts.crashShare) return;
+  charts.crashShare.data.labels = crops.map(c => c.crop);
+  charts.crashShare.data.datasets[0].data = crops.map(c => c.crash_rate);
+  charts.crashShare.update();
+}
+
 function renderWarehouseTransitChart() {
-  const ctx = document.getElementById('chartWarehouseTransit').getContext('2d');
-  const wh = globalData.warehouses;
+  const canvas = document.getElementById('chartWarehouseTransit');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const wh = globalData.warehouses || [];
 
   charts.whTransit = new Chart(ctx, {
     type: 'bar',
@@ -428,9 +722,18 @@ function renderWarehouseTransitChart() {
   });
 }
 
+function updateWarehouseTransitChart(warehouses) {
+  if (!charts.whTransit) return;
+  charts.whTransit.data.labels = warehouses.map(w => w.warehouse);
+  charts.whTransit.data.datasets[0].data = warehouses.map(w => w.avg_transit_hours);
+  charts.whTransit.update();
+}
+
 function renderWarehouseDelaysChart() {
-  const ctx = document.getElementById('chartWarehouseDelays').getContext('2d');
-  const wh = globalData.warehouses;
+  const canvas = document.getElementById('chartWarehouseDelays');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const wh = globalData.warehouses || [];
 
   charts.whDelays = new Chart(ctx, {
     type: 'bar',
@@ -454,9 +757,18 @@ function renderWarehouseDelaysChart() {
   });
 }
 
+function updateWarehouseDelaysChart(warehouses) {
+  if (!charts.whDelays) return;
+  charts.whDelays.data.labels = warehouses.map(w => w.warehouse);
+  charts.whDelays.data.datasets[0].data = warehouses.map(w => w.delay_rate);
+  charts.whDelays.update();
+}
+
 function renderWeatherArrivalCorrChart() {
-  const ctx = document.getElementById('chartWeatherArrivalCorr').getContext('2d');
-  const wa = globalData.weather_arrivals.slice(0, 40);
+  const canvas = document.getElementById('chartWeatherArrivalCorr');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const wa = (globalData.weather_arrivals || []).slice(0, 40);
 
   charts.weatherCorr = new Chart(ctx, {
     type: 'line',
@@ -505,8 +817,19 @@ function renderWeatherArrivalCorrChart() {
   });
 }
 
+function updateWeatherArrivalCorrChart(wa) {
+  if (!charts.weatherCorr) return;
+  const slice = (wa || []).slice(0, 40);
+  charts.weatherCorr.data.labels = slice.map(d => d.date);
+  charts.weatherCorr.data.datasets[0].data = slice.map(d => d.arrival_qtl);
+  charts.weatherCorr.data.datasets[1].data = slice.map(d => d.rainfall_mm);
+  charts.weatherCorr.update();
+}
+
 function renderDistrictRainChart() {
-  const ctx = document.getElementById('chartDistrictRain').getContext('2d');
+  const canvas = document.getElementById('chartDistrictRain');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
   const districts = ['Bareilly', 'Muzaffarnagar', 'Saharanpur', 'Kurukshetra', 'Ambala', 'Patiala', 'Ludhiana', 'Amritsar'];
   const rainTotals = [28500, 24300, 22100, 19400, 18200, 16500, 15300, 14200];
 
@@ -532,72 +855,278 @@ function renderDistrictRainChart() {
   });
 }
 
+function updateDistrictRainChart(distRain) {
+  if (!charts.distRain || !distRain || distRain.length === 0) return;
+  const labels = distRain.map(d => d.district);
+  const data = distRain.map(d => d.rainfall_mm);
+  charts.distRain.data.labels = labels;
+  charts.distRain.data.datasets[0].data = data;
+  charts.distRain.update();
+}
+
 // ==============================================================================
-// 6. DATA TABLES RENDERING
+// 6. DATA TABLES RENDERING & LIVE SEARCH
 // ==============================================================================
 function renderTables() {
-  // Top Mandis Table
-  const tbodyMandis = document.querySelector('#tableTopMandis tbody');
-  if (tbodyMandis && globalData.top_mandis) {
-    const tot = globalData.kpis.total_arrivals_qtl;
-    tbodyMandis.innerHTML = globalData.top_mandis.map(m => {
-      const share = ((m.arrival_qtl / tot) * 100).toFixed(1);
-      const stateBadge = m.state === 'Punjab' ? 'badge-pb' : m.state === 'Haryana' ? 'badge-hr' : 'badge-up';
-      return `
-        <tr>
-          <td><code>${m.mandi_id}</code></td>
-          <td><strong>${m.mandi_name}</strong></td>
-          <td>${m.district}</td>
-          <td><span class="badge-state ${stateBadge}">${m.state}</span></td>
-          <td><strong>${Math.round(m.arrival_qtl).toLocaleString()}</strong> Qtl</td>
-          <td>${share}%</td>
-          <td><span class="status-ok">Active APMC</span></td>
-        </tr>
-      `;
-    }).join('');
+  renderTopMandisTable(globalData.top_mandis, globalData.kpis.total_arrivals_qtl);
+  renderPriceCrashesTable(globalData.crash_mandis);
+  renderRouteDelaysTable(globalData.route_delays);
+}
+
+function renderTopMandisTable(mandis, totalArrivals) {
+  const tbody = document.querySelector('#tableTopMandis tbody');
+  if (!tbody) return;
+  const tot = totalArrivals || 1;
+
+  if (!mandis || mandis.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" class="text-center" style="padding:24px; color:#94a3b8;">No mandi arrival records match the current filter selection.</td></tr>`;
+    return;
   }
 
-  // Price Crashes Table
-  const tbodyCrashes = document.querySelector('#tablePriceCrashes tbody');
-  if (tbodyCrashes && globalData.crash_mandis) {
-    tbodyCrashes.innerHTML = globalData.crash_mandis.map(c => `
-      <tr>
-        <td><code>${c.mandi_id}</code></td>
-        <td><strong>${c.mandi_name}</strong></td>
-        <td>${c.district}</td>
-        <td><span class="crop-share-badge">${c.crop}</span></td>
-        <td>₹${c.avg_modal.toFixed(1)}</td>
-        <td>₹${c.msp.toFixed(0)}</td>
-        <td class="text-rose"><strong>-₹${Math.abs(c.avg_deficit).toFixed(1)}</strong></td>
-        <td><span class="status-crash">${c.crash_count} crashes</span></td>
-        <td><button class="btn btn-sm btn-ghost" onclick="executeAgentPrompt('Plot the daily arrival trend of ${c.crop} in ${c.district} mandi vs MSP for the last 30 days')">Procure</button></td>
+  tbody.innerHTML = mandis.map(m => {
+    const share = ((m.arrival_qtl / tot) * 100).toFixed(1);
+    const stateBadge = m.state === 'Punjab' ? 'badge-pb' : m.state === 'Haryana' ? 'badge-hr' : 'badge-up';
+    return `
+      <tr class="mandi-row">
+        <td><code>${m.mandi_id}</code></td>
+        <td><strong>${m.mandi_name}</strong></td>
+        <td>${m.district}</td>
+        <td><span class="badge-state ${stateBadge}">${m.state}</span></td>
+        <td><strong>${Math.round(m.arrival_qtl).toLocaleString()}</strong> Qtl</td>
+        <td>${share}%</td>
+        <td><span class="status-ok">Active APMC</span></td>
       </tr>
-    `).join('');
+    `;
+  }).join('');
+}
+
+function renderPriceCrashesTable(crashMandis) {
+  const tbody = document.querySelector('#tablePriceCrashes tbody');
+  if (!tbody) return;
+
+  if (!crashMandis || crashMandis.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="9" class="text-center" style="padding:24px; color:#10b981;">No price crash incidents reported under current filter criteria! Market prices are healthy above MSP.</td></tr>`;
+    return;
   }
 
-  // Route Delays Table
-  const tbodyRoutes = document.querySelector('#tableRouteDelays tbody');
-  if (tbodyRoutes && globalData.route_delays) {
-    tbodyRoutes.innerHTML = globalData.route_delays.map(r => `
-      <tr>
-        <td><strong>${r.mandi}</strong></td>
-        <td><span class="badge-state badge-pb">${r.warehouse}</span></td>
-        <td>${r.total_trips} trips</td>
-        <td><span class="status-crash">${r.delay_rate}%</span></td>
-        <td class="text-amber">${r.avg_delay_hours} hrs</td>
-        <td>${r.avg_transit_hours} hrs</td>
-        <td><span class="badge-alert">Optimize Route</span></td>
-      </tr>
-    `).join('');
+  tbody.innerHTML = crashMandis.map(c => `
+    <tr class="crash-row">
+      <td><code>${c.mandi_id}</code></td>
+      <td><strong>${c.mandi_name}</strong></td>
+      <td>${c.district}</td>
+      <td><span class="crop-share-badge">${c.crop}</span></td>
+      <td>₹${(c.avg_modal || 0).toFixed(1)}</td>
+      <td>₹${(c.msp || 0).toFixed(0)}</td>
+      <td class="text-rose"><strong>-₹${Math.abs(c.avg_deficit || 0).toFixed(1)}</strong></td>
+      <td><span class="status-crash">${c.crash_count} crashes</span></td>
+      <td><button class="btn btn-sm btn-ghost" onclick="executeAgentPrompt('Plot the daily arrival trend of ${c.crop} in ${c.district} mandi vs MSP for the last 30 days')">Procure</button></td>
+    </tr>
+  `).join('');
+}
+
+function renderRouteDelaysTable(routeDelays) {
+  const tbody = document.querySelector('#tableRouteDelays tbody');
+  if (!tbody) return;
+
+  if (!routeDelays || routeDelays.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" class="text-center" style="padding:24px; color:#94a3b8;">No route transit delay data matching current criteria.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = routeDelays.map(r => `
+    <tr class="route-row">
+      <td><strong>${r.mandi}</strong></td>
+      <td><span class="badge-state badge-pb">${r.warehouse}</span></td>
+      <td>${r.total_trips} trips</td>
+      <td><span class="status-crash">${r.delay_rate}%</span></td>
+      <td class="text-amber">${(r.avg_delay_hours || 0).toFixed(1)} hrs</td>
+      <td>${(r.avg_transit_hours || 0).toFixed(1)} hrs</td>
+      <td><span class="badge-alert">Optimize Route</span></td>
+    </tr>
+  `).join('');
+}
+
+function setupTableSearchHandlers() {
+  // Mandi Table Live Search
+  const searchMandis = document.getElementById('searchMandisInput');
+  if (searchMandis) {
+    searchMandis.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      document.querySelectorAll('#tableTopMandis tbody tr.mandi-row').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  }
+
+  // Price Crash Table Live Search
+  const searchCrashes = document.getElementById('searchCrashesInput');
+  if (searchCrashes) {
+    searchCrashes.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      document.querySelectorAll('#tablePriceCrashes tbody tr.crash-row').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  }
+
+  // Routes Table Live Search
+  const searchRoutes = document.getElementById('searchRoutesInput');
+  if (searchRoutes) {
+    searchRoutes.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      document.querySelectorAll('#tableRouteDelays tbody tr.route-row').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  }
+
+  // Recommendations Table Live Search
+  const searchRecs = document.getElementById('searchRecsInput');
+  if (searchRecs) {
+    searchRecs.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      document.querySelectorAll('#tableRecommendations tbody tr.rec-row').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
   }
 }
 
 // ==============================================================================
-// 7. AI AGENT QUERY ENGINE
+// 7. ML RECOMMENDATIONS & CROP INTELLIGENCE VIEW
+// ==============================================================================
+function renderRecommendationsView(data) {
+  if (!data) return;
+
+  const recs = data.recommendations || [];
+  if (recs.length > 0) {
+    const topRec = recs[0];
+    const topNameElem = document.getElementById('recTopMandiName');
+    const topPriceElem = document.getElementById('recTopMandiPrice');
+    if (topNameElem) topNameElem.textContent = `${topRec.mandi_name} (${topRec.mandi_id})`;
+    if (topPriceElem) topPriceElem.textContent = `₹${(topRec.predicted_price || 0).toFixed(2)}/Qtl`;
+  }
+
+  renderRecommendationsTable(recs);
+  renderModelPriceSpreadChart(data.crop_prices);
+  renderModelFarmerChart(data.crop_arrivals);
+}
+
+function renderRecommendationsTable(recs) {
+  const tbody = document.querySelector('#tableRecommendations tbody');
+  if (!tbody) return;
+
+  if (!recs || recs.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="11" class="text-center" style="padding:24px; color:#94a3b8;">No market recommendations match the current filter selection.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = recs.map(r => {
+    const stateBadge = r.state === 'Punjab' ? 'badge-pb' : r.state === 'Haryana' ? 'badge-hr' : 'badge-up';
+    const isPositive = (r.price_spread || 0) >= 0;
+    const strategyClass = r.rank <= 5 ? 'strong' : isPositive ? 'stable' : 'deficit';
+    return `
+      <tr class="rec-row">
+        <td><strong>#${r.rank}</strong></td>
+        <td><code>${r.mandi_id}</code></td>
+        <td><strong>${r.mandi_name}</strong></td>
+        <td>${r.district}</td>
+        <td><span class="badge-state ${stateBadge}">${r.state}</span></td>
+        <td><span class="badge-sub">${r.mandi_type || 'APMC'}</span></td>
+        <td class="text-emerald"><strong>₹${(r.predicted_price || 0).toFixed(2)}</strong></td>
+        <td>₹${(r.current_wheat_price || 2310).toFixed(2)}</td>
+        <td class="${isPositive ? 'text-emerald' : 'text-rose'}">
+          ${isPositive ? '+' : ''}₹${(r.price_spread || 0).toFixed(2)}
+        </td>
+        <td><span class="badge-strategy ${strategyClass}">${r.strategy || 'Standard Liquidity'}</span></td>
+        <td>
+          <button class="btn btn-sm btn-primary" onclick="executeAgentPrompt('Which warehouse receives the highest volume of crops?')">
+            Dispatch
+          </button>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function filterRecommendationsTable() {
+  if (!recommendationsData || !recommendationsData.recommendations) return;
+  const state = document.getElementById('filterState').value;
+  const dist = document.getElementById('filterDistrict').value;
+  const mandi = document.getElementById('filterMandi').value;
+
+  let filtered = recommendationsData.recommendations;
+  if (state !== 'All') filtered = filtered.filter(r => r.state === state);
+  if (dist !== 'All') filtered = filtered.filter(r => r.district === dist);
+  if (mandi !== 'All') filtered = filtered.filter(r => r.mandi_id === mandi);
+
+  renderRecommendationsTable(filtered);
+}
+
+function renderModelPriceSpreadChart(cropPrices) {
+  const canvas = document.getElementById('chartModelPrices');
+  if (!canvas || !cropPrices) return;
+  const ctx = canvas.getContext('2d');
+
+  charts.modelPrices = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: cropPrices.map(c => c.crop_name),
+      datasets: [
+        { label: 'Min Price (₹)', data: cropPrices.map(c => Math.round(c.minimum_price)), backgroundColor: '#3b82f6', borderRadius: 4 },
+        { label: 'Avg Price (₹)', data: cropPrices.map(c => Math.round(c.average_price)), backgroundColor: '#10b981', borderRadius: 4 },
+        { label: 'Max Price (₹)', data: cropPrices.map(c => Math.round(c.maximum_price)), backgroundColor: '#f59e0b', borderRadius: 4 }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: { grid: { display: false } },
+        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, title: { display: true, text: 'Price (₹/Quintal)' } }
+      }
+    }
+  });
+}
+
+function renderModelFarmerChart(cropArrivals) {
+  const canvas = document.getElementById('chartModelFarmers');
+  if (!canvas || !cropArrivals) return;
+  const ctx = canvas.getContext('2d');
+
+  charts.modelFarmers = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: cropArrivals.map(c => c.crop_name),
+      datasets: [{
+        label: 'Registered Farmers',
+        data: cropArrivals.map(c => c.total_farmer_count),
+        backgroundColor: '#8b5cf6',
+        borderRadius: 6
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: { grid: { display: false } },
+        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, title: { display: true, text: 'Farmers Count' } }
+      }
+    }
+  });
+}
+
+// ==============================================================================
+// 8. AI AGENT QUERY ENGINE
 // ==============================================================================
 function setupAgentHandlers() {
   const btn = document.getElementById('btnRunAgent');
   const input = document.getElementById('agentInput');
+  if (!btn || !input) return;
 
   btn.addEventListener('click', () => {
     executeAgentPrompt(input.value);
@@ -613,7 +1142,6 @@ function setupAgentHandlers() {
 async function executeAgentPrompt(queryText) {
   if (!queryText || !queryText.trim()) return;
 
-  // Switch to Agent tab if not already there
   switchTab('agent');
   document.getElementById('agentInput').value = queryText;
 
@@ -639,14 +1167,12 @@ async function executeAgentPrompt(queryText) {
 
     if (data.status === 'success') {
       intentElem.textContent = data.intent.replace(/_/g, ' ').toUpperCase();
-      // Render simple markdown conversion
       let formattedHtml = data.summary
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
         .replace(/\n\n/g, '<br><br>')
         .replace(/- /g, '• ');
       summaryElem.innerHTML = formattedHtml;
 
-      // Render stat badges
       if (data.stats) {
         pillsElem.innerHTML = data.stats.map(s => `
           <div class="stat-pill-card glass">
@@ -656,7 +1182,6 @@ async function executeAgentPrompt(queryText) {
         `).join('');
       }
 
-      // Render dynamic chart
       if (data.chart) {
         renderAgentChart(data.chart);
       }
