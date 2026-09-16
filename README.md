@@ -330,35 +330,6 @@ AgentIQ can be used for questions such as:
 | Which state has the highest arrivals? | Supply Analysis |
 | Which crop has the highest average market price? | Price Analysis |
 
----
-
-# 📸 Dashboard Preview
-
-### Overview
-
-![Overview](screenshots/overview.png)
-
-### Mandi Arrivals
-
-![Mandi Arrivals](screenshots/mandi-arrivals.png)
-
-### MSP & Price Discovery
-
-![MSP & Prices](screenshots/msp-prices.png)
-
-### Logistics
-
-![Logistics](screenshots/logistics.png)
-
-### Weather Analysis
-
-![Weather](screenshots/weather.png)
-
-### AgentIQ
-
-![AgentIQ](screenshots/agentiq.png)
-
----
 
 # 🎯 Problem Statement
 
@@ -456,9 +427,9 @@ This is a **group project** developed for the TransOrg Datathon.
 | Team Member | Contribution |
 |---|---|
 | **Ashish Thakur** | Dashboard, Backend & Integration |
-| **Team Member 2** | Data Processing & Analysis |
-| **Team Member 3** | Frontend & Visualization |
-| **Team Member 4** | AgentIQ & Testing |
+| **Nikhil Prajapati** | Data Processing & Analysis |
+| **Chinu yadav** | Frontend & Visualization |
+| **Sujal Mankotia** | AgentIQ & Testing |
 
 > Update the names and contributions according to your actual team.
 
